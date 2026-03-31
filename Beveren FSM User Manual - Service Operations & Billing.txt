@@ -1,0 +1,147 @@
+Beveren FSM User Manual: Service Operations & Billing
+Welcome to the Beveren Field Service Management (FSM) User Manual. This guide provides step-by-step instructions for managing your daily service operations in ERPNext 16, from handling initial customer calls and managing recurring Service Agreements to dispatching technicians and issuing final invoices.
+Table of Contents
+    1. Handling Customer Calls (Ad-Hoc Service)
+    2. Managing Service Agreements (Recurring Calibration)
+    3. Scheduling and Dispatching
+    4. Field Execution & Completion
+    5. Final Billing
+1. Handling Customer Calls (Ad-Hoc Service)
+When a customer calls for an unexpected issue, breakdown, or a one-off service request, your first priority is to capture the details of their problem accurately in the system. This begins by logging a Service Request.
+Step A: Creating a New Service Request
+    1. Log in to ERPNext: Ensure you are logged into your ERPNext workspace with the appropriate Service or Dispatcher roles.
+    2. Navigate to Service Requests:
+        ? Method 1: Use the global search bar at the top, type "Service Request", and select "Service Request List" from the results.
+        ? Method 2: Click on the Service module on your left-hand navigation bar, then click on Service Request under the core documents section.
+    3. Create New Document: Click the blue + Add Service Request button in the top right corner.
+    4. Enter Customer Details:
+        ? Customer: Click the search box and type to select the calling customer.
+        ? Customer Address: Select the specific site address where the service is needed. Note: It is critical to select the correct address here for proper dispatching and mapping later.
+        ? Contact Person: (Optional but recommended) Select or enter the name and phone number of the person who called, ensuring the field technician knows exactly who to ask for upon arrival.
+    5. Detail the Issue:
+        ? Subject: Enter a concise, clear subject line (e.g., "Centrifuge making grinding noise", "Scale out of calibration").
+        ? Description: In the larger text box, type out a detailed account of the problem as described by the customer. Ask probing questions (e.g., "When did it start?", "Are there any error codes on the display?") and include these critical details here.
+    6. Set Priority: Select the appropriate priority level (e.g., Low, Medium, High, Urgent) based on your company's Service Level Agreements (SLA) and the severity of the customer's situation.
+    7. Save: Click the Save button at the top right. The Service Request is now officially logged in the system as "Open".
+Step B: Converting to a Service Order
+Once the Service Request is reviewed, triaged, and you determine that a technician must be dispatched, you will convert it into a Service Order. The Service Order is the document that actually authorizes the field work and tracks the required parts and labor.
+    1. Open the Service Request: If you navigated away, return to the Service Request List and open the document you just created.
+    2. Initiate Conversion: Click the Create button located in the top right corner of the document.
+    3. Select Service Order: From the dropdown menu, click Service Order. A new, unsaved Service Order document will instantly open.
+    4. Verify Copied Information: The system will automatically pull in the Customer, Address, Subject, and Description from the Service Request. Briefly verify that this information transferred correctly.
+    5. Add Estimated Items (Optional but Recommended):
+        ? Scroll down to the Items table.
+        ? Click Add Row.
+        ? Add anticipated billing items or parts. For example, add a generic "Diagnostic Labor" item, a standard "Trip Charge", or specific replacement parts if you already know what is needed based on the customer's description.
+    6. Save and Submit:
+        ? First, click Save to store the draft.
+        ? Once saved, click the blue Submit button (and confirm "Yes" when prompted) to finalize the document.
+    7. Ready for Dispatch: The Service Order is now formalized. It will appear on the Dispatch Board for scheduling.
+2. Managing Service Agreements (Recurring Calibration)
+For your core business of recurring equipment calibration, you will use Service Agreements. This guarantees that a specific customer site receives scheduled maintenance visits a set number of times per year, ensuring you capture predictable revenue and fulfill compliance requirements for the client.
+Step A: Setting Up a New Service Agreement
+    1. Navigate to Service Agreements: * Open the Service module from your left-hand navigation bar.
+        ? Click on Service Agreement (this may also be labeled Maintenance Schedule depending on your specific ERPNext setup).
+    2. Create New Document: Click the blue + Add Service Agreement button in the top right corner.
+    3. Select the Customer & Location:
+        ? Customer: Search and select the customer you are contracting with.
+        ? Customer Address: Select the exact physical site where the equipment is located. If a customer has multiple branches, each branch typically requires its own Service Agreement.
+    4. Define the Terms of the Agreement:
+        ? Start Date: Select the date the contract becomes active.
+        ? End Date: Select the contract expiration date (usually exactly one year from the Start Date).
+        ? Agreement Amount / Rate: Specify the total contract value or ensure your specific flat-rate "Calibration Service" item is linked, so the system knows exactly what to bill each time a visit occurs.
+    5. Specify Equipment and Frequency:
+        ? Scroll down to the Equipment or Maintenance Items table.
+        ? Add Row: Click to add a new line for each piece of equipment.
+        ? Item/Serial No: Select the specific Asset, Item Code, or Serial Number that requires calibration.
+        ? Frequency: Choose how often you will visit. (e.g., select "Quarterly" for four visits a year, "Bi-Annually" for two, or "Monthly" for twelve).
+    6. Finalize the Agreement:
+        ? Click Save to store your draft.
+        ? Review the details with the signed customer contract.
+        ? Click Submit to activate the Service Agreement. The system will now use this document to track when the next calibration is due.
+Step B: Generating Service Orders from Agreements
+Unlike ad-hoc calls, scheduled calibrations do not start as a "Service Request." Instead, the system alerts you when a calibration is due based on the Service Agreement's frequency, and you directly generate a Service Order for dispatch.
+    1. Monitor Upcoming Calibrations: Periodically review your Service Agreements list, filtering for agreements that have upcoming service dates due this week or month.
+    2. Open the Active Agreement: Click on the specific Service Agreement that is due for a calibration visit.
+    3. Trigger Order Generation: * Click the Create button in the top right corner of the document.
+        ? Select Service Order from the dropdown menu.
+    4. Review the Generated Service Order:
+        ? The system will instantly create a new Service Order.
+        ? Verify that the system successfully copied the Customer, Address, and the specific Equipment/Serial numbers into the new order.
+        ? Verify that the preset flat-rate calibration billing items have automatically populated in the Items table.
+    5. Submit for Dispatch:
+        ? Click Save.
+        ? Click Submit to finalize the order.
+        ? The recurring calibration job is now an active Service Order and is automatically pushed to the Dispatch Board, ready to be assigned to a technician.
+3. Scheduling and Dispatching
+The Beveren FSM app includes a custom, interactive React-based Scheduling interface. This visual tool allows dispatchers to efficiently assign open Service Orders to available field technicians.
+Step A: Accessing and Navigating the Dispatch Board
+    1. Navigate to the Schedule: Open the Service module from your left-hand navigation bar and click on the Schedule (or Dispatch Board) link.
+    2. Understand the Interface Layout: The board is divided into two main sections:
+        ? Left Panel (Unscheduled Work): Here you will find a list of all submitted, unscheduled Service Orders. This includes both emergency ad-hoc calls and generated recurring calibration orders. You can use the search bar at the top of this panel to find specific jobs.
+        ? Main Calendar Timeline: This is the visual schedule. Your field technicians (resources) are listed in rows, and the timeline (hours/days) is displayed in columns across the top.
+Step B: Assigning a Job (Drag and Drop)
+    1. Locate the Job: Find the Service Order you wish to schedule in the left-hand "Unscheduled Work" panel.
+    2. Drag the Job: Click and hold your mouse button down on the Service Order card.
+    3. Drop onto the Timeline: Drag the card over to the main calendar and release your mouse button on the row corresponding to your chosen technician, aligned with the correct starting time and date.
+    4. Automatic Processing: The system will immediately process the action. Under the hood, it automatically creates a new Service Appointment document, seamlessly linking the Technician, the Service Order, the Customer, and the selected start time.
+Step C: Adjusting Existing Appointments
+Sometimes schedules change, or a calibration takes longer than expected. You can manage these changes directly from the board.
+    1. Adjust the Duration: Hover your mouse over the right-hand edge of a scheduled appointment block on the calendar. When the cursor changes to a resize arrow, click and drag to the right to extend the time (or to the left to shorten it).
+    2. Reschedule or Reassign: If a technician calls in sick or you need to move a job to a different day, simply click and drag the existing appointment block to a new time slot or a different technician's row. The underlying Service Appointment document will update automatically.
+Step D: Alternative Manual Scheduling (Standard UI)
+If you are already inside a Service Order document and prefer not to use the visual board, you can dispatch manually:
+    1. Open the submitted Service Order.
+    2. Click the Create button in the top right corner.
+    3. Select Service Appointment.
+    4. In the new document, manually select the Technician, the Scheduled Date, and the Scheduled Start/End Time.
+    5. Click Save and Submit. The job is now dispatched and will appear on both the technician's view and the visual scheduling board.
+4. Field Execution & Completion
+Once dispatched, the technician will be able to view their assigned work on their mobile device, tablet, or laptop. Proper documentation in the field is critical, especially for calibration services that require strict compliance tracking.
+Step A: Accessing Your Daily Schedule
+    1. Log In: The technician logs into the ERPNext mobile app or web browser using their designated credentials.
+    2. Navigate to Appointments: Tap on the Service module and navigate to Service Appointment.
+    3. Filter Your View: To see your specific jobs for the day, ensure the list is filtered so that "Technician" equals your name, and "Scheduled Date" is set to "Today".
+Step B: Reviewing the Job On-Site
+    1. Open the Appointment: Tap on the specific Service Appointment for your current customer site.
+    2. Review Details: Read the Issue Description or Calibration requirements that were copied over from the original request or Service Agreement.
+    3. Verify Equipment: If performing a recurring calibration, strictly cross-reference the Serial Number and Asset listed on the linked Service Order with the physical equipment in front of you.
+Step C: Documenting the Work & Calibration
+    1. Perform the Service: Execute the required calibration, preventive maintenance, or ad-hoc repair.
+    2. Add Work Notes: Scroll to the Notes or Resolution section of the Service Appointment and detail exactly what was done (e.g., "Calibrated scale to NIST standards, found 0.05g variance, adjusted and zeroed").
+    3. Attach Certificates: If your calibration process generates a digital certificate, or if you took photos of the equipment's readouts, use the paperclip icon (Attachments) at the left sidebar/bottom of the record to upload these files directly to the Appointment.
+    4. Log Additional Items (If Applicable): If an ad-hoc repair required parts that were not on the original Service Order, ensure you communicate this or add the consumed items to the record so the back office knows to bill for them.
+Step D: Completing the Appointment
+    1. Update Status: Once the physical work is done and all notes and attachments are entered, change the Status field of the Service Appointment from Scheduled to Completed.
+    2. Save: Tap the Save button in the top right corner.
+    3. Back-Office Notification: Saving the appointment as "Completed" immediately updates the visual Dispatch Board in the office and signals to the billing department that the job is officially ready for final invoicing.
+5. Final Billing
+Billing is the final step and is generated directly from the completed service records. By invoicing directly from the Service Order, the system maintains a clean audit trail from the initial call or agreement all the way to recognized revenue.
+Step A: Reviewing Completed Work
+Before generating any invoice, the billing administrator or dispatcher should review the technician's submitted work.
+    1. Navigate to Service Orders: Open the Service module and click on Service Order.
+    2. Filter for Completed: Filter the list to show Service Orders where the status is "Completed" or where all linked Service Appointments are marked as "Completed".
+    3. Review Technician Notes: Open a completed Service Order. Scroll down to review the technician's notes, attached calibration certificates, and any recorded issue resolutions.
+Step B: Invoicing an Ad-Hoc Service (Time & Materials)
+For ad-hoc repairs, you are typically billing for the actual time spent and the specific materials used.
+    1. Verify Consumed Items: In the completed Service Order, review the Items table. Ensure the technician accurately recorded the exact parts used and the correct number of labor hours. Adjust quantities if necessary based on their notes.
+    2. Create the Invoice: Click the Create button in the top right corner and select Sales Invoice.
+    3. Review the Draft Invoice:
+        ? The system will generate a draft Sales Invoice, pulling in the customer, address, and all items from the Service Order.
+        ? Verify that the pricing (rates) for the labor and parts populated correctly based on your standard price lists.
+    4. Finalize and Submit:
+        ? Click Save.
+        ? Click Submit to finalize the invoice and post it to your accounting ledger.
+Step C: Invoicing a Service Agreement (Flat-Rate Calibration)
+For scheduled calibration visits under a Service Agreement, the primary billing is a pre-negotiated flat rate.
+    1. Verify the Flat Rate: Open the completed Service Order. The Items table should already contain the standard flat-rate "Calibration Service" item that was generated from the Service Agreement.
+    2. Check for Out-of-Scope Work: Review the technician's notes. Did they replace a broken part while performing the calibration? If so, manually add that specific part to the Items table on the Service Order before invoicing.
+    3. Create the Invoice: Click the Create button and select Sales Invoice.
+    4. Review and Submit:
+        ? The draft invoice will display the flat-rate calibration fee (and any extra parts you added).
+        ? Verify the totals match the contract expectations.
+        ? Click Save and then Submit.
+Step D: Sending the Invoice to the Customer
+Once the Sales Invoice is submitted, you can dispatch it directly to the customer.
+    1. Print or Email: From the submitted Sales Invoice, click the Print icon to generate a PDF, or click Menu > Email to send it directly from ERPNext.
+    2. Include Attachments: If you are emailing the invoice, ensure you check the box to attach any relevant Calibration Certificates or Technician Reports that were saved to the original appointment so the customer has proof of the calibration service performed.

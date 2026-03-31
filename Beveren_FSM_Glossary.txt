@@ -1,0 +1,332 @@
+
+
+
+
+
+
+
+Beveren Software
+Comprehensive Glossary
+for ERPNext v16, Beveren FSM, Frappe CRM, Helpdesk & HRMS
+
+Companion to the Field Service Management User Manual — California & Arizona Edition
+
+
+
+
+
+
+
+Version 1.0 • March 2026
+info@beverensoftware.com | beverensoftware.com
+Table of Contents
+To populate, open in Microsoft Word and press Ctrl+A then F9.
+
+
+
+1. Frappe Framework Terminology
+The Frappe Framework is the low-code web application framework underlying ERPNext and all Frappe apps. Understanding these foundational terms is essential for working with any Frappe-based application.
+
+Term	Definition
+App	A self-contained application module installed on a Frappe Bench. Examples: ERPNext, Beveren FSM, Frappe CRM, Frappe HRMS, Frappe Helpdesk. Multiple apps can coexist on a single site.
+Bench	The command-line tool and directory structure used to manage Frappe sites and apps. Commands like bench get-app, bench install-app, and bench migrate are used for setup and maintenance.
+Child Table	A table field within a DocType that stores multiple rows of related data. Examples: Items in a Service Order, Service Technicians in an Appointment. Each row is its own document linked to the parent.
+Custom Field	A field added to an existing DocType without modifying the original source code. Beveren FSM adds custom_service_order and custom_current_product_location to several standard ERPNext DocTypes.
+Desk	The primary web-based user interface for ERPNext and Frappe apps. Accessed via browser at your site URL. In v16, the Desk features a completely redesigned workspace with new icons and sidebars.
+DocType	The fundamental data model in Frappe. Every record type (Customer, Sales Invoice, Service Order, etc.) is a DocType. DocTypes define fields, permissions, workflows, and business logic.
+Document	A single record (instance) of a DocType. For example, SVC-ORD-2026-00001 is a document of the Service Order DocType.
+Docstatus	The submission state of a document. 0 = Draft (editable), 1 = Submitted (locked, triggers accounting/stock entries), 2 = Cancelled (reversed).
+Fixtures	Pre-loaded data that is exported with an app and imported on installation. Beveren FSM includes fixtures for Service Types, Product Locations, roles, and custom fields.
+Frappe Cloud	Frappe’s official managed hosting service. Provides one-click deployment, automated backups, and scaling for Frappe/ERPNext instances.
+Hooks	The hooks.py file in a Frappe app that defines integration points: document events (on_submit, on_cancel), scheduled tasks, fixtures, and website routes.
+Naming Series	An auto-numbering pattern for documents. Example: SVC-ORD-.YYYY.- generates SVC-ORD-2026-00001, SVC-ORD-2026-00002, etc.
+Permission	Access control rules defined per DocType and Role. Determines who can read, create, write, submit, cancel, delete, and report on documents.
+Print Format	A template that defines how a document is rendered for printing or PDF export. ERPNext v16 includes improved default print formats.
+Role	A named group of permissions assigned to users. Examples: System Manager, Service Manager, Sales User, Accounts User. A user can have multiple roles.
+Scheduled Task	A background job that runs at defined intervals (daily, hourly, weekly). Beveren FSM uses a daily task to update Service Request statuses to Due Soon and Overdue.
+Site	A single ERPNext instance with its own database, users, and configuration. One Bench can host multiple sites.
+Submittable	A DocType where documents go through a Draft ? Submitted ? Cancelled lifecycle. Submitted documents create accounting entries and cannot be directly edited. Service Orders, Appointments, AMC Contracts, and Sales Invoices are submittable.
+Web Form	A public-facing form that allows external users (such as customers) to submit data without logging into the Desk. Used by Helpdesk’s customer portal for ticket submission.
+Workspace	A customizable landing page in the Desk that groups links, shortcuts, charts, and number cards for a specific module or function. ERPNext v16 features a redesigned Workspace with module cells.
+
+
+2. ERPNext v16 Core Terminology
+ERPNext is the open-source ERP application built on the Frappe Framework. These terms span its core modules: Accounting, Stock, Selling, Buying, and Projects.
+2.1 Accounting
+Term	Definition
+Account	A category in the Chart of Accounts for recording financial transactions. Examples: Debtors, Creditors, Sales, Cost of Goods Sold, VAT Payable.
+Accounting Period	A defined time range (e.g., fiscal year or quarter) during which transactions are recorded. Can be locked to prevent backdated entries.
+Accounts Receivable	Money owed to the company by customers for goods or services delivered but not yet paid for. Tracked via outstanding Sales Invoices.
+Accounts Payable	Money the company owes to suppliers for goods or services received but not yet paid for. Tracked via outstanding Purchase Invoices.
+Budget	A financial plan that sets spending limits by Cost Center, Project, or Department. ERPNext v16 adds more granular budget controls with real-time consumption tracking and alerts.
+Chart of Accounts	The hierarchical structure of all accounts used by a company. Organized into Asset, Liability, Equity, Income, and Expense categories.
+Company	A legal entity for which ERPNext maintains a separate set of books. Multiple companies can share Customers, Suppliers, and Items.
+Consolidated Trial Balance	An ERPNext v16 feature that combines trial balances from multiple companies into a single report, with automated currency conversion for multi-company groups.
+Cost Center	An organizational unit used to track costs and revenue. Often represents a department, division, or location. Used on Service Orders for job costing.
+Credit Note	A Sales Invoice with the “Is Return” flag checked, used to reverse or adjust a previously submitted invoice. Never delete submitted invoices; always use Credit Notes.
+Currency	The denomination for financial transactions. ERPNext supports multi-currency transactions with automatic conversion rates.
+Debit Note	A Purchase Invoice with the “Is Return” flag checked, used to reverse a supplier bill.
+Fiscal Year	The 12-month accounting period for financial reporting. Does not have to align with the calendar year.
+General Ledger (GL)	The master record of all financial transactions. Every submitted invoice, payment, and journal entry creates GL Entries.
+GL Entry	An individual line in the General Ledger recording a debit or credit to a specific account.
+Journal Entry	A manual accounting entry used for adjustments, corrections, inter-account transfers, and non-standard transactions.
+Landed Cost	The total cost of an item including purchase price, shipping, customs, insurance, and other charges. ERPNext v16 extends landed cost support to Stock Entries and Subcontracting Receipts.
+Payment Entry	A document recording a payment received from a customer or made to a supplier. Links to one or more outstanding invoices.
+Payment Ledger	A record of all payment transactions showing amounts received and applied against invoices.
+Payment Terms	Predefined schedules for when payments are due (e.g., Net 30, 50% Advance + 50% on Delivery).
+Price List	A named collection of item prices. Different price lists can be used for different customer groups, regions, or currencies.
+Pricing Rule	An automated discount, markup, or price override applied when specific conditions are met (customer, quantity, date range, etc.).
+Purchase Expense Booking	An ERPNext v16 feature that allows direct allocation of additional costs (freight, duties) to purchase invoices/receipts for accurate inventory valuation.
+Sales Invoice	A bill sent to a customer for delivered goods or services. Submission creates GL Entries and updates Accounts Receivable.
+Purchase Invoice	A bill received from a supplier for delivered goods or services. Submission creates GL Entries and updates Accounts Payable.
+Sales Taxes and Charges Template	A reusable template defining tax rates and calculation methods. Applied to Sales Invoices, Quotations, and Service Orders. Create separate templates for each CA/AZ jurisdiction.
+Tax Category	A classification used to automatically apply the correct tax template based on customer or transaction attributes.
+Trial Balance	A report showing the debit and credit balances of all accounts at a point in time, used to verify that total debits equal total credits.
+
+2.2 Stock / Inventory
+Term	Definition
+Batch	A grouping number assigned to a set of items manufactured or purchased together. Used for traceability in industries like pharma and food.
+Bin	An internal record tracking the current quantity and valuation of an item in a specific warehouse.
+Delivery Note	A document confirming shipment of items to a customer. Reduces stock in the source warehouse. In FSM, created from Service Orders to deliver parts or repaired equipment.
+Item	A product, part, or service tracked in ERPNext. Each item has an Item Code, Item Group, unit of measure, and pricing information.
+Item Group	A classification category for items (e.g., “Spare Parts,” “Equipment,” “Service”). In FSM, items in the “Service” or “Services” group are auto-flagged as labor items.
+Item Tax Template	A per-item tax override. Used to set a 0% tax rate on labor items for CA/AZ compliance, overriding the document-level tax template.
+Material Request	A request for materials to be purchased or transferred from another warehouse. Can be auto-generated based on reorder levels.
+Purchase Order	A formal order sent to a supplier for goods or services. In FSM, created from Service Orders for parts procurement or vendor repairs.
+Purchase Receipt	A document confirming receipt of goods from a supplier. Increases stock in the receiving warehouse.
+Reorder Level	The minimum stock quantity that triggers an automatic Material Request when reached.
+Serial Number	A unique identifier assigned to an individual unit of an item. Used for high-value equipment tracking. Referenced on Service Requests, Orders, and AMC Contracts.
+Stock Entry	A document recording material movement within or between warehouses. Types include Material Receipt, Material Transfer, Material Issue, and Manufacture. In FSM, created from Service Orders for parts movement.
+Stock Ledger Entry (SLE)	An individual record of a stock transaction showing item, warehouse, quantity change, and valuation.
+Stock Reservation	An ERPNext v16 feature that reserves specific stock quantities for production or subcontracting, preventing accidental use by other transactions.
+Unit of Measure (UOM)	The measurement unit for an item quantity (e.g., Nos, Kg, Litre, Hour). Each item has a Stock UOM and can have conversion-based alternative UOMs.
+Warehouse	A physical or logical location where stock is stored. In FSM, technician vans can be set up as mobile warehouses.
+
+2.3 Selling & Buying
+Term	Definition
+Address	A physical location record linked to a Customer or Supplier. Multiple addresses can exist per party (e.g., Billing, Shipping, Service Site).
+Blanket Order	A long-term agreement with a customer or supplier for a set quantity or value of items to be delivered or purchased over time.
+Contact	A person associated with a Customer or Supplier. Includes name, email, phone, and designation. Used for service address and contact auto-population in FSM.
+Customer	An individual or organization that purchases goods or services. The central party record referenced by all FSM transactions. Created from Frappe CRM Deals or directly in ERPNext.
+Customer Group	A classification of customers by market segment, geography, or tier (e.g., “Commercial,” “Residential,” “Enterprise”).
+Lead	A person or organization that could be a future source of business. Managed in Frappe CRM and can be converted to a Deal.
+Opportunity	A potential sale linked to a Lead or Customer. In Frappe CRM, this concept is replaced by the Deal.
+Project	A container for grouping related tasks, timesheets, and financial transactions. Used on Service Orders and Quotations for job costing and profitability analysis.
+Quotation	An ERPNext standard sales quote. Beveren FSM uses its own Service Quotation DocType which extends the ERPNext selling controller.
+Supplier	A vendor or service provider from whom the company purchases goods or services. Used for repair vendors in FSM.
+Territory	A geographic classification for customers, used for sales reporting and territory-based permissions.
+
+
+3. Beveren FSM Terminology
+Terms specific to Beveren Software’s Field Service Management app.
+3.1 Transaction Documents
+Term	Definition
+Service Request	The entry-point document capturing a customer’s service need. Contains subject, description, priority, due date, service address, warranty/AMC status, service category, and appointment preferences. Series: SR-YYYY-#####. Submittable.
+Service Quotation	A formal cost estimate sent to a customer before work begins. Extends ERPNext’s selling controller for full pricing, tax, discount, and margin support. Can be created from a Service Request or independently. Series: SQ-YYYY-#####. Submittable.
+Service Order	The central authorization document for field service work. Contains items (parts and services), taxes, warranty/AMC details, appointment preferences, and product tracking. Drives all downstream document creation. Series: SVC-ORD-YYYY-#####. Submittable.
+Service Appointment	A scheduled field visit linked to a Service Order. Assigns technicians, sets time windows, tracks actual start/finish times, and manages the dispatch lifecycle. Series: SVC-APP-YYYY-#####. Submittable.
+AMC Contract	An Annual Maintenance Contract defining ongoing service coverage for a customer’s equipment. Tracks contract period, budgets for service and spare parts, and running utilization amounts. Series: AMC-YY-####. Submittable.
+Repair Order	A document tracking an item sent to a third-party vendor for repair or replacement. Tracks repair status (Pending/Repaired/Replaced/Rejected) and dispatch status. Series: REP-ORD-YYYY-#####. Submittable.
+Repair Shipment	A document grouping multiple repair items into a single physical shipment to a vendor. Contains a child table of Repair Shipment Items. Series: REP-SHIP-YYYY-#####. Submittable.
+
+3.2 Master Data
+Term	Definition
+Service Type	A classification of the nature of service work (e.g., Inspection, Installation, Maintenance, Emergency, Warranty Claim, Service). Referenced on Requests, Quotations, and Orders.
+Service Area	A geographic zone where service is delivered. Includes a geolocation field for map-based scheduling. Examples: “Phoenix Metro,” “LA Basin.”
+Service Specialization	A category of technician expertise (e.g., HVAC, Electrical, Plumbing, Solar). Linked to Service Technician records.
+Service Technician	A profile representing a field service worker. Links to an HRMS Employee record and includes Service Area and Specialization. Auto-ID: ST-0000001.
+Service Technician Skill	A named competency with a proficiency rating (1–5 stars). Can be assigned to technicians for skills-based routing.
+Service Technician Item	A child table row assigning a Service Technician to a Service Appointment. Multiple technicians can be assigned to form a service crew.
+Product Location	A master record defining a stage in the product’s journey through the service lifecycle. Pre-loaded types: Customer Site, In Transit to Workshop, Sent to Vendor, Receive from Vendor, Deliver to Customer, Receive From Customer, Closed.
+Field Service Management Settings	A single-record settings page for global FSM configuration. Currently contains Default Due Date After (days between posting and due date, default 10).
+
+3.3 Operational Concepts
+Term	Definition
+Product Movement	A child table entry on a Service Order recording a step in the product’s physical journey. Each entry logs: Movement Type, Movement Date, Handled By, Linked Document Type, and Linked Document.
+Product Tracking	The tab on Service Orders displaying the complete audit trail of all product movements, providing end-to-end visibility of where equipment is at any point.
+Scheduling Board	The dedicated React/TypeScript dispatch console accessible at /schedule on the ERPNext site. Provides Grid, Gantt, Calendar, Technicians, Maps, and Settings views.
+Dispatch	The act of sending a technician to a customer site. Changes the Service Appointment status from Scheduled to Dispatched, and the Service Order status accordingly.
+Overlap Detection	An automated check that prevents scheduling a technician for two appointments with overlapping time windows. Produces a detailed error message identifying the conflicting appointment, time range, and technician name(s).
+% Amount Billed	A calculated field on Service Orders and Appointments showing the percentage of the total document value that has been invoiced. Used by billing staff and AR to track billing completeness.
+Invoice Status (Item)	A per-item field tracking billing progress: Not Invoiced, Partly Invoiced, or Invoiced. Updated automatically when Sales Invoices are submitted or cancelled.
+Invoiced Quantity	The number of units of a line item that have been included on submitted Sales Invoices. Compared against the item’s total quantity to determine the Invoice Status.
+Is Billable	A checkbox on Service Order/Quotation items indicating whether the item should be included when generating Sales Invoices.
+Is Service	A checkbox auto-set on line items whose Item Group is “Service” or “Services.” Used for the Service & SpareParts Breakdown calculations and CA/AZ tax compliance.
+Is Over Budget	A flag on Service Orders indicating that the service or spare parts costs exceed the linked AMC Contract’s remaining budget. Triggers a confirmation dialog before submission.
+Service Category	A classification on Service Requests indicating where the work will be performed: Onsite (at customer site), Workshop (at company facility), or Vendor (at a third-party repair vendor).
+Warranty/AMC Status	A field tracking the equipment’s coverage status: Under Warranty, Out of Warranty, Under AMC, or Out of AMC. Affects billing and contract linkage.
+Appointment Preferences	Fields on Service Requests, Quotations, and Orders capturing the customer’s preferred service dates, time of day (Anytime/Morning/Afternoon/Evening), and free-text preference notes.
+Service & SpareParts Breakdown	An auto-calculated section on Service Orders showing separate totals for service items versus spare parts items, with comparison against AMC Contract budgets.
+
+
+4. Frappe CRM Terminology
+Frappe CRM is the standalone customer relationship management app in the Frappe ecosystem. It manages the pre-sale pipeline and integrates with ERPNext for customer and quotation creation.
+
+Term	Definition
+Lead	A prospect who has shown interest but has not yet been qualified for a sales opportunity. Created from web forms, email, WhatsApp, phone calls, or manual entry. Can be converted to a Deal.
+Deal	A qualified sales opportunity being actively pursued. Moves through customizable pipeline stages (e.g., Qualification, Proposal, Negotiation, Won, Lost). Replaces ERPNext’s legacy Opportunity concept in CRM.
+Deal Stage	A step in the sales pipeline representing the current status of a deal. Stages are fully customizable. Common stages: Qualification, Demo, Proposal Sent, Negotiation, Verbal Commitment, Won, Lost.
+Pipeline	The visual representation of deals organized by stage, typically displayed as a Kanban board. Shows the flow from initial qualification through to close.
+Kanban View	A drag-and-drop board view where deals are represented as cards in stage columns. Allows quick visual assessment of pipeline health and easy stage progression.
+Organization	A company or entity record in Frappe CRM. Multiple contacts and deals can be associated with a single organization.
+Contact (CRM)	A person record in Frappe CRM associated with a Lead or Organization. Stores name, email, phone, designation, and communication history.
+Activity	A logged interaction with a lead, contact, or deal. Activities include calls, emails, meetings, and notes. In FSM context, CRM activities provide customer history for dispatchers and AR staff.
+Communication	An email, call log, WhatsApp message, or other interaction tracked on a Lead or Deal. Provides the full customer interaction timeline.
+ERPNext Integration	Frappe CRM’s built-in connection to ERPNext that allows creating Customers and Quotations directly from won Deals, bridging the CRM pipeline to the ERP transaction flow.
+Create Customer	The action in Frappe CRM that creates an ERPNext Customer record from a won Deal, making the customer available across all ERPNext and FSM transactions.
+Deal Owner	The CRM user (sales rep) responsible for managing a specific deal. In AR collections, coordinating with the Deal Owner can help with relationship-sensitive follow-ups.
+Lost Reason	A text field recorded when a Deal is marked as Lost. Useful for analyzing win/loss patterns and improving sales strategy.
+Web Form (CRM)	A public form that prospects can fill out to become Leads in Frappe CRM, typically embedded on the company website.
+WhatsApp Integration	Frappe CRM’s ability to send and receive WhatsApp messages from the Lead or Deal page, keeping all customer communication linked.
+Twilio / Exotel Integration	Telephony integrations that allow making and receiving calls directly from Frappe CRM, with automatic call logging.
+
+
+5. Frappe Helpdesk Terminology
+Frappe Helpdesk is the open-source customer support ticketing system. It provides agent and customer portals, SLA management, ticket routing, and a knowledge base.
+
+Term	Definition
+HD Ticket	A support request record in Frappe Helpdesk (Doctype: HD Ticket). Created via email, portal, web form, or manually by an agent. Contains subject, description, priority, status, SLA timers, and the full communication thread.
+Agent	A support team member who manages and resolves Helpdesk tickets. Agents work in the Agent Portal and can be organized into Teams.
+Agent Portal	The primary interface for support staff, accessed at /helpdesk. Shows the ticket queue, assignments, SLA status, and team workload.
+Customer Portal	The public-facing interface where customers can submit new tickets, track existing ticket status, and browse the Knowledge Base. Accessed via a configurable URL.
+Ticket Status	The current state of a Helpdesk ticket. Common statuses: Open, Replied, Resolved, Closed. Custom statuses can be configured.
+Ticket Priority	The urgency level of a ticket (e.g., Low, Medium, High, Urgent). Affects SLA response and resolution targets.
+Ticket Type	A classification of the issue category (e.g., Hardware, Software, Installation, Maintenance). Used for routing and reporting.
+Team	A group of Helpdesk agents organized by function or expertise (e.g., “Field Service Support,” “Technical Support,” “Billing Support”). Tickets can be assigned to teams for workload distribution.
+SLA (Service Level Agreement)	A policy defining target response and resolution times based on ticket priority. The Helpdesk tracks compliance with SLA targets and shows countdown timers on tickets.
+First Response Time	The SLA metric measuring the time between ticket creation and the first agent reply. Tracked automatically by the Helpdesk.
+Resolution Time	The SLA metric measuring the total time from ticket creation to resolution. Helpdesk tracks this against the SLA target.
+Assignment Rule	An automation that routes incoming tickets to the appropriate agent or team based on configurable conditions (priority, type, workload). Supports round-robin and workload-based distribution.
+Saved Reply	A pre-written response template for common queries. Agents can insert saved replies to ensure consistent, fast communication.
+Knowledge Base	A library of help articles organized into categories. Published on the Customer Portal to enable self-service. Reduces ticket volume by helping customers find answers independently.
+Internal Comment	A note on a ticket visible only to agents, not to the customer. Used for team collaboration, investigation notes, and handoff context.
+Escalation	The process of transferring a ticket to a higher-priority queue, a different team, or a specific specialist. In the FSM context, escalation means creating a Service Request for field service work.
+Canned Response	See Saved Reply. A pre-written template for quick, consistent agent responses.
+Email Account	A configured email address (e.g., support@company.com) that Helpdesk monitors for incoming tickets and uses for outgoing replies.
+
+
+6. Frappe HRMS v16 Terminology
+Frappe HRMS is the open-source human resources and payroll application. HRMS v16 introduces overtime management, salary arrears, multi-currency expense claims, and earned leave scheduling.
+6.1 Employee Management
+Term	Definition
+Employee	The central HR record for a staff member. Contains personal information, employment details, department, designation, and reporting hierarchy. In FSM, the Employee record links to the Service Technician profile.
+Employee Checkin	A timestamped record of an employee clocking in or out. Can be captured via biometric devices, mobile app, or manual entry. Feeds into attendance and overtime calculations.
+Employee Self Service	A portal/interface where employees can view and update personal information, apply for leave, submit expense claims, view salary slips, and track their attendance — without accessing the full HR backend.
+Department	An organizational unit grouping employees (e.g., “Field Service,” “Operations,” “Sales”). Used for reporting, budgeting, and permission control.
+Designation	An employee’s job title or position (e.g., “Field Service Technician,” “Service Manager,” “Dispatcher”).
+Employee Grade	A classification level for compensation and benefits structuring (e.g., Grade A, B, C or Level 1, 2, 3).
+
+6.2 Attendance & Shifts
+Term	Definition
+Attendance	A daily record of an employee’s work status: Present, Absent, On Leave, Half Day, or Work From Home. Auto-generated from Employee Checkin data or marked manually.
+Shift Type	A defined work schedule with start time, end time, and optional overtime settings. Examples: “Field Service – Day Shift” (7 AM–4 PM), “Field Service – On Call.” In HRMS v16, Shift Types can enable overtime with linked Overtime Types.
+Shift Assignment	A record assigning an employee to a specific Shift Type for a date range. Determines the employee’s expected work hours and affects attendance marking.
+Roster	A visual planning tool for managing shift assignments across multiple employees and dates.
+Holiday List	A calendar of non-working days (public holidays, company holidays). Assigned to employees for accurate attendance and leave calculations. In HRMS v16, supports half-day holidays.
+Auto Attendance	A feature that automatically generates Attendance records from Employee Checkin data based on the employee’s assigned shift.
+Late Entry	A flag on an Attendance record indicating the employee arrived after the shift start time.
+
+6.3 Leave Management
+Term	Definition
+Leave Type	A category of leave (e.g., Casual Leave, Sick Leave, Paid Leave, Unpaid Leave, Compensatory Off). Each type has its own allocation policy, carry-forward rules, and encashment settings.
+Leave Allocation	The number of leave days granted to an employee for a specific Leave Type during a leave period. Can be set manually or auto-allocated via Leave Policy.
+Leave Application	A request submitted by an employee to take time off. Goes through an approval workflow. Approved applications reduce the leave balance and mark the employee as “On Leave” for scheduling purposes.
+Leave Policy	A template defining the standard leave allocations for a group of employees (e.g., 12 days Casual + 10 days Sick per year).
+Leave Adjustment	An HRMS v16 feature allowing HR to increase or decrease an employee’s leave balance directly, with a clear audit trail.
+Compensatory Leave	Extra leave granted for working on a holiday or off-day. Created via Compensatory Leave Request.
+Earned Leave	Leave that accrues over time based on service tenure. HRMS v16 introduces automated Earned Leave Scheduling for automatic credit based on policy rules.
+Leave Balance	The remaining number of leave days available to an employee for a specific Leave Type.
+
+6.4 Payroll & Compensation
+Term	Definition
+Salary Structure	A template defining the earning and deduction components that make up an employee’s compensation package (e.g., Basic Pay, HRA, Travel Allowance, Tax Deduction).
+Salary Structure Assignment	A record linking a specific Salary Structure to an employee with a defined effective date and base amount.
+Salary Slip	The monthly payroll record for an employee showing all earnings, deductions, taxes, and net pay. Generated via Payroll Entry.
+Payroll Entry	A bulk processing document that generates Salary Slips for a group of employees for a specific pay period. Can filter by company, department, branch, or designation.
+Salary Component	An individual element of compensation (e.g., Basic Salary, Overtime Pay, Health Insurance Deduction, Travel Reimbursement). Can be an Earning or a Deduction.
+Additional Salary	A one-time or recurring extra payment or deduction applied to an employee’s salary for a specific month. Overtime Slips generate Additional Salary entries automatically in HRMS v16.
+Salary Arrears	An HRMS v16 feature that automatically calculates back-pay when a Salary Structure Assignment is approved retroactively, generating Additional Salary entries for prior months.
+Income Tax Slab	A tax bracket configuration defining progressive tax rates applied to employee income.
+Payroll Period	The time range for which payroll is being processed (typically monthly).
+
+6.5 Overtime & Expenses (HRMS v16)
+Term	Definition
+Overtime Type	An HRMS v16 DocType defining the rules for overtime pay: multiplier rate (e.g., 1.5x, 2x, 3x), applicable conditions (night work, holidays), and linked Salary Component. Multiple types can exist (e.g., “CA Daily Overtime 1.5x,” “CA Daily Overtime 2x (12+ hrs),” “AZ Weekly Overtime 1.5x”).
+Overtime Slip	An HRMS v16 document generated automatically from Employee Checkin data when work hours exceed the shift’s standard duration. Contains the overtime hours, applicable Overtime Type, and calculated amount. Requires manager approval before flowing to payroll.
+Expense Claim	A document submitted by an employee requesting reimbursement for business expenses (travel, fuel, parking, meals, tools). Includes amount, date, expense type, and receipt attachments. HRMS v16 supports multi-currency claims.
+Expense Type	A category of business expense (e.g., Travel, Fuel, Meals, Parking, Tools & Supplies). Used for classification and reporting on Expense Claims.
+Employee Advance	A pre-paid amount issued to an employee for anticipated expenses (e.g., travel advance). Reconciled against subsequent Expense Claims.
+Employee Benefit	An HRMS v16 feature allowing employees to choose from employer-offered benefits (health insurance, pension plans). Benefits accrue per payroll cycle and are tracked in the Employee Benefit Ledger.
+
+
+7. California & Arizona Tax Terminology
+Terms related to sales tax and business tax compliance for field service operations in California and Arizona.
+
+Term	Definition
+Transaction Privilege Tax (TPT)	Arizona’s tax on businesses for the privilege of doing business in the state. Although commonly called “sales tax,” it is technically levied on the seller, not the buyer. The seller may pass the cost to the customer. State rate: 5.6% (2026), with additional county and city rates.
+TPT License	A license required from the Arizona Department of Revenue (ADOR) for any business engaged in taxable activities. Must be renewed annually.
+Combined Tax Rate	The total tax rate applied in a specific jurisdiction, consisting of state + county + city rates. Varies by location. Example: Apache Junction = 5.6% state + 0.7% Pinal County + 2.8% city = 9.1%.
+Separately Stated Labor	Labor charges that are listed as a distinct line item on an invoice, separate from parts and materials. Both Arizona and California provide tax exemptions for service labor that is separately stated. Bundling labor and parts into a single charge makes the entire amount taxable.
+Construction Contracting (AZ)	Work performed on real property (HVAC installation into buildings, plumbing, electrical wiring). In Arizona, the entire job (parts + labor) is subject to TPT, but a 35% standard deduction is allowed on gross income.
+35% Standard Deduction	An Arizona TPT deduction available to construction contractors. Applied to the gross income from construction contracting before calculating the tax owed.
+California Sales Tax	A state and local tax on the sale of tangible personal property. Base state rate: 7.25% (2026). District taxes can bring the combined rate above 10%.
+Use Tax	A tax on goods purchased out of state for use in California or Arizona, where the seller did not collect sales/privilege tax. Ensures equal treatment between in-state and out-of-state purchases.
+CDTFA	California Department of Tax and Fee Administration. The state agency that administers California’s sales and use tax program. Rate lookup available at cdtfa.ca.gov.
+ADOR	Arizona Department of Revenue. The state agency that administers Arizona’s Transaction Privilege Tax. Rate lookup and filing at azdor.gov / aztaxes.gov.
+Fabrication Labor (CA)	Labor involved in manufacturing, fabricating, or assembling a product for sale. Unlike repair or installation labor, fabrication labor is taxable in California as part of the product’s sale price.
+Nexus	A sufficient connection between a business and a state that creates a tax obligation. Can be established through physical presence (office, warehouse, employee, vehicle) or economic presence (exceeding a sales threshold, e.g., $100,000 in Arizona).
+Exemption Certificate	A document (e.g., Arizona Form 5000 or 5000A) provided by a purchaser to a seller certifying that a purchase is exempt from tax (e.g., for resale).
+Item Tax Template	An ERPNext configuration that overrides the document-level tax rate for specific items. Used to apply 0% tax to labor/service items while maintaining the standard rate on parts.
+
+
+8. Field Service Industry Terminology
+General industry terms commonly used in field service management regardless of software platform.
+
+Term	Definition
+First-Time Fix Rate	The percentage of service calls resolved on the first visit without requiring a return trip. A key performance metric for field service operations.
+Mean Time to Response	The average time between a customer’s service request and the first response or technician dispatch.
+Mean Time to Resolution	The average time between a service request and the completion of the repair or service.
+Preventive Maintenance	Scheduled maintenance performed at regular intervals to prevent equipment failure, as opposed to reactive maintenance performed after a breakdown.
+Corrective Maintenance	Maintenance performed to restore equipment to working condition after a failure or defect is identified.
+Work Order	A general industry term for a document authorizing maintenance, repair, or service work. In Beveren FSM, this corresponds to the Service Order.
+Dispatch	The process of assigning and sending a field technician to a customer site. Involves matching the right technician (skills, location, availability) to the right job.
+Service Level Agreement (SLA)	A contractual commitment defining expected response times, resolution times, and performance standards for service delivery. Tracked in both Frappe Helpdesk (for support tickets) and FSM (via due dates and AMC contracts).
+Installed Base	The complete inventory of equipment or assets that a company has sold and is responsible for servicing. Tracked via Serial Numbers and AMC Contracts in the FSM system.
+Depot Repair	A repair performed at the company’s own facility (workshop/depot) rather than at the customer site. Corresponds to the “Workshop” Service Category in FSM.
+Vendor Repair	A repair performed by a third-party vendor or OEM. Managed through Repair Orders and Repair Shipments in FSM. Corresponds to the “Vendor” Service Category.
+Field Service Technician	A skilled worker who travels to customer sites to perform installation, maintenance, repair, or inspection services. Represented by the Service Technician DocType in FSM, linked to an HRMS Employee record.
+Billable vs. Non-Billable	Classification of work that can (“billable”) or cannot (“non-billable”) be charged to the customer. Controlled by the “Is Billable” checkbox on Service Order line items.
+Service Contract	An agreement between a service provider and customer defining the terms, scope, and pricing of ongoing service. Represented by AMC Contract in FSM.
+Escalation	Transferring a service issue to a higher authority, specialized team, or different workflow when it cannot be resolved at the current level. In the integrated stack, this means moving from Helpdesk to FSM.
+Debrief	The process of documenting what was done during a service visit, including parts used, time spent, and findings. Captured in Service Appointment details and product movement records.
+Truck Stock / Van Stock	Inventory carried by a technician in their service vehicle. Managed as a mobile Warehouse in ERPNext, linked to stock transfers from the Service Order.
+Recall	The process of identifying and re-servicing equipment due to a discovered defect or safety issue. Tracked via Serial Numbers across Service Requests and Orders.
+
+
+9. Document Series Quick Reference
+A quick reference for all document naming series used across the integrated system.
+
+Document	Series Format	App
+Service Request	SR-YYYY-#####	Beveren FSM
+Service Quotation	SQ-YYYY-#####	Beveren FSM
+Service Order	SVC-ORD-YYYY-#####	Beveren FSM
+Service Appointment	SVC-APP-YYYY-#####	Beveren FSM
+AMC Contract	AMC-YY-####	Beveren FSM
+Repair Order	REP-ORD-YYYY-#####	Beveren FSM
+Repair Shipment	REP-SHIP-YYYY-#####	Beveren FSM
+Service Technician	ST-#######	Beveren FSM
+Service Technician Skill	SKILL-####	Beveren FSM
+Sales Invoice	SINV-YYYY-#####	ERPNext
+Purchase Invoice	PINV-YYYY-#####	ERPNext
+Purchase Order	PO-YYYY-#####	ERPNext
+Purchase Receipt	PREC-YYYY-#####	ERPNext
+Stock Entry	STE-YYYY-#####	ERPNext
+Delivery Note	DN-YYYY-#####	ERPNext
+Payment Entry	PE-YYYY-#####	ERPNext
+Journal Entry	JV-YYYY-#####	ERPNext
+Employee	HR-EMP-#####	Frappe HRMS
+Salary Slip	Sal-Slip-YYYY-#####	Frappe HRMS
+Expense Claim	HR-EXP-YYYY-#####	Frappe HRMS
+Leave Application	HR-LAP-YYYY-#####	Frappe HRMS
+
+Note: Naming series may vary based on your ERPNext configuration. The formats shown above are the defaults.

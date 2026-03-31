@@ -1,0 +1,535 @@
+
+
+
+
+
+
+Beveren Software
+Field Service Management (FSM)
+for ERPNext v16
+
+User Manual
+California & Arizona Edition
+Integrated with Frappe CRM • Frappe Helpdesk • Frappe HRMS
+Setup, Configuration & Daily Operations Guide
+
+
+Includes Quick-Start Guides for:
+Dispatchers • Billing Staff • Field Technicians
+Product & Equipment Sales • Accounts Receivable
+
+
+Version 3.0 • March 2026
+info@beverensoftware.com | beverensoftware.com
+Table of Contents
+
+Table of Contents	2
+1. Introduction	4
+1.1 Your Integrated App Stack	4
+1.2 The Integrated Workflow at a Glance	4
+1.3 Key Features	5
+1.4 System Requirements	5
+2. Installation and Setup	5
+2.1 Installing the Apps	5
+2.2 Post-Installation Fixtures	6
+2.3 Global Settings	6
+2.4 Cross-App Configuration Checklist	6
+3. California & Arizona Tax Configuration	6
+3.1 Arizona — Transaction Privilege Tax (TPT)	6
+Tax Template Setup for Arizona	7
+3.2 California — Sales and Use Tax	7
+Tax Template Setup for California	7
+3.3 Multi-State Best Practices	7
+4. Master Data Setup	7
+4.1 Service Types	7
+4.2 Service Areas	8
+4.3 Service Specializations	8
+4.4 Service Technicians	8
+4.5 Service Technician Skills	8
+4.6 Product Locations	8
+5. Cross-App Workflow Integration	8
+5.1 Frappe CRM ? FSM Workflow	8
+The Flow	8
+5.2 Frappe Helpdesk ? FSM Workflow	9
+The Flow	9
+5.3 Frappe HRMS ? FSM Workflow	10
+Key Integration Points	10
+Recommended HRMS Configuration for Field Service	10
+6. The Service Lifecycle	11
+6.1 Service Request	11
+Status Workflow	11
+Actions	11
+6.2 Service Quotation	12
+Status Workflow	12
+6.3 Service Order	12
+Status Workflow	12
+Creatable Documents	12
+6.4 Service Appointment	12
+Status Workflow	12
+Actions	13
+7. AMC Contracts	13
+8. Repair Management	13
+8.1 Repair Orders	13
+8.2 Repair Shipments	13
+9. The Scheduling Board	13
+10. Invoicing	14
+11. ERPNext v16 Integration Points	14
+12. Dashboard and Reports	14
+13. Quick-Start Guide: Dispatchers	15
+13.1 Daily Workflow	15
+13.2 Checking Technician Availability (HRMS)	15
+13.3 Helpdesk Escalation Workflow	15
+14. Quick-Start Guide: Billing Staff	17
+14.1 Daily Workflow	17
+14.2 Tax Compliance Checklist (CA & AZ)	17
+14.3 Partial Invoicing	17
+15. Quick-Start Guide: Field Technicians	18
+15.1 Your Daily Routine with HRMS + FSM	18
+15.2 Product Movement — What to Select	18
+15.3 Leave and Time Off	18
+15.4 Expense Claims	19
+15.5 Tips	19
+16. Quick-Start Guide: Product & Equipment Sales	20
+16.1 Your Integrated Workflow: CRM + FSM	20
+16.2 Creating Service Quotations	20
+16.3 AMC Contracts	20
+16.4 Item & Pricing Setup	21
+16.5 CRM-Specific Tips	21
+17. Quick-Start Guide: Accounts Receivable	22
+17.1 Daily Workflow	22
+17.2 Invoice Linkages	22
+17.3 Billing Completeness	22
+17.4 CRM Context for Collections	22
+17.5 Month-End Checklist	23
+17.6 Handling Disputes	23
+18. Support and Contact	24
+
+
+1. Introduction
+Beveren Software’s Field Service Management (FSM) is a 100% open-source app built on the Frappe/ERPNext v16 platform. It provides end-to-end field service operations management including service requests, quotations, work orders, technician scheduling and dispatch, product tracking, repair management, AMC contracts, and integrated invoicing.
+This manual documents the FSM app as deployed on an ERPNext v16 instance that also runs Frappe CRM, Frappe Helpdesk, and Frappe HRMS. It covers how all four apps work together to create a unified workflow from initial customer contact through service delivery, billing, and payment collection.
+This edition is localized for organizations operating in California and Arizona.
+1.1 Your Integrated App Stack
+Your ERPNext v16 instance runs four Frappe apps that work together:
+App	Role in the Workflow
+Frappe CRM	Lead and Deal pipeline management. Converts won deals into ERPNext Customers who then enter the FSM workflow. Sales personnel manage prospects and close deals here.
+Frappe Helpdesk	Customer-facing support portal and ticket management. Customers raise support tickets via the portal, email, or forms. Helpdesk agents triage tickets and escalate field-service-required issues into FSM Service Requests.
+Beveren FSM	Core field service lifecycle: Service Requests, Quotations, Service Orders, Appointments, product tracking, repair management, AMC contracts, and invoicing.
+Frappe HRMS	Employee management, attendance, shift scheduling, leave management, overtime tracking, expense claims, and payroll. Technician Employee records link directly to FSM Service Technician profiles.
+
+1.2 The Integrated Workflow at a Glance
+The complete end-to-end flow across all four apps:
+Frappe CRM: Lead ? Deal ? Won ? Create Customer in ERPNext
+Frappe Helpdesk: Customer Portal/Email ? HD Ticket ? Agent triages ? Escalate to FSM Service Request
+Beveren FSM: Service Request ? Service Quotation ? Service Order ? Service Appointment ? Sales Invoice
+Frappe HRMS: Employee ? Shift Assignment ? Attendance (check-in/out) ? Overtime Slip ? Expense Claim ? Payroll
+
+1.3 Key Features
+    • End-to-end lifecycle: CRM Deal ? Helpdesk Ticket ? Service Request ? Quotation ? Order ? Appointment ? Invoice
+    • Interactive scheduling board with Gantt, Calendar, Grid, and Map views
+    • Product tracking with full movement audit trail
+    • AMC Contract management with budget tracking and over-budget warnings
+    • Repair Order and Repair Shipment management
+    • Direct creation of Stock Entries, Delivery Notes, Purchase Orders/Receipts/Invoices from Service Orders
+    • Technician overlap detection to prevent double-booking
+    • HRMS-driven technician availability: leave, shift, and attendance awareness
+    • Helpdesk customer portal for self-service ticket submission and tracking
+    • CRM deal pipeline feeding the service quotation workflow
+    • Automatic daily status updates for overdue and due-soon service requests
+
+1.4 System Requirements
+    • ERPNext v16 (Frappe Framework v16) — released January 12, 2026
+    • Frappe CRM (latest stable)
+    • Frappe Helpdesk (latest stable)
+    • Frappe HRMS v16
+    • Python 3.10+, Node.js
+
+2. Installation and Setup
+2.1 Installing the Apps
+Your bench should have all four apps installed. If adding the FSM app to an existing instance:
+    1. Get the FSM app:
+bench get-app https://github.com/Beveren-Software-Inc/Field_Service_Management.git
+    2. Install on your site:
+bench --site your-site.com install-app beveren_fsm
+    3. Migrate and clear cache:
+bench --site your-site.com migrate && bench --site your-site.com clear-cache
+Verify all apps are installed:
+bench --site your-site.com list-apps
+You should see: frappe, erpnext, hrms, crm, helpdesk, beveren_fsm (order may vary).
+
+2.2 Post-Installation Fixtures
+    • Service Types: Inspection, Installation, Maintenance, Emergency, Warranty Claim, Service.
+    • Product Locations: Customer Site, In Transit to Workshop, Sent to Vendor, Receive from Vendor, Deliver to Customer, Receive From Customer, Closed.
+    • Roles: “Service Manager” role created. Assign to dispatchers, billing staff, and sales personnel.
+2.3 Global Settings
+Search “FSM Settings” in the navigation bar.
+    • Default Due Date After: Days between Posting Date and Due Date on Service Orders (default: 10).
+2.4 Cross-App Configuration Checklist
+After installation, verify these integration points:
+    1. Frappe CRM: Confirm ERPNext integration is enabled (CRM Settings). Deals should be able to create Customers in ERPNext.
+    2. Frappe Helpdesk: Configure email accounts (Settings ? Email Accounts) and enable the customer portal (Settings ? Customer Portal). Set up teams and SLAs.
+    3. Frappe HRMS: Ensure Employee records exist for all field technicians. Configure Shift Types for field service schedules. Enable Overtime if applicable.
+    4. Beveren FSM: Create Service Technician records and link each to its corresponding HRMS Employee record.
+? Tip: The key link between HRMS and FSM is the Employee field on the Service Technician record. Every technician must have both an Employee record (for HR/payroll) and a Service Technician record (for scheduling/dispatch).
+
+3. California & Arizona Tax Configuration
+3.1 Arizona — Transaction Privilege Tax (TPT)
+    • State rate: 5.6% (2026). County and city rates are additional.
+    • Parts/materials: Taxable at the combined rate.
+    • Service labor: Exempt if separately stated on the invoice. If bundled, the entire amount is taxable.
+    • Construction contracting: Taxable on full amount; 35% standard deduction allowed.
+?? Note: Always separately state labor charges. Mark service items with the “Service”/“Services” Item Group for auto-classification.
+Tax Template Setup for Arizona
+    1. Selling ? Sales Taxes and Charges Template ? New “AZ TPT – [City].”
+    2. Add a row with the combined state + county + city rate. Set type to “On Net Total.”
+    3. Select this template on Service Orders, Quotations, and Sales Invoices.
+? Tip: Create separate templates for each city. Look up rates at azdor.gov.
+
+3.2 California — Sales and Use Tax
+    • State rate: 7.25% base (2026). District taxes can exceed 10%.
+    • Parts: Taxable. 
+    • Service labor: Exempt if separately stated.
+    • Fabrication labor: Taxable as part of the sale price.
+Tax Template Setup for California
+    1. Selling ? Sales Taxes and Charges Template ? New “CA Sales Tax – [County/City].”
+    2. Add combined rate row. Use Item Tax Templates (0%) for labor items.
+? Tip: Look up rates at cdtfa.ca.gov. Create a template for each district.
+3.3 Multi-State Best Practices
+    • Create separate templates per state and city, clearly named.
+    • Use the Service Area field to associate each job with a geographic zone.
+    • Set up Item Tax Templates with 0% override for labor items.
+    • Train all staff (billing, sales, AR) to verify the correct template before generating invoices or quotations.
+
+4. Master Data Setup
+4.1 Service Types
+Pre-loaded: Inspection, Installation, Maintenance, Emergency, Warranty Claim, Service. Add via Search bar ? Service Type.
+4.2 Service Areas
+Geographic zones (e.g., “Phoenix Metro,” “LA Basin”). Each includes a geolocation point for the Map view.
+4.3 Service Specializations
+Technician expertise categories (e.g., “HVAC,” “Electrical,” “Solar”).
+4.4 Service Technicians
+Fields: Technician Name (required), Employee (link to HRMS Employee record), Service Area, Specialization. Auto-ID: ST-0000001.
+?? Note: The Employee link is critical. It connects the FSM technician to their HRMS profile for leave, shifts, attendance, overtime, and payroll. Every technician must have both records.
+4.5 Service Technician Skills
+Skills with proficiency ratings (1–5 stars) assignable to technicians.
+4.6 Product Locations
+Movement types tracking product location during service. Pre-loaded set covers the standard lifecycle. Add custom locations as needed.
+
+5. Cross-App Workflow Integration
+This chapter details how Frappe CRM, Helpdesk, and HRMS connect to the FSM service lifecycle.
+5.1 Frappe CRM ? FSM Workflow
+Frappe CRM manages the pre-sale pipeline. When a deal is won, the customer enters the FSM ecosystem.
+The Flow
+CRM Lead ? CRM Deal ? Deal Won ? Create Customer in ERPNext ? Customer available for FSM Service Requests, Quotations & Orders
+
+    1. A prospect enters Frappe CRM as a Lead (via web form, email, WhatsApp, phone, or manual entry).
+    2. Sales qualifies the Lead and converts it to a Deal. The Deal moves through customizable pipeline stages (e.g., Qualification ? Proposal ? Negotiation ? Won).
+    3. When the Deal is won, the sales rep creates a Customer record in ERPNext directly from the CRM Deal page (CRM’s ERPNext integration).
+    4. The new ERPNext Customer is now available across all FSM doctypes: Service Requests, Quotations, Service Orders, AMC Contracts, and Appointments.
+    5. If the deal involves a service engagement (installation, maintenance contract, etc.), the sales rep creates a Service Quotation in FSM referencing the new customer.
+? Tip: Sales personnel should work in Frappe CRM (/crm) for pipeline management and switch to ERPNext desk for Service Quotations and AMC Contracts. The Customer record bridges both systems.
+
+5.2 Frappe Helpdesk ? FSM Workflow
+Frappe Helpdesk is the primary customer-facing entry point for service needs. Customers submit tickets; agents triage and escalate to FSM when field service is required.
+The Flow
+Customer submits Helpdesk Ticket (via portal, email, or phone) ? Agent triages ? Field service needed? ? Agent creates FSM Service Request
+
+    1. A customer submits a support ticket through the Helpdesk portal (/helpdesk), via email, or an agent creates one manually.
+    2. The Helpdesk agent reviews the ticket: checks the issue description, priority, SLA timers, and customer history.
+    3. If the issue can be resolved remotely (knowledge base article, phone guidance, software fix), the agent resolves the ticket directly in Helpdesk.
+    4. If the issue requires on-site field service, the agent escalates by creating a Service Request in FSM. Open ERPNext desk ? Search bar ? Service Request ? New. Reference the Helpdesk ticket number in the Subject or Description for traceability.
+    5. The Service Request then follows the standard FSM lifecycle: Quotation ? Order ? Appointment ? Invoice.
+    6. Once the field service is complete and the Service Order is marked Completed, the agent updates and closes the original Helpdesk ticket.
+?? Note: There is no automatic link between Helpdesk tickets and FSM Service Requests. Agents must manually create the Service Request and should include the Helpdesk ticket number (e.g., “HD-TICK-00123”) in the Service Request’s Subject or Description field for cross-referencing.
+? Tip: Use Helpdesk’s Knowledge Base to publish common troubleshooting articles. This reduces unnecessary field service dispatches and improves first-contact resolution rates.
+
+5.3 Frappe HRMS ? FSM Workflow
+Frappe HRMS manages the workforce data that directly affects field service operations. The Service Technician’s Employee link bridges the two systems.
+Key Integration Points
+    • Employee ? Service Technician: Each Service Technician record links to an HRMS Employee record. This connection is the foundation for all HR-related integrations.
+    • Shift Assignments: HRMS Shift Types and Shift Assignments define when technicians are available for scheduling. Dispatchers should check a technician’s shift schedule in HRMS before assigning appointments outside their normal hours.
+    • Leave Management: When a technician applies for leave through HRMS (or the HRMS self-service portal), their approved leave affects their availability. Dispatchers should check HRMS leave records before scheduling to avoid assigning work to technicians who are on approved leave.
+    • Attendance & Check-In/Out: HRMS Employee Checkin records can be used by field technicians to clock in/out at job sites. In HRMS v16, check-in/out data feeds into automatic attendance marking and overtime calculation.
+    • Overtime Management (HRMS v16): HRMS v16 introduces Overtime Types with custom multipliers (e.g., 1.5x, 2x for holidays), Overtime Slips generated from shift check-in/out data, and automatic Additional Salary entries for payroll. Field service overtime is captured when technicians work beyond their shift hours.
+    • Expense Claims: Field technicians submit Expense Claims through HRMS for travel, fuel, meals, and other field expenses. HRMS v16 supports multi-currency claims for cross-border operations.
+    • Payroll: HRMS Payroll Entry processes technician compensation including base salary, overtime (via Additional Salary from Overtime Slips), and expense reimbursements. The payroll cycle covers all service technicians through their Employee records.
+
+Recommended HRMS Configuration for Field Service
+    1. Create Shift Types for field service schedules (e.g., “Field Service – Day Shift” 7:00 AM–4:00 PM, “Field Service – On Call”).
+    2. Enable “Allow Overtime” on field service Shift Types and configure the appropriate Overtime Type with multipliers that comply with CA/AZ labor law.
+    3. Set up Shift Assignments for all service technicians, linking them to their field service shifts.
+    4. Configure Holiday Lists for California and Arizona state holidays, and assign them to the relevant employees.
+    5. Enable Employee Checkin for field technicians so their attendance is recorded when they start/end work at job sites.
+?? Note: California requires overtime pay at 1.5x after 8 hours in a day and 2x after 12 hours. Arizona follows federal FLSA rules (1.5x after 40 hours/week). Configure your HRMS Overtime Types accordingly to ensure compliance.
+
+6. The Service Lifecycle
+The FSM service lifecycle has multiple entry points thanks to the integrated app stack:
+Entry Point 1: Frappe CRM Deal Won ? New Customer ? Sales team creates Service Quotation in FSM
+Entry Point 2: Frappe Helpdesk Ticket ? Agent escalates ? FSM Service Request
+Entry Point 3: Direct creation of a Service Request in FSM (walk-in, phone call, internal need)
+
+Regardless of entry point, the core FSM lifecycle follows:
+Service Request ? Service Quotation (optional) ? Service Order ? Service Appointment ? Sales Invoice
+
+6.1 Service Request
+The entry point for field service work. Series: SR-YYYY-#####
+Status Workflow
+Status	Description
+Open	Initial state
+Quotation	A Quotation was created
+Converted	A Service Order was created
+Due Soon	Auto-set 2 days before due date (daily scheduler)
+Overdue	Auto-set when past due (daily scheduler)
+On Hold	Manually paused
+Closed	Manually closed
+Actions
+    • Create ? Service Quotation or Service Order
+    • Status ? Hold / Resume / Close / Reopen
+? Tip: When creating a Service Request from a Helpdesk ticket, include the ticket number (e.g., “HD-TICK-00123”) in the Subject field for traceability.
+
+6.2 Service Quotation
+Formal cost estimate with ERPNext selling controller: pricing rules, tax templates, multi-currency, discounts/margins. Series: SQ-YYYY-#####
+Status Workflow
+Status	Description
+Open	Initial
+Ordered	Service Order created
+Converted	Service Order progressed
+On Hold / Closed	Paused or closed
+Lost	Lost with reason recorded
+
+6.3 Service Order
+Central transaction document. Authorizes work, tracks costs, manages inventory, generates invoices. Series: SVC-ORD-YYYY-#####
+Status Workflow
+Status	Description
+Open	After submission
+Scheduled	Appointment scheduled
+Dispatched	Technician(s) dispatched
+In Progress	Work started (auto-set via product movement)
+Review	Product delivered to customer (auto-set)
+Completed	Confirmed after review
+Creatable Documents
+    • Service Appointment, Sales Invoice, Stock Entry, Delivery Note, Purchase Receipt, Purchase Order, Purchase Invoice
+Each logistics dialog includes Product Movement Type and Movement Date, auto-logged on the Product Tracking table.
+
+6.4 Service Appointment
+Schedules the field visit with technician assignment, time windows, and actual work tracking. Series: SVC-APP-YYYY-#####
+Status Workflow
+Status	Description
+Open	Initial
+Scheduled	Time and technicians set
+Dispatched	Sent to job
+In Progress	Work started
+Completed	Work finished
+Cancelled	Cancelled
+Actions
+    • Dispatch, Reschedule, Start Work (records product movement + actual start), Complete (records movement + actual end), Create ? Sales Invoice
+?? Note: Overlap detection prevents double-booking. Check HRMS leave and shift records before scheduling to ensure the technician is actually available.
+
+7. AMC Contracts
+Annual Maintenance Contracts for ongoing service agreements. Series: AMC-YY-####. Budget tracking auto-updates on Service Order submission; over-budget warnings appear before submission; cancellation reverts utilization.
+
+8. Repair Management
+8.1 Repair Orders
+Track items sent to a vendor for repair. Status: Open ? Dispatched ? Returned. Repair Status: Pending ? Repaired / Replaced / Rejected.
+8.2 Repair Shipments
+Group multiple repair items into a single vendor shipment. Status: Open ? Shipped.
+
+9. The Scheduling Board
+React/TypeScript dispatch console at /schedule.
+    • Views: Grid, Gantt, Calendar, Technicians, Maps, Settings.
+Left panel: unassigned Service Orders. Right panel: appointment details. Bulk actions for multi-appointment technician assignment.
+
+10. Invoicing
+    • Creating Invoices: Create ? Sales Invoice from Service Order or Appointment with item selection dialog.
+    • Status Tracking: Per-item Not Invoiced / Partly Invoiced / Invoiced. Document-level % Amount Billed.
+    • Cross-Document Sync: Invoice status syncs between Service Orders, Appointments, and sibling appointments automatically.
+
+11. ERPNext v16 Integration Points
+    • Custom Fields: custom_service_order and custom_current_product_location on PO, PI, PR, Stock Entry, Delivery Note.
+    • Document Hooks: Sales Invoice (submit/cancel) updates invoice status; Delivery Note, PO/PR/PI, Stock Entry (submit) update product movement tracking.
+    • Module Integration: Accounting, Stock, Buying, HR (via HRMS Employee link), Projects (Cost Center, Project).
+
+12. Dashboard and Reports
+    • Number Cards: Open Service Orders, Open Service Requests, Scheduled Appointments, Non-Billed Appointments.
+    • Charts: Service Orders by Status, Service Requests by Status, Appointments by Status.
+Service workspace: quick access to Service Area, Service Specialization, FSM Settings.
+
+
+13. Quick-Start Guide: Dispatchers
+13.1 Daily Workflow
+Step	Action
+1	Check Frappe Helpdesk (/helpdesk) for newly escalated tickets requiring field service.
+2	Open the FSM Scheduling Board (/schedule). Review the left panel for unassigned Service Orders.
+3	Check the FSM Dashboard for Open Requests, Open Orders, and Scheduled Appointments counts.
+4	Before scheduling, check HRMS for technician availability: open the Employee record or HRMS Roster to verify the technician is not on approved leave and is assigned to an active shift today.
+5	Triage incoming Service Requests: set priorities, verify customer info and service address.
+6	Submit Service Requests and convert to Service Orders (Create ? Service Order).
+7	Create Service Appointments from the scheduling board: select order, assign technician(s), set times.
+8	Monitor the Gantt or Calendar view throughout the day. Use Maps view for geographic proximity optimization.
+
+13.2 Checking Technician Availability (HRMS)
+Before assigning a technician to an appointment:
+    1. Search bar ? Employee. Open the technician’s Employee record.
+    2. Check the Attendance section for their current status (Present, Absent, On Leave).
+    3. Check the Shift Assignment: verify they are assigned to a shift that covers the appointment time.
+    4. Check Leave Application: search for approved leave for the appointment date. If on leave, select a different technician.
+? Tip: The FSM scheduling board prevents time overlaps between appointments, but it does not automatically check HRMS leave or shift data. Always verify manually.
+13.3 Helpdesk Escalation Workflow
+    1. Monitor Frappe Helpdesk (/helpdesk) for tickets that require on-site service.
+    2. When a ticket needs field service, open ERPNext desk and create a new Service Request.
+    3. In the Subject field, include the Helpdesk ticket number (e.g., “HD-TICK-00123: AC unit not cooling”).
+    4. Fill in Customer, Service Address, Priority, and other details from the Helpdesk ticket.
+    5. Submit the Service Request and proceed with the normal FSM workflow.
+    6. After the Service Order is completed, return to Helpdesk and close the original ticket with a resolution note.
+
+
+14. Quick-Start Guide: Billing Staff
+14.1 Daily Workflow
+Step	Action
+1	Check the FSM Dashboard for Non-Billed Appointments count.
+2	Open Service Orders or Appointments ready for invoicing.
+3	Verify the correct AZ/CA tax template is applied.
+4	Generate Sales Invoices via Create ? Sales Invoice.
+5	Review % Amount Billed on each Service Order.
+6	Process Purchase Invoices for vendor repair costs.
+7	Review AMC Contract utilization for budget compliance.
+
+14.2 Tax Compliance Checklist (CA & AZ)
+?? Note: Before submitting any invoice:
+    1. Labor/service items are separate line items, not bundled with parts.
+    2. Labor items belong to the “Service”/“Services” Item Group.
+    3. Correct state/city tax template is applied.
+    4. For AZ: labor is separately stated (otherwise entire invoice is taxable).
+    5. For CA: service labor is separately stated for the tax exemption.
+    6. For AZ construction contracting: the 35% standard deduction may apply.
+14.3 Partial Invoicing
+    • Invoice specific items or partial quantities at any time.
+    • System tracks per-item: Not Invoiced ? Partly Invoiced ? Invoiced.
+    • % Amount Billed shows overall progress. Related documents sync automatically.
+
+
+15. Quick-Start Guide: Field Technicians
+15.1 Your Daily Routine with HRMS + FSM
+Step	Action
+1	SHIFT START: Record your shift start via HRMS Employee Checkin (mobile app, biometric, or manual entry). This logs your attendance and starts overtime tracking.
+2	CHECK APPOINTMENTS: Search bar ? Service Appointment, filter by your name to see today’s assignments. Review customer details, service address, items, and notes.
+3	TRAVEL TO SITE: Head to the customer location at the scheduled time.
+4	START WORK: Open the Service Appointment, click Start Work. Select the Product Location, enter the movement date, click Confirm. Actual start time is recorded.
+5	PERFORM SERVICE: Complete the repair, installation, or maintenance. Update items in the Items table if parts or quantities change.
+6	COMPLETE: Click Complete. Select the product movement type (e.g., “Deliver to Customer”), enter the date, click Confirm. Actual end time is recorded. Service Order moves to Review.
+7	SHIFT END: Record your shift end via HRMS Employee Checkin. If you worked beyond shift hours, an Overtime Slip is automatically generated in HRMS v16 for manager approval.
+8	EXPENSES: Submit any field expenses (fuel, parking, meals) via HRMS Expense Claim.
+
+15.2 Product Movement — What to Select
+Situation	At Start Work	At Completion
+On-site repair, product stays	Customer Site	Customer Site
+Picking up for workshop repair	Receive From Customer	In Transit to Workshop
+Returning repaired product	In Transit to Workshop	Deliver to Customer
+Sending to vendor for repair	Receive From Customer	Sent to Vendor
+
+15.3 Leave and Time Off
+To request time off, use the HRMS self-service portal or ERPNext desk:
+    1. Search bar ? Leave Application ? New.
+    2. Select the Leave Type, From Date, and To Date.
+    3. Submit for approval. Your manager (or HR) approves via HRMS.
+    4. Once approved, dispatchers will see your leave when checking availability, preventing you from being scheduled.
+?? Note: Submit leave requests as early as possible so dispatchers can plan around your absence.
+
+15.4 Expense Claims
+    1. Search bar ? Expense Claim ? New.
+    2. Set the Expense Type (e.g., Travel, Fuel, Meals) and enter the amount, date, and description.
+    3. Attach receipts (photos from your phone work).
+    4. Submit for approval. Approved claims flow to payroll for reimbursement.
+
+15.5 Tips
+    • Always check in and check out via HRMS — this feeds attendance, overtime, and payroll.
+    • Record product movements accurately — this is the audit trail your office relies on.
+    • Update appointment status promptly. If additional work is needed, notify dispatch before proceeding.
+    • Submit expense claims within the same pay period for timely reimbursement.
+
+
+16. Quick-Start Guide: Product & Equipment Sales
+16.1 Your Integrated Workflow: CRM + FSM
+As a sales team member, you work across Frappe CRM and FSM:
+Step	Action
+1	Manage your Lead ? Deal pipeline in Frappe CRM (/crm). Qualify leads, move deals through stages.
+2	When a Deal is won, create the Customer in ERPNext directly from the CRM Deal page.
+3	Switch to ERPNext desk. Create a Service Quotation for service engagements, installations, or maintenance contracts.
+4	If the customer needs ongoing coverage, create an AMC Contract in FSM.
+5	Follow up on open Service Quotations. Convert accepted quotes to Service Orders (Create ? Service Order).
+6	Monitor lost quotations for re-engagement patterns. Review CRM Deal analytics for pipeline health.
+
+16.2 Creating Service Quotations
+    1. Search bar ? Service Quotation ? New.
+    2. Set the Customer (created from your CRM Deal), Company, Service Type, Priority, and Due Date.
+    3. Add Items: equipment/parts items and labor items. Labor items must be in the “Service”/“Services” Item Group.
+    4. Select the correct AZ/CA tax template in the Taxes section.
+    5. Set appointment preferences (preferred dates, time of day) — these carry forward to the Service Order.
+    6. Save and Submit. The customer sees the quotation; you follow up via CRM or direct contact.
+16.3 AMC Contracts
+    1. Search bar ? AMC Contract ? New.
+    2. Set Customer, Serial No, Contract Period (months), Start Date, Total Value, Service Budget, Spare Parts Budget.
+    3. Submit. Only submitted contracts can be linked to Service Requests and Orders.
+? Tip: When renewing, review the expiring contract’s utilized amounts to right-size the new budgets.
+16.4 Item & Pricing Setup
+    • Equipment/Parts: Create Item records with appropriate Item Groups (e.g., “Spare Parts,” “Equipment”). Maintain pricing on Price Lists.
+    • Service/Labor: Create Items in the “Service”/“Services” Item Group. Assign an Item Tax Template with 0% for AZ/CA labor tax exemption.
+    • Use Serial Numbers for high-value equipment that needs lifecycle tracking.
+    • For bundled equipment + installation sales, always separate equipment cost and labor into distinct line items.
+
+16.5 CRM-Specific Tips
+    • Keep your CRM Deal updated with notes about service requirements — this context helps dispatchers later.
+    • Use CRM’s Kanban view to visualize your deal pipeline stages at a glance.
+    • Log all customer interactions (calls, emails, WhatsApp) in CRM so the full history is available when the customer contacts Helpdesk later.
+    • Use the CRM ? ERPNext Customer creation to avoid duplicate customer records.
+
+
+17. Quick-Start Guide: Accounts Receivable
+17.1 Daily Workflow
+Step	Action
+1	Check the FSM Dashboard for Non-Billed Appointments. Coordinate with billing if count is high.
+2	Run Accounts Receivable report (Search bar ? Accounts Receivable). Review aging by customer.
+3	Filter FSM invoices: Sales Invoices with custom_reference_service_doctype populated are FSM-generated.
+4	Review aging buckets (Current, 1–30, 31–60, 61–90, 90+). Prioritize collection.
+5	Process payments via Payment Entry. Link to outstanding Sales Invoice(s).
+6	Reconcile AMC Contracts: compare Total Value against cumulative invoicing.
+7	Generate weekly Accounts Receivable Summary for management.
+
+17.2 Invoice Linkages
+    • custom_reference_service_doctype: “Service Order” or “Service Appointment” — identifies the source.
+    • custom_reference_service_document: The specific document name for direct cross-referencing.
+Use these fields to filter the Sales Invoice list and trace invoices back to their source documents.
+17.3 Billing Completeness
+    • % Amount Billed: On every Service Order and Appointment. Filter by < 100 to find unbilled work.
+    • Non-Billed Appointments: Dashboard card showing completed but uninvoiced work.
+    • Item-Level Status: Each line item tracks Not Invoiced / Partly Invoiced / Invoiced with Invoiced Quantity.
+17.4 CRM Context for Collections
+When following up on overdue invoices, Frappe CRM provides valuable context:
+    • Search for the customer in CRM to review the original Deal notes and relationship history.
+    • Check CRM communication logs for recent interactions that may explain delayed payment.
+    • Coordinate with the sales rep (Deal Owner in CRM) for relationship-sensitive collection approaches.
+17.5 Month-End Checklist
+Step	Action
+1	Run Accounts Receivable report. Export and review all outstanding FSM invoices.
+2	Identify Service Orders with % Amount Billed < 100. Coordinate with billing.
+3	Verify Non-Billed Appointments count is zero (all completed work invoiced).
+4	Reconcile AMC Contracts: utilization vs. invoiced amounts.
+5	Review 90+ day aging bucket. Escalate chronic delinquencies.
+6	Verify all payments received have been reconciled against invoices.
+7	Generate Accounts Receivable Summary report for management review.
+17.6 Handling Disputes
+    1. Open the Sales Invoice. Note the custom_reference_service_document field.
+    2. Navigate to the linked Service Order or Appointment.
+    3. Review Items table and Product Tracking tab for evidence of service delivery.
+    4. If incorrect, create a Credit Note (Sales Invoice with Is Return checked). Never delete submitted invoices.
+    5. If additional billing needed, generate a new invoice from the Service Order for remaining uninvoiced items.
+
+
+18. Support and Contact
+    • GitHub: github.com/Beveren-Software-Inc/Field_Service_Management
+    • Email: info@beverensoftware.com
+    • Phone (North America): +1 647 947 4017
+    • Phone (Middle East): +966 59 204 4266
+    • Website: beverensoftware.com
+
+This app is 100% open-source under the MIT License. Contributions and bug reports are welcome via GitHub.
