@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:group_name",
+ "creation": "2026-09-08 20:41:31.433419",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "group_name",
+  "print_label",
+  "print_description",
+  "disabled"
+ ],
+ "fields": [
+  {
+   "description": "Internal name for this consolidation group (also its record ID).",
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Group Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Customer-facing text shown as the single consolidated line, e.g. 'Service & Handling'.",
+   "fieldname": "print_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Print Label",
+   "reqd": 1
+  },
+  {
+   "description": "Explanatory note printed under the consolidated line, e.g. 'Includes travel time, zone-based dispatch charge, and shipping/receiving recovery for parts on this job.'",
+   "fieldname": "print_description",
+   "fieldtype": "Small Text",
+   "label": "Print Description"
+  },
+  {
+   "default": "0",
+   "description": "If checked, items in this group print normally (uncollapsed) instead of being summed.",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Disabled"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 20:41:31.433419",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Print Consolidation Group",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

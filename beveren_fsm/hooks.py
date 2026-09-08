@@ -222,6 +222,15 @@ fixtures = [
 	# User role assignments are operational data — keeping them in fixtures
 	# would overwrite any Desk changes on every deploy.
 	# Initial role assignments are handled via ERPNext Data Import (one-time).
+
+	# Print-line consolidation (QBO-bundle-parity: Zone Charge, Travel Labor,
+	# Shipping & Receiving Recovery print as one customer-facing line while
+	# staying fully itemized in the GL/tax/reports — see LCS Print
+	# Consolidation Group doctype and field_service_management/api/print_helpers.py).
+	{
+		"doctype": "Custom Field",
+		"filters": [["name", "in", ["Item-lcs_consolidation_group"]]],
+	},
 ]
 
 
@@ -282,6 +291,12 @@ doctype_js = {
 # 	"methods": "beveren_fsm.utils.jinja_methods",
 # 	"filters": "beveren_fsm.utils.jinja_filters"
 # }
+
+jinja = {
+	"methods": [
+		"beveren_fsm.field_service_management.api.print_helpers.get_print_line_groups",
+	]
+}
 
 # Installation
 # ------------
