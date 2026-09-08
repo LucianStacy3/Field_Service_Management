@@ -38,6 +38,7 @@
   "serial_no",
   "item_code",
   "item_name",
+  "custom_customer_equipment",
   "column_break_mgix",
   "warranty_amc_status",
   "amc_contract",
@@ -287,6 +288,13 @@
    "fieldname": "item_name",
    "fieldtype": "Data",
    "label": "Item Name"
+  },
+  {
+   "fieldname": "custom_customer_equipment",
+   "fieldtype": "Link",
+   "label": "Customer Equipment",
+   "options": "LCS Customer Equipment",
+   "description": "Set when this Service Request was auto-created from a calibration due-date check (Phase 6, Section 9.4) -- used to prevent creating duplicate requests for the same equipment on later nightly runs."
   },
   {
    "fieldname": "column_break_mgix",

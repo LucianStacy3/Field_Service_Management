@@ -32,6 +32,25 @@ class ServiceQuotation(Document):
 		self.service_request = ""
 		request.save()
 
+	# ------------------------------------------------------------------
+	# Stub added to fix: 'ServiceQuotation' object has no attribute
+	# 'process_item_selection'
+	#
+	# Same root cause already fixed on Service Order: ERPNext's standard
+	# item-grid JS automatically calls this server method via
+	# run_doc_method whenever a child row has reserve_stock=1 (ERPNext's
+	# stock-reservation feature). Service Quotation Item also carries a
+	# reserve_stock field, so selecting any item in a new Service
+	# Quotation's Items grid triggers the same automatic call and threw
+	# an AttributeError before this stub existed -- blocking quotation
+	# creation entirely. Service Quotation doesn't use ERPNext's stock
+	# reservation workflow, so this is a harmless no-op that just lets
+	# the automatic call succeed instead of throwing.
+	# ------------------------------------------------------------------
+	@frappe.whitelist()
+	def process_item_selection(self, item_idx=None):
+		return
+
 
 @frappe.whitelist()
 def make_service_quotation(source_name, target_doc=None, selected_items=None):

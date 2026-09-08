@@ -1,0 +1,202 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "audit_type",
+  "branch",
+  "col_break_1",
+  "lead_auditor",
+  "audit_date",
+  "status",
+  "section_findings",
+  "findings",
+  "section_artifacts",
+  "audit_plan_worksheet",
+  "audit_report_form",
+  "col_break_2",
+  "audit_report_summary",
+  "section_followup",
+  "major_nonconformity_found",
+  "follow_up_status",
+  "col_break_3",
+  "follow_up_report"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "AUDIT-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "default": "Internal",
+   "fieldname": "audit_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Audit Type",
+   "options": "Internal\nExternal\nSurveillance",
+   "reqd": 1
+  },
+  {
+   "description": "Select convention matches LCS Vehicle's branch field rather than Link -> Service Area, which doesn't cleanly represent the four Customer Support Centers \u2014 see Phase 7B Active Brief Section 6.4.",
+   "fieldname": "branch",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "\nPerris\nSan Diego\nEl Centro\nApache Junction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Should eventually validate against a Phase 7A training/qualification record (ISO 17025 Internal Audit course, SOP-021) once Phase 7A exists; not enforced yet.",
+   "fieldname": "lead_auditor",
+   "fieldtype": "Link",
+   "label": "Lead Auditor",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "audit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Audit Date",
+   "reqd": 1
+  },
+  {
+   "default": "Planned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Planned\nIn Progress\nReport Issued\nFollow-Up Required\nClosed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_findings",
+   "fieldtype": "Section Break",
+   "label": "Audit Findings"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Table",
+   "label": "Findings",
+   "options": "LCS Audit Finding"
+  },
+  {
+   "fieldname": "section_artifacts",
+   "fieldtype": "Section Break",
+   "label": "Audit Artifacts"
+  },
+  {
+   "fieldname": "audit_plan_worksheet",
+   "fieldtype": "Attach",
+   "label": "Audit Plan / Worksheet"
+  },
+  {
+   "fieldname": "audit_report_form",
+   "fieldtype": "Attach",
+   "label": "Audit Report Form"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "audit_report_summary",
+   "fieldtype": "Text Editor",
+   "label": "Audit Report Summary"
+  },
+  {
+   "fieldname": "section_followup",
+   "fieldtype": "Section Break",
+   "label": "Follow-Up (Major Nonconformities)"
+  },
+  {
+   "fieldname": "major_nonconformity_found",
+   "fieldtype": "Check",
+   "label": "Major Nonconformity Found"
+  },
+  {
+   "default": "Not Required",
+   "depends_on": "eval:doc.major_nonconformity_found",
+   "fieldname": "follow_up_status",
+   "fieldtype": "Select",
+   "label": "Follow-Up Status",
+   "options": "Not Required\nPending\nVerified Effective"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.major_nonconformity_found",
+   "fieldname": "follow_up_report",
+   "fieldtype": "Attach",
+   "label": "Audit Follow-Up Report"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Audit",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

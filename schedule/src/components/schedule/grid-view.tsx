@@ -13,7 +13,20 @@ interface GridViewProps {
   selectedDate: Date;
   onAppointmentClick?: (appointment: Appointment) => void;
   searchQuery?: string;
+  serviceAreaFilter?: string;
 }
+
+// Fix added: derive an appointment's service area the same way
+// schedule-left-panel.tsx already does (location.service_area if present,
+// otherwise the flat service_area field). Grid view previously had no
+// serviceAreaFilter prop at all, so the "All Areas" dropdown had zero
+// effect here -- appointments outside the selected area still showed up.
+const getAppointmentServiceArea = (apt: Appointment): string | undefined => {
+  if (apt.location && typeof apt.location === "object" && apt.location.service_area) {
+    return apt.location.service_area;
+  }
+  return apt.service_area;
+};
 
 type SortField = "name" | "service_order" | "customer" | "status" | "posting_date" | "scheduled_start_datetime" | null;
 type SortDirection = "asc" | "desc";
@@ -35,6 +48,7 @@ export function GridView({
   selectedDate,
   onAppointmentClick,
   searchQuery = "",
+  serviceAreaFilter = "all",
 }: GridViewProps) {
   const [sortField, setSortField] = useState<SortField>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
@@ -52,6 +66,11 @@ export function GridView({
   // Filter and sort appointments
   const filteredAndSortedAppointments = useMemo(() => {
     let filtered = appointments;
+
+    // Apply service area filter (fix added -- see getAppointmentServiceArea)
+    if (serviceAreaFilter !== "all") {
+      filtered = filtered.filter((apt) => getAppointmentServiceArea(apt) === serviceAreaFilter);
+    }
 
     // Apply search filter
     if (searchQuery.trim()) {
@@ -135,7 +154,7 @@ export function GridView({
     }
 
     return filtered;
-  }, [appointments, sortField, sortDirection, searchQuery]);
+  }, [appointments, sortField, sortDirection, searchQuery, serviceAreaFilter]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -161,7 +180,7 @@ export function GridView({
     <div className="flex flex-col h-full bg-background">
       {/* Table */}
       <div className="flex-1 overflow-auto">
-        <Table>
+        <Table className="min-w-[1100px]">
           <TableHeader className="sticky top-0 bg-background z-10">
             <TableRow>
               <TableHead
@@ -220,12 +239,13 @@ export function GridView({
                 </div>
               </TableHead>
               <TableHead>Technicians</TableHead>
+              <TableHead>Resources</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredAndSortedAppointments.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+                <TableCell colSpan={9} className="text-center py-8 text-muted-foreground">
                   {searchQuery ? "No appointments match your search" : "No appointments found"}
                 </TableCell>
               </TableRow>
@@ -300,8 +320,27 @@ export function GridView({
                       {appointment.service_technicians && appointment.service_technicians.length > 0 ? (
                         <div className="text-sm">
                           {appointment.service_technicians.map((tech, idx) => (
-                            <div key={tech.service_technician || idx} className="truncate">
-                              {tech.full_name || tech.service_technician}
+                            <div key={tech.service_technician || idx} className="flex items-center gap-1 truncate">
+                              {tech.custom_is_crew_leader && (
+                                <span title="Crew Leader" className="text-yellow-500 text-[11px] leading-none flex-shrink-0">★</span>
+                              )}
+                              <span className="truncate">{tech.full_name || tech.service_technician}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-muted-foreground">—</span>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {appointment.appointment_resources && appointment.appointment_resources.length > 0 ? (
+                        <div className="text-sm">
+                          {appointment.appointment_resources.map((res, idx) => (
+                            <div key={idx} className="truncate" title={res.resource_type ? `${res.resource_name} (${res.resource_type})` : res.resource_name}>
+                              {res.resource_name}
+                              {res.resource_type && (
+                                <span className="text-muted-foreground text-[11px] ml-1">({res.resource_type})</span>
+                              )}
                             </div>
                           ))}
                         </div>

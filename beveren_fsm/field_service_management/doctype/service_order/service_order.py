@@ -7,6 +7,10 @@ from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import flt, getdate, today
 
+from beveren_fsm.field_service_management.doctype.lcs_calibration_traceability_link.lcs_calibration_traceability_link import (
+	is_standard_in_cal_on,
+)
+
 LOCATION_STATUS_MAP = {
 	"delivered to customer": "Review",
 	"deliver to customer": "Review",  # fallback for legacy value
@@ -39,6 +43,7 @@ class ServiceOrder(Document):
 		self.validate_items()
 		self.calculate_service_totals()
 		self.check_amc_budget()
+		self.validate_calibration_traceability()
 
 	def before_submit(self):
 		self.update_linked_doc_status_before_submit()
@@ -57,6 +62,32 @@ class ServiceOrder(Document):
 	def validate_items(self):
 		if not self.get("items"):
 			frappe.throw(_("Please add at least one item"))
+
+	def validate_calibration_traceability(self):
+		"""Phase 7B Active Brief Section 6.6 -- reuses the shape of Phase 2C's
+		Service Appointment.validate_overlap(): compute a per-row derived
+		field from the parent's validate(), then block the save if any row
+		fails, rather than relying on the child row's own controller being
+		invoked (it isn't, for custom validate() logic -- only Service
+		Appointment/its resource-overlap sibling establish that reuse
+		pattern, both defined directly on the owning doctype)."""
+		rows = self.get("calibration_traceability")
+		if not rows:
+			return
+
+		out_of_cal = []
+		for row in rows:
+			row.standard_was_in_cal = 1 if is_standard_in_cal_on(row.reference_standard, row.used_on_date) else 0
+			if not row.standard_was_in_cal:
+				out_of_cal.append(row.reference_standard)
+
+		if out_of_cal:
+			frappe.throw(
+				_(
+					"This job is logged against reference standard(s) that were not in "
+					"calibration on the date used: {0}"
+				).format(", ".join(out_of_cal))
+			)
 
 	def update_linked_doc_status_before_submit(self):
 		if not self.service_quotation and not self.service_request:
@@ -133,12 +164,42 @@ class ServiceOrder(Document):
 		appointment.insert()
 		return appointment.name
 
+	# ------------------------------------------------------------------
+	# Stub added to fix: 'ServiceOrder' object has no attribute
+	# 'process_item_selection'
+	#
+	# ERPNext's standard item-grid JS automatically calls this server
+	# method via run_doc_method whenever a child row has reserve_stock=1
+	# (a newer ERPNext stock-reservation feature). Service Order does not
+	# use ERPNext's stock reservation workflow — stock movement here is
+	# handled separately via the Stock Entry / Delivery Note dialogs in
+	# service_order.js — so this is a harmless no-op that just lets the
+	# automatic call succeed instead of throwing an AttributeError.
+	# ------------------------------------------------------------------
+	@frappe.whitelist()
+	def process_item_selection(self, item_idx=None):
+		return
+
+	# ------------------------------------------------------------------
+	# Fix added: money_in_words(None, ...) throws TypeError.
+	# grand_total/base_grand_total are only ever populated by the desk
+	# UI's client-side calculate_totals() override -- a Service Order
+	# inserted purely server-side (e.g. LCS Service Agreement's nightly
+	# auto_create_service_orders scheduler, or any future API/script
+	# insert) never runs that JS, so both fields are still None the
+	# first time validate() -> set_in_words() runs here, before
+	# calculate_service_totals() even executes. flt() coalesces None/
+	# blank to 0.0, matching this app's own existing convention
+	# elsewhere in this file (see calculate_service_totals/check_amc_budget)
+	# and matching the test plan's expectation that a zero/blank total
+	# renders as "Zero" instead of erroring.
+	# ------------------------------------------------------------------
 	def set_in_words(self):
 		from frappe.utils import money_in_words
 
-		self.in_words = money_in_words(self.grand_total, self.currency)
+		self.in_words = money_in_words(flt(self.grand_total), self.currency)
 		self.base_in_words = money_in_words(
-			self.base_grand_total, frappe.get_cached_value("Company", self.company, "default_currency")
+			flt(self.base_grand_total), frappe.get_cached_value("Company", self.company, "default_currency")
 		)
 
 	def calculate_service_totals(self):

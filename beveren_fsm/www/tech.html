@@ -1,0 +1,55 @@
+{# www/tech.html
+
+   Standalone app shell — deliberately does NOT extend templates/web.html,
+   so there's no Frappe site chrome around the technician app. JS/CSS
+   filenames come from tech.py (which reads asset-manifest.json), not
+   hardcoded here — that's what lets Frappe's long-lived /assets/ cache
+   headers coexist with deploys: the filename changes whenever the
+   content does, so there's nothing stale to serve. The manifest,
+   service worker, and icons are still served as literal files from this
+   same www/tech/ folder so the service worker's default scope covers
+   /tech/ (see vite.config.js comment for why that split exists). #}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+	<meta name="theme-color" content="#002957" />
+	<title>LCS Field Tech</title>
+	<link rel="manifest" href="/tech/manifest.json" />
+	<link rel="apple-touch-icon" href="/tech/icons/icon-192.png" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<script>
+		// Set the theme before first paint so there's no flash of the wrong
+		// mode. Mirrors the resolution logic in src/hooks/useTheme.js —
+		// keep the two in sync if that logic ever changes.
+		(function () {
+			var stored = localStorage.getItem('lcs-theme');
+			var theme = stored === 'light' || stored === 'dark'
+				? stored
+				: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			document.documentElement.dataset.theme = theme;
+		})();
+	</script>
+	{% for css_file in tech_css %}
+	<link rel="stylesheet" href="/assets/beveren_fsm/tech/{{ css_file }}" />
+	{% endfor %}
+</head>
+<body>
+	<div id="root"></div>
+
+	{# Frappe does not set a readable csrf_token cookie by default — that
+	   was a wrong assumption in an earlier version of this file, and it
+	   silently broke every write in the app (see api/tech_pwa.py). Since
+	   this shell deliberately skips templates/web.html, the token has to
+	   be computed in tech.py's get_context() and injected here explicitly,
+	   exactly as www/schedule.html and the SAQ portal form already do.
+	   Service worker registration happens inside main.jsx (bundled into
+	   the JS below), not here. #}
+	<script>
+	window.csrf_token = '{{ csrf_token }}';
+	</script>
+	<script type="module" src="/assets/beveren_fsm/tech/{{ tech_js }}"></script>
+</body>
+</html>

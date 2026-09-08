@@ -1,0 +1,352 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2026-06-11 00:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Document",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "status",
+    "col_break_top",
+    "quote_date",
+    "valid_until",
+
+    "sec_customer",
+    "customer_name",
+    "service_address",
+    "city_state_zip",
+    "contact_name",
+    "contact_phone",
+    "contact_email",
+    "col_break_customer",
+    "alt_contact_name",
+    "alt_contact_phone",
+    "capacity_class",
+
+    "sec_schedule",
+    "schedule_type",
+    "interval_months",
+    "col_break_schedule",
+    "fixed_months_html",
+
+    "sec_equipment",
+    "equipment_items",
+
+    "sec_pricing",
+    "price_per_service",
+    "col_break_pricing",
+    "visits_per_year",
+    "annual_total",
+
+    "sec_rates",
+    "rate_regular",
+    "rate_overtime",
+    "rate_holiday",
+    "col_break_rates",
+    "rates_valid_until",
+    "man_hours",
+    "plus_service",
+
+    "sec_terms",
+    "terms_html",
+
+    "sec_conversion",
+    "linked_service_agreement",
+
+    "sec_notes",
+    "internal_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "LCS-SAQ-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Status",
+      "options": "Draft\nSent\nAccepted\nDeclined\nConverted",
+      "reqd": 1
+    },
+    {
+      "fieldname": "col_break_top",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Today",
+      "fieldname": "quote_date",
+      "fieldtype": "Date",
+      "label": "Quote Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "valid_until",
+      "fieldtype": "Date",
+      "label": "Valid Until"
+    },
+
+    {
+      "fieldname": "sec_customer",
+      "fieldtype": "Section Break",
+      "label": "Customer & Contact"
+    },
+    {
+      "fieldname": "customer_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Customer / Company Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "service_address",
+      "fieldtype": "Data",
+      "label": "Service Address"
+    },
+    {
+      "fieldname": "city_state_zip",
+      "fieldtype": "Data",
+      "label": "City, State, ZIP"
+    },
+    {
+      "fieldname": "contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name"
+    },
+    {
+      "fieldname": "contact_phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "contact_email",
+      "fieldtype": "Data",
+      "label": "Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "col_break_customer",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "alt_contact_name",
+      "fieldtype": "Data",
+      "label": "Alternate Contact"
+    },
+    {
+      "fieldname": "alt_contact_phone",
+      "fieldtype": "Data",
+      "label": "Alt Phone"
+    },
+    {
+      "fieldname": "capacity_class",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Capacity Class",
+      "options": "Light Capacity\nHeavy Capacity",
+      "reqd": 1,
+      "description": "Light Capacity ≤ 1,000 lb test weight; Heavy Capacity > 1,000 lb"
+    },
+
+    {
+      "fieldname": "sec_schedule",
+      "fieldtype": "Section Break",
+      "label": "Service Schedule"
+    },
+    {
+      "default": "Interval",
+      "fieldname": "schedule_type",
+      "fieldtype": "Select",
+      "label": "Schedule Type",
+      "options": "Interval\nFixed Months",
+      "reqd": 1
+    },
+    {
+      "depends_on": "eval:doc.schedule_type == 'Interval'",
+      "fieldname": "interval_months",
+      "fieldtype": "Int",
+      "label": "Interval (Months)",
+      "description": "e.g. 3 = quarterly, 6 = semi-annual, 12 = annual"
+    },
+    {
+      "fieldname": "col_break_schedule",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.schedule_type == 'Fixed Months'",
+      "fieldname": "fixed_months_html",
+      "fieldtype": "HTML",
+      "label": "Fixed Months (check all that apply)",
+      "options": "<p class='text-muted small'>Use the Fixed Months child table on the linked Service Agreement after conversion. Note the selected months in Internal Notes for now.</p>"
+    },
+
+    {
+      "fieldname": "sec_equipment",
+      "fieldtype": "Section Break",
+      "label": "Equipment to be Calibrated / Serviced"
+    },
+    {
+      "fieldname": "equipment_items",
+      "fieldtype": "Table",
+      "label": "Equipment",
+      "options": "LCS Service Agreement Quote Item",
+      "reqd": 1
+    },
+
+    {
+      "fieldname": "sec_pricing",
+      "fieldtype": "Section Break",
+      "label": "Pricing Summary"
+    },
+    {
+      "fieldname": "price_per_service",
+      "fieldtype": "Currency",
+      "label": "Price per Service Visit",
+      "read_only": 1,
+      "description": "Sum of all equipment row prices — auto-calculated"
+    },
+    {
+      "fieldname": "col_break_pricing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "visits_per_year",
+      "fieldtype": "Float",
+      "label": "Service Visits / Year",
+      "read_only": 1,
+      "description": "Derived from schedule"
+    },
+    {
+      "fieldname": "annual_total",
+      "fieldtype": "Currency",
+      "label": "Estimated Annual Total",
+      "read_only": 1
+    },
+
+    {
+      "fieldname": "sec_rates",
+      "fieldtype": "Section Break",
+      "label": "Preferred Customer Rate Schedule (Emergency / Non-Scheduled)"
+    },
+    {
+      "default": "115.00",
+      "fieldname": "rate_regular",
+      "fieldtype": "Currency",
+      "label": "Regular Hours ($/hr — 1 hr min)"
+    },
+    {
+      "default": "172.50",
+      "fieldname": "rate_overtime",
+      "fieldtype": "Currency",
+      "label": "Overtime Hours ($/hr — 1 hr min)"
+    },
+    {
+      "default": "230.00",
+      "fieldname": "rate_holiday",
+      "fieldtype": "Currency",
+      "label": "Sundays & Holidays ($/hr — 2 hr min)"
+    },
+    {
+      "fieldname": "col_break_rates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "rates_valid_until",
+      "fieldtype": "Date",
+      "label": "Rates Valid Until"
+    },
+    {
+      "fieldname": "man_hours",
+      "fieldtype": "Float",
+      "label": "Est. Man Hours per Visit",
+      "description": "For internal costing — not shown on customer-facing print"
+    },
+    {
+      "default": "0",
+      "fieldname": "plus_service",
+      "fieldtype": "Check",
+      "label": "Plus Service"
+    },
+
+    {
+      "fieldname": "sec_terms",
+      "fieldtype": "Section Break",
+      "label": "Terms & Conditions"
+    },
+    {
+      "default": "<p>Left Coast Scales will inspect and test with certified weights and standards all assets listed above, according to the schedule stated above.</p>\n<p>All units will be tested with approved standards in accordance with NIST Handbook 44 tolerances set forth by the National Institute of Standards and Technology.</p>\n<p>An emailed report of all \"as found\" and \"as left\" conditions of your assets will be provided after the completion of inspection. All reports and certifications are stored digitally for future reference.</p>\n<p>Any additional services required that are beyond the scope mentioned above, including repairs, parts, installation, and labor, will be performed with your authorization at our agreed-upon labor rates. A certified and trained technician will perform all work.</p>\n<p>Emergency services will be billed using the enclosed rate schedule. This includes mechanical time, travel time, and mileage.</p>\n<p>This agreement will renew automatically at the end of the duration listed. A written notice is required to terminate this service agreement, and must be sent to us at least 30 days prior to the next scheduled service.</p>",
+      "fieldname": "terms_html",
+      "fieldtype": "Text Editor",
+      "label": "Terms"
+    },
+
+    {
+      "fieldname": "sec_conversion",
+      "fieldtype": "Section Break",
+      "label": "Conversion"
+    },
+    {
+      "fieldname": "linked_service_agreement",
+      "fieldtype": "Link",
+      "label": "Linked Service Agreement",
+      "options": "LCS Service Agreement",
+      "read_only": 1,
+      "description": "Set automatically when quote is converted"
+    },
+
+    {
+      "fieldname": "sec_notes",
+      "fieldtype": "Section Break",
+      "label": "Internal Notes"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Small Text",
+      "label": "Internal Notes"
+    }
+  ],
+  "links": [],
+  "modified": "2026-06-11 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Field Service Management",
+  "name": "LCS Service Agreement Quote",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Sales User",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

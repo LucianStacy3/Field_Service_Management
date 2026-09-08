@@ -1,0 +1,72 @@
+{
+ "doctype": "DocType",
+ "name": "LCS Tech Day Log Segment",
+ "module": "Field Service Management",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {
+   "fieldname": "segment_type",
+   "label": "Type",
+   "fieldtype": "Select",
+   "options": "Travel\nPrep\nOnsite\nShop",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference_appointment",
+   "label": "Appointment",
+   "fieldtype": "Link",
+   "options": "Service Appointment",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "start_time",
+   "label": "Start",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "end_time",
+   "label": "End",
+   "fieldtype": "Datetime",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lunch_minutes",
+   "label": "Lunch Minutes",
+   "fieldtype": "Int",
+   "default": 0
+  },
+  {
+   "fieldname": "pause_minutes",
+   "fieldtype": "Int",
+   "label": "Pause Minutes"
+  },
+  {
+   "fieldname": "pause_reason",
+   "fieldtype": "Small Text",
+   "label": "Pause Reason"
+  },
+  {
+   "fieldname": "net_minutes",
+   "label": "Net Minutes",
+   "fieldtype": "Int",
+   "read_only": 1
+  },
+  {
+   "fieldname": "flagged_for_review",
+   "label": "Flagged for Review",
+   "fieldtype": "Check",
+   "default": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "correction_reason",
+   "label": "Correction Reason",
+   "fieldtype": "Select",
+   "options": "\nMissing Clock-In\nSequential Lock\nReopened Day"
+  }
+ ]
+}

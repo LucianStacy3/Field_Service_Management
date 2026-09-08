@@ -1,0 +1,538 @@
+/*
+ * Left Coast Scales — ERPNext v16 Brand Theme
+ * App: beveren_fsm  |  Path: beveren_fsm/public/css/lcs_theme.css
+ *
+ * Color palette:
+ *   Navy       #002050   (primary brand)
+ *   Crimson    #900010   (accent / danger)
+ *   Steel Blue #004080   (secondary)
+ *   Gold       #C8A020   (highlight)
+ *   Navy Alt   #1A3A7A
+ *   Blue       #2E74B5
+ *   Light Blue #D6E4F7
+ */
+
+/* ═══════════════════════════════════════════════════════
+   1. ROOT VARIABLE OVERRIDES
+   html beats :root specificity against desk.bundle.css
+   --sidebar-bg overrides frappe_desk_theme directly
+═══════════════════════════════════════════════════════ */
+html {
+  --primary:              #002050;
+  --primary-color:        #002050;
+  --brand-color:          #002050;
+  --btn-primary-bg:       #002050;
+  --btn-primary-border:   #1A3A7A;
+  --blue:                 #2E74B5;
+  --blue-500:             #002050;
+  --blue-600:             #001840;
+  --blue-400:             #1A3A7A;
+  --blue-300:             #2E74B5;
+  --blue-100:             #D6E4F7;
+  --blue-50:              #EBF2FC;
+  --red:                  #900010;
+  --red-500:              #900010;
+  --red-400:              #B00015;
+  --danger:               #900010;
+  --yellow:               #C8A020;
+  --yellow-500:           #C8A020;
+  --warning:              #C8A020;
+  --sidebar-bg:           #002050;
+  --sidebar-hover-color:  #D6E4F7;
+  --sidebar-active-color: #D6E4F7;
+  --sidebar-border-color: #1A3A7A;
+  --sidebar-select-color: #D6E4F7;
+  --sidebar-text-color:   #D6E4F7;
+  --link-color:           #2E74B5;
+}
+
+html[data-theme="light"] {
+  --primary:              #002050;
+  --primary-color:        #002050;
+  --brand-color:          #002050;
+  --btn-primary-bg:       #002050;
+  --blue:                 #2E74B5;
+  --danger:               #900010;
+  --sidebar-bg:           #002050;
+  --sidebar-hover-color:  #D6E4F7;
+  --sidebar-active-color: #D6E4F7;
+  --sidebar-text-color:   #D6E4F7;
+}
+
+html[data-theme="dark"] {
+  --primary:              #2E74B5;
+  --primary-color:        #2E74B5;
+  --brand-color:          #2E74B5;
+  --btn-primary-bg:       #2E74B5;
+  --btn-primary-border:   #1A3A7A;
+  --sidebar-bg:           #001840;
+  --sidebar-hover-color:  #1A3A7A;
+  --sidebar-active-color: #1A3A7A;
+  --sidebar-text-color:   #D6E4F7;
+}
+
+/* Dark mode — sidebar stays navy */
+html[data-theme="dark"] .body-sidebar-container,
+html[data-theme="dark"] .body-sidebar,
+html[data-theme="dark"] .body-sidebar-cards,
+html[data-theme="dark"] .body-sidebar-bottom,
+html[data-theme="dark"] .standard-items-sections,
+html[data-theme="dark"] .sidebar-header,
+html[data-theme="dark"] .body-sidebar .body-sidebar-cards,
+html[data-theme="dark"] .body-sidebar .body-sidebar-bottom,
+html[data-theme="dark"] .body-sidebar .standard-items-sections,
+html[data-theme="dark"] html body .body-sidebar .body-sidebar-cards,
+html[data-theme="dark"] html body .body-sidebar .body-sidebar-bottom,
+html[data-theme="dark"] html body .body-sidebar .standard-items-sections {
+  background-color: #001840 !important;
+}
+
+/* Dark mode — navbar stays navy */
+html[data-theme="dark"] header.navbar,
+html[data-theme="dark"] .navbar {
+  background-color: #002050 !important;
+  border-bottom: 3px solid #900010 !important;
+}
+
+/* Dark mode — primary buttons use Steel Blue */
+html[data-theme="dark"] .btn-primary {
+  background-color: #2E74B5 !important;
+  border-color: #1A3A7A !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+  background-color: #1A3A7A !important;
+  border-color: #002050 !important;
+}
+
+/* Dark mode — secondary buttons */
+html[data-theme="dark"] .btn-default,
+html[data-theme="dark"] .btn-secondary {
+  border-color: #2E74B5 !important;
+  color: #D6E4F7 !important;
+}
+
+html[data-theme="dark"] .btn-default:hover,
+html[data-theme="dark"] .btn-secondary:hover {
+  background-color: #1A3A7A !important;
+  color: #ffffff !important;
+}
+
+/* Dark mode — section headings */
+html[data-theme="dark"] .section-head,
+html[data-theme="dark"] .form-section .section-head {
+  color: #D6E4F7 !important;
+  border-bottom: 2px solid #1A3A7A !important;
+}
+
+/* Dark mode — form title */
+html[data-theme="dark"] .page-title .title-text,
+html[data-theme="dark"] .form-header-title {
+  color: #D6E4F7 !important;
+}
+
+/* Dark mode — active form tab */
+html[data-theme="dark"] .form-tabs .nav-link.active,
+html[data-theme="dark"] .form-tabs-list .nav-link.active {
+  color: #D6E4F7 !important;
+  border-bottom: 2px solid #2E74B5 !important;
+}
+
+html[data-theme="dark"] .form-tabs .nav-link:hover,
+html[data-theme="dark"] .form-tabs-list .nav-link:hover {
+  color: #90AED4 !important;
+}
+
+/* Dark mode — links */
+html[data-theme="dark"] a {
+  color: #90AED4 !important;
+}
+
+html[data-theme="dark"] header.navbar a,
+html[data-theme="dark"] .navbar a {
+  color: #ffffff !important;
+}
+
+/* Dark mode — modal headers */
+html[data-theme="dark"] .modal-header {
+  background-color: #001840 !important;
+  border-bottom: 2px solid #900010 !important;
+}
+
+/* Dark mode — sidebar item links */
+html[data-theme="dark"] .item-anchor {
+  color: #D6E4F7 !important;
+}
+
+html[data-theme="dark"] .item-anchor:hover {
+  background-color: #1A3A7A !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .standard-sidebar-item.selected .item-anchor,
+html[data-theme="dark"] .standard-sidebar-item.active .item-anchor {
+  background-color: #004080 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .sidebar-item-label,
+html[data-theme="dark"] .item-anchor svg {
+  color: #D6E4F7 !important;
+  fill: #D6E4F7 !important;
+}
+
+/* Dark mode — page head border */
+html[data-theme="dark"] .page-head {
+  border-bottom: 2px solid #1A3A7A !important;
+}
+
+/* Dark mode — input focus */
+html[data-theme="dark"] .form-control:focus,
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+  border-color: #2E74B5 !important;
+  box-shadow: 0 0 0 3px rgba(46, 116, 181, 0.35) !important;
+}
+
+
+
+/* ═══════════════════════════════════════════════════════
+   2. NAVBAR (app launcher top bar)
+═══════════════════════════════════════════════════════ */
+header.navbar,
+.navbar {
+  background-color: #002050 !important;
+  border-bottom: 3px solid #900010 !important;
+}
+
+header.navbar .nav-link,
+header.navbar .navbar-nav > li > a,
+header.navbar .dropdown-toggle,
+.navbar .nav-link,
+.navbar .navbar-nav > li > a,
+.navbar .navbar-brand,
+.navbar .dropdown-toggle {
+  color: #ffffff !important;
+}
+
+header.navbar .nav-link:hover,
+.navbar .nav-link:hover {
+  color: #D6E4F7 !important;
+  background-color: rgba(255,255,255,0.1) !important;
+}
+
+.navbar .search-bar,
+.navbar .form-control,
+.awesomplete input {
+  background-color: #1A3A7A !important;
+  border-color: #2E74B5 !important;
+  color: #ffffff !important;
+}
+
+.navbar .search-bar::placeholder,
+.awesomplete input::placeholder {
+  color: #90AED4 !important;
+}
+
+.navbar .dropdown-menu {
+  background-color: #002050 !important;
+  border-color: #1A3A7A !important;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #ffffff !important;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: #1A3A7A !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* High-specificity fallback for navbar */
+html body header.navbar,
+html body .navbar {
+  background-color: #002050 !important;
+  border-bottom: 3px solid #900010 !important;
+}
+
+html body header.navbar .nav-link,
+html body .navbar .nav-link,
+html body .navbar .navbar-brand,
+html body .navbar .dropdown-toggle {
+  color: #ffffff !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   3. SIDEBAR (Frappe v16 confirmed selectors)
+   frappe_desk_theme uses:
+     .body-sidebar .body-sidebar-cards { background-color: var(--sidebar-bg,#f8f8f8) !important }
+   We beat it by: setting --sidebar-bg AND matching same specificity
+═══════════════════════════════════════════════════════ */
+
+/* Outer containers */
+.body-sidebar-container,
+.body-sidebar {
+  background-color: #002050 !important;
+  border-right: 2px solid #900010 !important;
+}
+
+.sidebar-header {
+  background-color: #002050 !important;
+  border-bottom: 1px solid #1A3A7A !important;
+}
+
+/* Match frappe_desk_theme's exact selectors to override at same specificity */
+.body-sidebar .body-sidebar-cards,
+.body-sidebar .body-sidebar-bottom,
+.body-sidebar .standard-items-sections {
+  background-color: #002050 !important;
+  scrollbar-width: none;
+}
+
+/* Sidebar header text */
+.sidebar-header,
+.sidebar-header a,
+.sidebar-header span,
+.sidebar-header svg,
+.sidebar-header .dropdown-toggle {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Nav item links */
+.item-anchor {
+  color: #D6E4F7 !important;
+  border-radius: 6px !important;
+}
+
+.item-anchor:hover {
+  background-color: #1A3A7A !important;
+  color: #ffffff !important;
+}
+
+.standard-sidebar-item.selected .item-anchor,
+.standard-sidebar-item.active .item-anchor {
+  background-color: #004080 !important;
+  color: #ffffff !important;
+}
+
+/* Labels and icons */
+.sidebar-item-label,
+.item-anchor svg,
+.sidebar-item-icon {
+  color: #D6E4F7 !important;
+  fill: #D6E4F7 !important;
+}
+
+/* Footer user area */
+.body-sidebar-bottom,
+.body-sidebar-bottom *,
+.body-sidebar-bottom a,
+.body-sidebar-bottom span {
+  color: #D6E4F7 !important;
+  border-top: 1px solid #1A3A7A !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   4. PRIMARY BUTTONS
+═══════════════════════════════════════════════════════ */
+.btn-primary {
+  background-color: #002050 !important;
+  border-color:     #002050 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1A3A7A !important;
+  border-color:     #1A3A7A !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:active {
+  background-color: #001840 !important;
+  border-color:     #001840 !important;
+}
+
+.btn-default,
+.btn-secondary {
+  border-color: #2E74B5 !important;
+  color: #002050 !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+  background-color: #D6E4F7 !important;
+  color: #002050 !important;
+}
+
+.btn-danger {
+  background-color: #900010 !important;
+  border-color:     #900010 !important;
+  color: #ffffff !important;
+}
+
+.btn-danger:hover {
+  background-color: #B00015 !important;
+  border-color:     #B00015 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   5. FORM HEADERS & SECTION HEADINGS
+═══════════════════════════════════════════════════════ */
+.page-title .title-text,
+.form-header-title {
+  color: #002050 !important;
+}
+
+.section-head,
+.form-section .section-head {
+  color: #004080 !important;
+  border-bottom: 2px solid #D6E4F7 !important;
+  font-weight: 600;
+}
+
+.page-head {
+  border-bottom: 2px solid #002050 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   6. FORM TABS
+═══════════════════════════════════════════════════════ */
+.form-tabs .nav-link.active,
+.form-tabs-list .nav-link.active {
+  color: #002050 !important;
+  border-bottom: 2px solid #002050 !important;
+  font-weight: 600;
+}
+
+.form-tabs .nav-link:hover,
+.form-tabs-list .nav-link:hover {
+  color: #1A3A7A !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   7. LINKS
+═══════════════════════════════════════════════════════ */
+a {
+  color: #2E74B5 !important;
+}
+
+a:hover {
+  color: #002050 !important;
+}
+
+header.navbar a,
+.navbar a {
+  color: #ffffff !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   8. MODAL HEADERS
+═══════════════════════════════════════════════════════ */
+.modal-header {
+  background-color: #002050 !important;
+  border-bottom: 2px solid #900010 !important;
+}
+
+.modal-header .modal-title,
+.modal-header h5,
+.modal-header .close,
+.modal-header button {
+  color: #ffffff !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   9. INDICATORS / BADGES / STATUS PILLS
+═══════════════════════════════════════════════════════ */
+.indicator-pill.blue,
+.indicator.blue {
+  background-color: #D6E4F7 !important;
+  color: #002050 !important;
+}
+
+.indicator-pill.red,
+.indicator.red {
+  background-color: #fde8ea !important;
+  color: #900010 !important;
+}
+
+.indicator-pill.orange,
+.indicator.orange {
+  background-color: #fff3cd !important;
+  color: #8a6d00 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   10. DASHBOARD NUMBER CARDS & MODULE CARDS
+═══════════════════════════════════════════════════════ */
+.widget.number-widget-box {
+  border-top: 3px solid #002050 !important;
+}
+
+.widget.number-widget-box .widget-title {
+  color: #002050 !important;
+  font-weight: 600;
+}
+
+.desk-module-card,
+.modules-section .widget {
+  border-top: 3px solid #002050 !important;
+  transition: box-shadow 0.2s ease;
+}
+
+.desk-module-card:hover,
+.modules-section .widget:hover {
+  box-shadow: 0 4px 12px rgba(0, 32, 80, 0.18) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   11. INPUT FOCUS RINGS
+═══════════════════════════════════════════════════════ */
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2E74B5 !important;
+  box-shadow: 0 0 0 3px rgba(46, 116, 181, 0.25) !important;
+  outline: none !important;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #002050;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   12. PRINT FORMAT
+═══════════════════════════════════════════════════════ */
+@media print {
+  .print-format table thead {
+    background-color: #002050 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+  /* ═══════════════════════════════════════════════════════
+   13. SIDEBAR OVERRIDE — beats frappe_desk_theme specificity
+═══════════════════════════════════════════════════════ */
+html body .body-sidebar .body-sidebar-cards,
+html body .body-sidebar .body-sidebar-bottom,
+html body .body-sidebar .standard-items-sections {
+  background-color: #002050 !important;
+}

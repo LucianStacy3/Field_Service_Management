@@ -30,6 +30,8 @@ interface ScheduleRightPanelProps {
   onAppointmentSelect: (appointment: Appointment | null) => void;
   onRefresh: () => void;
   statusFilter?: string;
+  serviceAreaFilter?: string;
+  onServiceAreaFilterChange?: (area: string) => void;
 }
 
 export function ScheduleRightPanel({
@@ -41,6 +43,7 @@ export function ScheduleRightPanel({
   selectedAppointment,
   onAppointmentSelect,
   statusFilter,
+  serviceAreaFilter = "all",
 }: ScheduleRightPanelProps) {
   const [datePickerOpen, setDatePickerOpen] = useState(false);
   const [technicianSearch, setTechnicianSearch] = useState("");
@@ -330,6 +333,7 @@ export function ScheduleRightPanel({
             selectedDate={selectedDate}
             onAppointmentClick={onAppointmentSelect}
             technicianSearch={technicianSearch}
+            serviceAreaFilter={serviceAreaFilter}
           />
         )}
         {viewType === "maps" && (
@@ -349,6 +353,7 @@ export function ScheduleRightPanel({
             selectedDate={selectedDate}
             onAppointmentClick={onAppointmentSelect}
             searchQuery={gridSearch}
+            serviceAreaFilter={serviceAreaFilter}
           />
         )}
         {viewType === "calendar" && (
@@ -359,6 +364,7 @@ export function ScheduleRightPanel({
             onAppointmentClick={onAppointmentSelect}
             currentMonth={calendarMonth}
             onMonthChange={setCalendarMonth}
+            serviceAreaFilter={serviceAreaFilter}
           />
         )}
       </div>

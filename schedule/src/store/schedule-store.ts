@@ -25,6 +25,7 @@ interface ScheduleState {
   appointmentDateRange: { startDate: Date | null; endDate: Date | null }; // For left panel appointments list
   statusFilter: string;
   serviceOrderStatusFilter: string;
+  serviceAreaFilter: string; // "all" or a specific service area name
   viewType: "gantt" | "grid" | "maps" | "calendar";
   leftPanelView: "appointments" | "technicians"; // Track left panel view mode
   leftListMode: "orders" | "appointments"; // Track list content within schedule view
@@ -45,6 +46,7 @@ interface ScheduleState {
   setAppointmentDateRange: (range: { startDate: Date | null; endDate: Date | null }) => void;
   setStatusFilter: (filter: string) => void;
   setServiceOrderStatusFilter: (filter: string) => void;
+  setServiceAreaFilter: (filter: string) => void;
   setViewType: (view: "gantt" | "grid" | "maps" | "calendar") => void;
   setLeftPanelView: (view: "appointments" | "technicians") => void;
   setLeftListMode: (mode: "orders" | "appointments") => void;
@@ -70,6 +72,9 @@ export const useScheduleStore = create<ScheduleState>((set, get) => ({
   },
   statusFilter: "all",
   serviceOrderStatusFilter: "all",
+  serviceAreaFilter: typeof window !== "undefined"
+    ? (localStorage.getItem("schedule-service-area-filter") || "all")
+    : "all",
   viewType: getInitialViewType(),
   leftPanelView: ((): "appointments" | "technicians" => {
     if (typeof window === "undefined") return "appointments";
@@ -114,6 +119,12 @@ export const useScheduleStore = create<ScheduleState>((set, get) => ({
   setAppointmentDateRange: (range) => set({ appointmentDateRange: range }),
   setStatusFilter: (filter) => set({ statusFilter: filter }),
   setServiceOrderStatusFilter: (filter) => set({ serviceOrderStatusFilter: filter }),
+  setServiceAreaFilter: (filter) => {
+    set({ serviceAreaFilter: filter });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("schedule-service-area-filter", filter);
+    }
+  },
   setViewType: (view) => {
     set({ viewType: view });
     // Save to localStorage

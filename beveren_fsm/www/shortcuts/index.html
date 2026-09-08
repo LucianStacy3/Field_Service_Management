@@ -1,0 +1,343 @@
+{% extends "templates/web.html" %}
+
+{% block title %}LCS Quick Access{% endblock %}
+
+{% block head_include %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LCS QUICK ACCESS HUB  —  data-driven via LCS Shortcut DocType
+   Palette: Navy #002050 | Crimson #900010 | Gold #C8A020
+             Steel Blue #004080 | Light Blue #D6E4F7
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.lcs-shortcuts-page {
+  background: #0d1824;
+  color: #e8edf4;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.qa-header {
+  background: #002050;
+  border-bottom: 3px solid #C8A020;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+.qa-header-left { display: flex; align-items: center; gap: 1rem; }
+.qa-header-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: #fff;
+}
+.qa-header-logo span { color: #C8A020; }
+.qa-header-divider { width: 1px; height: 28px; background: #004080; }
+.qa-header-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #D6E4F7;
+}
+.qa-user-chip {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: #004080; border: 1px solid #1a4a8a;
+  border-radius: 24px; padding: 0.3rem 0.9rem 0.3rem 0.4rem;
+}
+.qa-user-avatar {
+  width: 32px; height: 32px; background: #C8A020; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 0.95rem; color: #002050; flex-shrink: 0;
+}
+.qa-user-name { font-size: 0.82rem; font-weight: 600; color: #fff; white-space: nowrap; }
+.qa-user-role { font-size: 0.7rem; color: #9bb3cc; white-space: nowrap; }
+
+.qa-admin-link {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+  color: #C8A020; text-decoration: none;
+  border: 1px solid rgba(200,160,32,0.35);
+  border-radius: 6px; padding: 0.3rem 0.65rem;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.qa-admin-link:hover {
+  background: rgba(200,160,32,0.12);
+  border-color: rgba(200,160,32,0.65);
+  color: #d8b840;
+}
+.qa-admin-link svg { flex-shrink: 0; }
+
+/* ---------- SEARCH ---------- */
+.qa-search-zone {
+  background: linear-gradient(180deg, #002050 0%, #0d1824 100%);
+  padding: 2rem 2rem 1.5rem; text-align: center;
+}
+.qa-search-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #C8A020; margin-bottom: 0.75rem;
+}
+.qa-search-wrap { max-width: 480px; margin: 0 auto; position: relative; }
+.qa-search-wrap svg {
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  color: #9bb3cc; pointer-events: none;
+}
+#qa-search {
+  width: 100%; background: #0a2040;
+  border: 1px solid #1a4a8a; border-radius: 8px;
+  padding: 0.65rem 1rem 0.65rem 2.75rem;
+  color: #e8edf4; font-family: 'Inter', sans-serif;
+  font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+}
+#qa-search:focus { border-color: #C8A020; }
+#qa-search::placeholder { color: #4a6a8a; }
+
+/* ---------- MAIN ---------- */
+.qa-main { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+
+/* ---------- SECTION ---------- */
+.qa-section { margin-bottom: 2rem; }
+.qa-section-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 0.9rem; padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1a3050;
+}
+.qa-section-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1rem;
+}
+.qa-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #D6E4F7;
+}
+.qa-section-count { margin-left: auto; font-size: 0.72rem; color: #4a6a8a; }
+
+/* ---------- GRID ---------- */
+.qa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+
+/* ---------- CARD ---------- */
+.qa-card {
+  background: #0a1e38; border: 1px solid #1a3050;
+  border-radius: 10px; padding: 1rem 1rem 0.85rem;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.qa-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--card-accent, #004080);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.2s;
+}
+.qa-card:hover {
+  border-color: var(--card-accent, #004080); background: #0d2540;
+  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.qa-card:hover::before { transform: scaleX(1); }
+.qa-card-icon-row { display: flex; align-items: center; justify-content: space-between; }
+.qa-card-emoji { font-size: 1.4rem; line-height: 1; }
+.qa-card-badge {
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.15rem 0.45rem; border-radius: 4px;
+  background: var(--badge-bg, rgba(0,64,128,0.4));
+  color: var(--badge-color, #9bb3cc);
+  border: 1px solid var(--badge-border, #1a4a8a);
+}
+.qa-card-label { font-size: 0.88rem; font-weight: 600; color: #d0daea; line-height: 1.3; }
+.qa-card-desc  { font-size: 0.72rem; color: #5a7a9a; line-height: 1.4; }
+
+/* ---------- SECTION THEMES ---------- */
+.ts .qa-section-icon { background: rgba(144,0,16,.25); color: #e05060; }
+.ts .qa-card { --card-accent:#900010; --badge-bg:rgba(144,0,16,.25); --badge-color:#e05060; --badge-border:rgba(144,0,16,.5); }
+
+.tv .qa-section-icon { background: rgba(0,64,128,.3); color: #5090d0; }
+.tv .qa-card { --card-accent:#004080; --badge-bg:rgba(0,64,128,.25); --badge-color:#7ab0e0; --badge-border:rgba(0,64,128,.5); }
+
+.tg .qa-section-icon { background: rgba(200,160,32,.2); color: #C8A020; }
+.tg .qa-card { --card-accent:#C8A020; --badge-bg:rgba(200,160,32,.15); --badge-color:#d8b840; --badge-border:rgba(200,160,32,.4); }
+
+.tt .qa-section-icon { background: rgba(0,128,100,.25); color: #40c0a0; }
+.tt .qa-card { --card-accent:#008060; --badge-bg:rgba(0,128,100,.2); --badge-color:#40c0a0; --badge-border:rgba(0,128,100,.45); }
+
+.th .qa-section-icon { background: rgba(100,80,160,.25); color: #a090e0; }
+.th .qa-card { --card-accent:#6450a0; --badge-bg:rgba(100,80,160,.2); --badge-color:#b0a0e8; --badge-border:rgba(100,80,160,.45); }
+
+.ta .qa-section-icon { background: rgba(60,80,100,.3); color: #8aaccc; }
+.ta .qa-card { --card-accent:#3c5064; --badge-bg:rgba(60,80,100,.25); --badge-color:#8aaccc; --badge-border:rgba(60,80,100,.5); }
+
+/* ---------- SEARCH HIDDEN / NO RESULTS ---------- */
+.qa-card.hidden { display: none; }
+.qa-section.all-hidden { display: none; }
+#qa-no-results { display: none; text-align: center; padding: 3rem 1rem; color: #4a6a8a; }
+#qa-no-results .nr-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+/* ---------- FOOTER ---------- */
+.qa-footer {
+  text-align: center; padding: 1.5rem;
+  border-top: 1px solid #1a3050;
+  font-size: 0.72rem; color: #3a5070; letter-spacing: 0.05em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .qa-header { padding: 0 1rem; }
+  .qa-header-title { display: none; }
+  .qa-user-role { display: none; }
+  .qa-main { padding: 1rem; }
+  .qa-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); }
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<body class="lcs-shortcuts-page">
+
+<header class="qa-header">
+  <div class="qa-header-left">
+    <span class="qa-header-logo">Left Coast <span>Scales</span></span>
+    <div class="qa-header-divider"></div>
+    <span class="qa-header-title">Quick Access</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    {% if is_system_manager %}
+    <a class="qa-admin-link" href="/app/lcs-shortcut" title="Manage shortcuts in ERPNext desk">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+        <path d="M12 2v2m0 16v2M2 12h2m16 0h2"/>
+      </svg>
+      Manage Shortcuts
+    </a>
+    {% endif %}
+    <div class="qa-user-chip">
+      <div class="qa-user-avatar" id="qa-avatar">??</div>
+      <div class="qa-user-info">
+        <div class="qa-user-name" id="qa-user-name">{{ employee_name }}</div>
+        <div class="qa-user-role">{{ designation or department or 'Employee' }}</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="qa-search-zone">
+  <div class="qa-search-label">Quick Find</div>
+  <div class="qa-search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input type="text" id="qa-search" placeholder="Search shortcuts… (press / to focus)" autocomplete="off">
+  </div>
+</div>
+
+<main class="qa-main" id="qa-main">
+
+  {% for sec in sections %}
+  <section class="qa-section {{ sec.theme }}" data-section="{{ sec.name | lower }}">
+    <div class="qa-section-header">
+      <div class="qa-section-icon">{{ sec.icon }}</div>
+      <span class="qa-section-title">{{ sec.name }}</span>
+      <span class="qa-section-count">{{ sec.cards | length }} shortcut{{ 's' if sec.cards | length != 1 else '' }}</span>
+    </div>
+    <div class="qa-grid">
+      {% for card in sec.cards %}
+      <a class="qa-card"
+         href="{{ card.url }}"
+         {% if card.url.startswith('http') %}target="_blank" rel="noopener"{% endif %}
+         data-tags="{{ sec.name | lower }} {{ card.label | lower }} {{ card.description | lower }} {{ card.badge | lower }}">
+        <div class="qa-card-icon-row">
+          <span class="qa-card-emoji">{{ card.icon }}</span>
+          <span class="qa-card-badge">{{ card.badge }}</span>
+        </div>
+        <div class="qa-card-label">{{ card.label }}</div>
+        {% if card.description %}
+        <div class="qa-card-desc">{{ card.description }}</div>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+  {% if not sections %}
+  <div style="text-align:center;padding:3rem 1rem;color:#4a6a8a;">
+    No shortcuts have been configured yet.<br>
+    Add records to the <strong>LCS Shortcut</strong> DocType in the ERPNext desk.
+  </div>
+  {% endif %}
+
+  <div id="qa-no-results">
+    <div class="nr-icon">🔎</div>
+    <div style="font-size:0.9rem;">No shortcuts match your search.</div>
+  </div>
+
+</main>
+
+<footer class="qa-footer">
+  LEFT COAST SCALES, LLC &nbsp;·&nbsp; INTERNAL USE ONLY &nbsp;·&nbsp; POWERED BY LCS FIELD SERVICE MANAGEMENT
+</footer>
+
+</body>
+{% endblock %}
+
+{% block script %}
+<script>
+(function () {
+  /* Avatar initials */
+  const nameEl = document.getElementById('qa-user-name');
+  const avatarEl = document.getElementById('qa-avatar');
+  if (nameEl && avatarEl) {
+    const parts = (nameEl.textContent || '').trim().split(/\s+/);
+    avatarEl.textContent = parts.length >= 2
+      ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+      : (parts[0] || '?').substring(0, 2).toUpperCase();
+  }
+
+  /* Search filter */
+  const searchInput = document.getElementById('qa-search');
+  const noResults   = document.getElementById('qa-no-results');
+
+  searchInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    let totalVisible = 0;
+
+    document.querySelectorAll('.qa-section').forEach(section => {
+      let sectionVisible = 0;
+      section.querySelectorAll('.qa-card').forEach(card => {
+        const haystack = (card.dataset.tags || '') + ' ' +
+          (card.querySelector('.qa-card-label')?.textContent || '') + ' ' +
+          (card.querySelector('.qa-card-desc')?.textContent  || '');
+        const match = !q || haystack.toLowerCase().includes(q);
+        card.classList.toggle('hidden', !match);
+        if (match) sectionVisible++;
+      });
+      section.classList.toggle('all-hidden', sectionVisible === 0);
+      totalVisible += sectionVisible;
+    });
+
+    noResults.style.display = (q && totalVisible === 0) ? 'block' : 'none';
+  });
+
+  /* Press / to focus search */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+})();
+</script>
+{% endblock %}

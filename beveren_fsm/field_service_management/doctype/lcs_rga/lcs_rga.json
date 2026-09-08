@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "date_issued",
+  "item_description",
+  "serial_number",
+  "col_break_1",
+  "reason_for_return",
+  "requested_action",
+  "initiated_by",
+  "section_handling",
+  "status",
+  "tagged",
+  "col_break_2",
+  "holding_area",
+  "linked_ncr"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "RGA-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date_issued",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Issued",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_description",
+   "fieldtype": "Data",
+   "label": "Item Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason_for_return",
+   "fieldtype": "Text",
+   "label": "Reason for Return",
+   "reqd": 1
+  },
+  {
+   "description": "Free text pending confirmation of SOP-013 Section 5.9's exact requested-action categories \u2014 see Phase 7B Active Brief Section 7.",
+   "fieldname": "requested_action",
+   "fieldtype": "Small Text",
+   "label": "Requested Action"
+  },
+  {
+   "fieldname": "initiated_by",
+   "fieldtype": "Link",
+   "label": "Initiated By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_handling",
+   "fieldtype": "Section Break",
+   "label": "Handling"
+  },
+  {
+   "default": "Issued",
+   "description": "Values pending confirmation against the full SOP-013 Section 5.9 text.",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Issued\nItem Received\nUnder Review\nClosed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tagged",
+   "fieldtype": "Check",
+   "label": "Physically Tagged"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "holding_area",
+   "fieldtype": "Data",
+   "label": "Holding Area"
+  },
+  {
+   "description": "Set when the returned item turns out non-conforming (SOP-013 Section 5.9 feeds directly into the NCR process).",
+   "fieldname": "linked_ncr",
+   "fieldtype": "Link",
+   "label": "Linked NCR",
+   "options": "LCS NCR"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS RGA",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

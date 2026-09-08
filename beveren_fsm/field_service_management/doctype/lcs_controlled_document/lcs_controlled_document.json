@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:document_number",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_number",
+  "title",
+  "issue_number",
+  "col_break_1",
+  "document_type",
+  "status",
+  "section_people",
+  "originator",
+  "department",
+  "col_break_2",
+  "reviewer",
+  "approved_by",
+  "approval_date",
+  "section_dates",
+  "effective_date",
+  "review_date",
+  "col_break_3",
+  "document_url",
+  "change_summary",
+  "section_history",
+  "revision_history",
+  "controlled_copy_register"
+ ],
+ "fields": [
+  {
+   "fieldname": "document_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Document Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "issue_number",
+   "fieldtype": "Int",
+   "label": "Issue #",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "Procedure\nWork Instruction\nForm\nPolicy\nExternal",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nUnder Review\nApproved\nObsolete",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_people",
+   "fieldtype": "Section Break",
+   "label": "People & Routing"
+  },
+  {
+   "fieldname": "originator",
+   "fieldtype": "Link",
+   "label": "Originator",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "description": "Drives review routing (Phase 7B Active Brief Section 6.1 refinement) \u2014 reviewer is assigned per department rather than one fixed hardcoded approver.",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Manually assigned for now. Auto-routing by department is a follow-up once a department-to-reviewer mapping exists in ERPNext.",
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "Reviewer",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "label": "Approval Date"
+  },
+  {
+   "fieldname": "section_dates",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "label": "Effective Date"
+  },
+  {
+   "description": "Nightly scheduler flags Approved documents approaching this date.",
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Canonical Nextcloud location (Phase 7B Active Brief Section 4). Not a file attachment \u2014 Nextcloud stays the file host; native version history is on, so a new approved revision overwrites this same path/URL.",
+   "fieldname": "document_url",
+   "fieldtype": "Data",
+   "label": "Document URL",
+   "options": "URL",
+   "reqd": 1
+  },
+  {
+   "description": "What changed in the revision currently under review. Logged to Revision History automatically when status moves to Approved.",
+   "fieldname": "change_summary",
+   "fieldtype": "Small Text",
+   "label": "Change Summary (Pending Revision)"
+  },
+  {
+   "fieldname": "section_history",
+   "fieldtype": "Section Break",
+   "label": "Revision History & Controlled Copies"
+  },
+  {
+   "fieldname": "revision_history",
+   "fieldtype": "Table",
+   "label": "Revision History",
+   "options": "LCS Controlled Document Revision"
+  },
+  {
+   "fieldname": "controlled_copy_register",
+   "fieldtype": "Table",
+   "label": "Controlled Copy Register",
+   "options": "LCS Controlled Document Copy Holder"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Controlled Document",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "document_number",
+ "sort_order": "ASC",
+ "title_field": "title",
+ "track_changes": 1
+}

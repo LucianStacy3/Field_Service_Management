@@ -1,0 +1,423 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-06-09 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_header",
+  "agreement_name",
+  "naming_series",
+  "status",
+  "column_break_header",
+  "customer",
+  "company",
+  "amended_from",
+  "section_break_dates",
+  "contract_start_date",
+  "contract_end_date",
+  "column_break_dates",
+  "next_service_order_date",
+  "last_auto_created_date",
+  "last_service_date",
+  "section_break_recurrence",
+  "recurrence_type",
+  "recurrence_interval",
+  "recurrence_unit",
+  "fixed_months",
+  "column_break_recurrence",
+  "auto_create_service_orders",
+  "section_break_due",
+  "due_date_type",
+  "due_week_number",
+  "due_weekday",
+  "column_break_due",
+  "due_date_note",
+  "section_break_service",
+  "service_type",
+  "service_area",
+  "column_break_service",
+  "priority",
+  "section_break_job_notes",
+  "equipment_required",
+  "ppe_requirements",
+  "weight_standards",
+  "calibration_sticker_type",
+  "job_notes",
+  "section_break_external",
+  "smartercerts_url",
+  "column_break_external",
+  "external_notes",
+  "section_break_sites",
+  "sites",
+  "section_break_equipment",
+  "equipment",
+  "section_break_billing",
+  "annual_value",
+  "currency",
+  "column_break_billing",
+  "billing_frequency",
+  "notes_tab",
+  "internal_notes"
+ ],
+ "fields": [
+  { "fieldname": "section_break_header", "fieldtype": "Section Break" },
+  {
+   "fieldname": "agreement_name",
+   "fieldtype": "Data",
+   "label": "Agreement Name",
+   "reqd": 1,
+   "bold": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "SVC-AGR-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nOn Hold\nExpired\nCancelled",
+   "reqd": 1
+  },
+  { "fieldname": "column_break_header", "fieldtype": "Column Break" },
+  {
+   "bold": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LCS Service Agreement",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_dates",
+   "fieldtype": "Section Break",
+   "label": "Contract Period"
+  },
+  {
+   "fieldname": "contract_start_date",
+   "fieldtype": "Date",
+   "label": "Contract Start Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "contract_end_date",
+   "fieldtype": "Date",
+   "label": "Contract End Date"
+  },
+  { "fieldname": "column_break_dates", "fieldtype": "Column Break" },
+  {
+   "fieldname": "next_service_order_date",
+   "fieldtype": "Date",
+   "label": "Next Service Order Date",
+   "no_copy": 1,
+   "description": "Auto-computed. Edit to override the next scheduled trigger date."
+  },
+  {
+   "fieldname": "last_auto_created_date",
+   "fieldtype": "Date",
+   "label": "Last Auto-Created Date",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "last_service_date",
+   "fieldtype": "Date",
+   "label": "Last Service Date",
+   "no_copy": 1,
+   "description": "Date the most recent service was actually performed. Used by 'Last Service + Interval' due-date calculation."
+  },
+  {
+   "fieldname": "section_break_recurrence",
+   "fieldtype": "Section Break",
+   "label": "Recurrence Schedule"
+  },
+  {
+   "default": "Interval",
+   "fieldname": "recurrence_type",
+   "fieldtype": "Select",
+   "label": "Recurrence Type",
+   "options": "Interval\nFixed Months",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.recurrence_type == 'Interval'",
+   "fieldname": "recurrence_interval",
+   "fieldtype": "Int",
+   "label": "Every",
+   "description": "e.g. 3 = every 3 months (quarterly), 6 = semi-annual, 12 = annual, 24 = every 2 years"
+  },
+  {
+   "default": "Month",
+   "depends_on": "eval:doc.recurrence_type == 'Interval'",
+   "fieldname": "recurrence_unit",
+   "fieldtype": "Select",
+   "label": "Unit",
+   "options": "Day\nWeek\nMonth\nYear"
+  },
+  {
+   "depends_on": "eval:doc.recurrence_type == 'Fixed Months'",
+   "fieldname": "fixed_months",
+   "fieldtype": "Table",
+   "label": "Service Months",
+   "options": "LCS Service Agreement Month",
+   "description": "List the months in which a Service Order should be created (on the 1st of each)."
+  },
+  { "fieldname": "column_break_recurrence", "fieldtype": "Column Break" },
+  {
+   "default": "1",
+   "fieldname": "auto_create_service_orders",
+   "fieldtype": "Check",
+   "label": "Auto-Create Service Orders",
+   "description": "Nightly scheduler creates Service Orders when the next date is reached."
+  },
+  {
+   "fieldname": "section_break_due",
+   "fieldtype": "Section Break",
+   "label": "Due Date Rule"
+  },
+  {
+   "default": "End of Service Month",
+   "fieldname": "due_date_type",
+   "fieldtype": "Select",
+   "label": "Due Date Type",
+   "options": "Last Service + Interval\nEnd of Service Month\nNth Weekday of Month",
+   "reqd": 1,
+   "description": "Controls how the due date on each auto-created Service Order is calculated."
+  },
+  {
+   "depends_on": "eval:doc.due_date_type == 'Nth Weekday of Month'",
+   "fieldname": "due_week_number",
+   "fieldtype": "Select",
+   "label": "Week Number",
+   "options": "1st\n2nd\n3rd\n4th\nLast"
+  },
+  {
+   "depends_on": "eval:doc.due_date_type == 'Nth Weekday of Month'",
+   "fieldname": "due_weekday",
+   "fieldtype": "Select",
+   "label": "Weekday",
+   "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  { "fieldname": "column_break_due", "fieldtype": "Column Break" },
+  {
+   "fieldname": "due_date_note",
+   "fieldtype": "Small Text",
+   "label": "Due Date Note"
+  },
+  {
+   "fieldname": "section_break_service",
+   "fieldtype": "Section Break",
+   "label": "Service Details"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "label": "Service Type",
+   "options": "Service Type",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "service_area",
+   "fieldtype": "Link",
+   "label": "Service Area",
+   "options": "Service Area",
+   "in_standard_filter": 1
+  },
+  { "fieldname": "column_break_service", "fieldtype": "Column Break" },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "section_break_job_notes",
+   "fieldtype": "Section Break",
+   "label": "Job Requirements & Notes"
+  },
+  {
+   "fieldname": "equipment_required",
+   "fieldtype": "Small Text",
+   "label": "Equipment Required",
+   "description": "Test trucks, calibration equipment, weight sets, tools, etc."
+  },
+  {
+   "fieldname": "ppe_requirements",
+   "fieldtype": "Small Text",
+   "label": "PPE Requirements",
+   "description": "Hard hat, steel-toe, hi-vis, safety glasses, chemical gloves, etc."
+  },
+  {
+   "fieldname": "weight_standards",
+   "fieldtype": "Small Text",
+   "label": "Weight Standards Required",
+   "description": "e.g. ASTM Class F, OIML M1, specific mass sets"
+  },
+  {
+   "fieldname": "calibration_sticker_type",
+   "fieldtype": "Select",
+   "label": "Calibration Sticker Type",
+   "options": "\nPaper\nWashdown\nBoth\nOther / See Notes"
+  },
+  {
+   "fieldname": "job_notes",
+   "fieldtype": "Text Editor",
+   "label": "Job Notes",
+   "description": "Access instructions, site contacts, hazards, special customer requirements, etc."
+  },
+  {
+   "fieldname": "section_break_external",
+   "fieldtype": "Section Break",
+   "label": "External Systems"
+  },
+  {
+   "fieldname": "smartercerts_url",
+   "fieldtype": "Data",
+   "label": "SmarterCerts URL",
+   "options": "URL"
+  },
+  { "fieldname": "column_break_external", "fieldtype": "Column Break" },
+  {
+   "fieldname": "external_notes",
+   "fieldtype": "Small Text",
+   "label": "External System Notes"
+  },
+  {
+   "fieldname": "section_break_sites",
+   "fieldtype": "Section Break",
+   "label": "Service Sites"
+  },
+  {
+   "fieldname": "sites",
+   "fieldtype": "Table",
+   "label": "Sites",
+   "options": "LCS Service Agreement Site"
+  },
+  {
+   "fieldname": "section_break_equipment",
+   "fieldtype": "Section Break",
+   "label": "Equipment Under Agreement"
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Table",
+   "label": "Equipment",
+   "options": "LCS Service Agreement Equipment"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_billing",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "annual_value",
+   "fieldtype": "Currency",
+   "label": "Annual Agreement Value",
+   "options": "currency"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  { "fieldname": "column_break_billing", "fieldtype": "Column Break" },
+  {
+   "fieldname": "billing_frequency",
+   "fieldtype": "Select",
+   "label": "Billing Frequency",
+   "options": "\nMonthly\nQuarterly\nAnnually\nOne-Time"
+  },
+  {
+   "fieldname": "notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text Editor",
+   "label": "Internal Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "modified": "2026-06-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Service Agreement",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  { "color": "Gray",   "title": "Draft" },
+  { "color": "Green",  "title": "Active" },
+  { "color": "Yellow", "title": "On Hold" },
+  { "color": "Red",    "title": "Expired" },
+  { "color": "Red",    "title": "Cancelled" }
+ ],
+ "track_changes": 1
+}

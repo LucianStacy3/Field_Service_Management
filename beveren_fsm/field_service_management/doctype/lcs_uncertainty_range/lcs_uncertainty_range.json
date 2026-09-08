@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "range_min",
+  "range_max",
+  "uncertainty_value",
+  "uncertainty_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "range_min",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Range Min"
+  },
+  {
+   "fieldname": "range_max",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Range Max"
+  },
+  {
+   "fieldname": "uncertainty_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Uncertainty Value",
+   "reqd": 1
+  },
+  {
+   "default": "Absolute",
+   "fieldname": "uncertainty_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Uncertainty Type",
+   "options": "Absolute\nPercentage",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Uncertainty Range",
+ "owner": "Administrator",
+ "permissions": []
+}

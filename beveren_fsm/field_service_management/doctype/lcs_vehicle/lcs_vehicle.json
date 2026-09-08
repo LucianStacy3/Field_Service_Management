@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:unit_number",
+ "creation": "2026-06-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "unit_number",
+  "nickname",
+  "vehicle_type",
+  "form_type",
+  "col_break_1",
+  "status",
+  "service_area",
+  "branch",
+  "section_identity",
+  "year",
+  "make",
+  "model",
+  "col_break_2",
+  "vin_last_4",
+  "license_plate",
+  "plate_state",
+  "section_odometer",
+  "last_odometer",
+  "last_odometer_date",
+  "col_break_3",
+  "last_driver",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "unit_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Unit / Fleet #",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nickname",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nickname"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Vehicle Type",
+   "options": "Straight Truck\nVan\nPickup\nCompany Car\nTrailer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "form_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Inspection Form",
+   "options": "DOT\nLight Vehicle\nNone",
+   "reqd": 1,
+   "description": "DOT = straight trucks. Light Vehicle = vans, pickups, company cars. None = trailers (covered by towing vehicle)."
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nOut of Service\nRetired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_area",
+   "fieldtype": "Link",
+   "label": "Service Area",
+   "options": "Service Area"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Select",
+   "label": "Branch",
+   "options": "\nPerris\nSan Diego\nEl Centro\nApache Junction"
+  },
+  {
+   "fieldname": "section_identity",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Identity"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "make",
+   "fieldtype": "Data",
+   "label": "Make",
+   "reqd": 1
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vin_last_4",
+   "fieldtype": "Data",
+   "label": "VIN (Last 4)"
+  },
+  {
+   "fieldname": "license_plate",
+   "fieldtype": "Data",
+   "label": "License Plate"
+  },
+  {
+   "fieldname": "plate_state",
+   "fieldtype": "Data",
+   "label": "Plate State"
+  },
+  {
+   "fieldname": "section_odometer",
+   "fieldtype": "Section Break",
+   "label": "Odometer Tracking"
+  },
+  {
+   "fieldname": "last_odometer",
+   "fieldtype": "Int",
+   "label": "Last Recorded Odometer",
+   "description": "Auto-updated when an inspection is submitted."
+  },
+  {
+   "fieldname": "last_odometer_date",
+   "fieldtype": "Date",
+   "label": "Last Odometer Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_driver",
+   "fieldtype": "Link",
+   "label": "Last Driver",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-06-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Vehicle",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  },
+  {
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "sort_field": "unit_number",
+ "sort_order": "ASC",
+ "title_field": "unit_number",
+ "track_changes": 1
+}

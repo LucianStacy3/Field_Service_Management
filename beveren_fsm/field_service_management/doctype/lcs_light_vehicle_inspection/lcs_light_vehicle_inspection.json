@@ -1,0 +1,1067 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-06-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "vehicle",
+  "driver",
+  "inspection_date",
+  "col_break_1",
+  "vehicle_type",
+  "vehicle_year_make",
+  "unit_fleet_number",
+  "col_break_2",
+  "license_plate",
+  "plate_state",
+  "odometer_start",
+  "odometer_end",
+  "dispatch_branch",
+  "section_predeparture",
+  "pd_exterior_section",
+  "pd_body_panels",
+  "pd_glass",
+  "pd_mirrors",
+  "pd_hood_latch",
+  "pd_doors",
+  "pd_bumpers",
+  "pd_fuel_cap",
+  "pd_license_plates",
+  "pd_registration",
+  "pd_engine_section",
+  "pd_oil_level",
+  "pd_coolant",
+  "pd_brake_fluid",
+  "pd_power_steering",
+  "pd_washer_fluid",
+  "pd_trans_fluid",
+  "pd_battery",
+  "pd_belts",
+  "pd_hoses",
+  "pd_fluid_leaks",
+  "pd_air_filter",
+  "pd_engine_warning",
+  "pd_lights_section",
+  "pd_headlights",
+  "pd_tail_lights",
+  "pd_brake_lights",
+  "pd_reverse_lights",
+  "pd_turn_signals",
+  "pd_hazard_flashers",
+  "pd_parking_lights",
+  "pd_dome_lights",
+  "pd_dash_warning",
+  "pd_tires_section",
+  "pd_front_left",
+  "pd_front_right",
+  "pd_rear_left",
+  "pd_rear_right",
+  "pd_spare_tire",
+  "pd_lug_nuts",
+  "pd_sidewalls",
+  "pd_valve_stems",
+  "pd_wheel_covers",
+  "pd_brakes_section",
+  "pd_brake_pedal",
+  "pd_parking_brake",
+  "pd_brake_lines",
+  "pd_abs_light",
+  "pd_safety_section",
+  "pd_seat_belts",
+  "pd_horn",
+  "pd_wipers_front",
+  "pd_wipers_rear",
+  "pd_defroster",
+  "pd_hvac",
+  "pd_fire_extinguisher",
+  "pd_first_aid",
+  "pd_hi_vis",
+  "pd_warning_triangles",
+  "pd_backup_camera",
+  "pd_gps_tracker",
+  "pd_van_cargo_section",
+  "pd_cargo_area",
+  "pd_sliding_doors",
+  "pd_cargo_shelving",
+  "pd_tools_stowed",
+  "pd_no_loose_items",
+  "pd_cargo_floor",
+  "pd_pickup_section",
+  "pd_tailgate",
+  "pd_bed_liner",
+  "pd_bed_tiedown",
+  "pd_tonneau_cover",
+  "pd_truck_toolbox",
+  "pd_trailer_hitch",
+  "pd_trailer_wiring",
+  "pd_lcs_equipment_section",
+  "pd_cal_tools",
+  "pd_test_weights",
+  "pd_portable_standard",
+  "pd_equipment_crates",
+  "pd_ipad_tablet",
+  "pd_ppe",
+  "pd_work_orders",
+  "pd_cell_phone",
+  "pd_defect_remarks",
+  "pd_certified",
+  "pd_certified_time",
+  "section_eod",
+  "eod_exterior",
+  "eod_lights",
+  "eod_tires",
+  "eod_brakes",
+  "eod_fluid_leaks",
+  "eod_equipment_returned",
+  "eod_fuel_adequate",
+  "eod_vehicle_secured",
+  "eod_keys_returned",
+  "eod_new_defects",
+  "eod_fuel_added",
+  "eod_fuel_location",
+  "eod_receipt_number",
+  "eod_certified",
+  "eod_certified_time",
+  "inspection_status",
+  "fuel_level",
+  "section_supervisor",
+  "sup_defect_status",
+  "sup_work_order",
+  "sup_repair_date",
+  "sup_repair_notes",
+  "sup_name",
+  "sup_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Series",
+   "label": "Series",
+   "options": "LCS-VEH-.YYYY.-.####"
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "LCS Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Data",
+   "label": "Vehicle Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vehicle_year_make",
+   "fieldtype": "Data",
+   "label": "Year / Make / Model",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unit_fleet_number",
+   "fieldtype": "Data",
+   "label": "Unit / Fleet #",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "license_plate",
+   "fieldtype": "Data",
+   "label": "License Plate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plate_state",
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "odometer_start",
+   "fieldtype": "Int",
+   "label": "Odometer \u2014 Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "odometer_end",
+   "fieldtype": "Int",
+   "label": "Odometer \u2014 End"
+  },
+  {
+   "fieldname": "dispatch_branch",
+   "fieldtype": "Select",
+   "label": "Dispatch Branch",
+   "options": "\nPerris\nSan Diego\nEl Centro\nApache Junction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_predeparture",
+   "fieldtype": "Section Break",
+   "label": "Pre-Departure Inspection"
+  },
+  {
+   "fieldname": "pd_exterior_section",
+   "fieldtype": "Section Break",
+   "label": "1. Exterior Walk-Around"
+  },
+  {
+   "fieldname": "pd_body_panels",
+   "fieldtype": "Select",
+   "label": "Body Panels \u2014 Damage / Dents",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_glass",
+   "fieldtype": "Select",
+   "label": "Glass \u2014 Windshield & Windows",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_mirrors",
+   "fieldtype": "Select",
+   "label": "Mirrors \u2014 Condition & Adjustment",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_hood_latch",
+   "fieldtype": "Select",
+   "label": "Hood Latch & Seal",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_doors",
+   "fieldtype": "Select",
+   "label": "Doors \u2014 All Latch & Close Properly",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_bumpers",
+   "fieldtype": "Select",
+   "label": "Bumpers \u2014 Front & Rear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_fuel_cap",
+   "fieldtype": "Select",
+   "label": "Fuel Cap \u2014 Secure & No Leaks",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_license_plates",
+   "fieldtype": "Select",
+   "label": "License Plates \u2014 Front & Rear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_registration",
+   "fieldtype": "Select",
+   "label": "Registration / IFTA Sticker Current",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_engine_section",
+   "fieldtype": "Section Break",
+   "label": "2. Engine Compartment"
+  },
+  {
+   "fieldname": "pd_oil_level",
+   "fieldtype": "Select",
+   "label": "Engine Oil Level",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_coolant",
+   "fieldtype": "Select",
+   "label": "Coolant / Antifreeze Level",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_brake_fluid",
+   "fieldtype": "Select",
+   "label": "Brake Fluid Level",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_power_steering",
+   "fieldtype": "Select",
+   "label": "Power Steering Fluid (if applicable)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_washer_fluid",
+   "fieldtype": "Select",
+   "label": "Windshield Washer Fluid",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_trans_fluid",
+   "fieldtype": "Select",
+   "label": "Transmission Fluid (if dipstick accessible)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_battery",
+   "fieldtype": "Select",
+   "label": "Battery \u2014 Secure, No Corrosion",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_belts",
+   "fieldtype": "Select",
+   "label": "Belts \u2014 Condition & Tension",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_hoses",
+   "fieldtype": "Select",
+   "label": "Hoses \u2014 No Cracks / Leaks",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_fluid_leaks",
+   "fieldtype": "Select",
+   "label": "No Fluid Leaks Under Vehicle",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_air_filter",
+   "fieldtype": "Select",
+   "label": "Air Filter Indicator / Condition",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_engine_warning",
+   "fieldtype": "Select",
+   "label": "Engine Warning Light \u2014 Clear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_lights_section",
+   "fieldtype": "Section Break",
+   "label": "3. Lights & Electrical"
+  },
+  {
+   "fieldname": "pd_headlights",
+   "fieldtype": "Select",
+   "label": "Headlights \u2014 High & Low Beam",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_tail_lights",
+   "fieldtype": "Select",
+   "label": "Tail Lights",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_brake_lights",
+   "fieldtype": "Select",
+   "label": "Brake / Stop Lights",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_reverse_lights",
+   "fieldtype": "Select",
+   "label": "Reverse Lights",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_turn_signals",
+   "fieldtype": "Select",
+   "label": "Turn Signals \u2014 Front & Rear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_hazard_flashers",
+   "fieldtype": "Select",
+   "label": "Hazard / 4-Way Flashers",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_parking_lights",
+   "fieldtype": "Select",
+   "label": "Parking Lights",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_dome_lights",
+   "fieldtype": "Select",
+   "label": "Interior Dome / Cab Lights",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_dash_warning",
+   "fieldtype": "Select",
+   "label": "Dash Warning Lights \u2014 Clear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_tires_section",
+   "fieldtype": "Section Break",
+   "label": "4. Tires & Wheels"
+  },
+  {
+   "fieldname": "pd_front_left",
+   "fieldtype": "Select",
+   "label": "Front Left \u2014 Inflation & Tread",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_front_right",
+   "fieldtype": "Select",
+   "label": "Front Right \u2014 Inflation & Tread",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_rear_left",
+   "fieldtype": "Select",
+   "label": "Rear Left \u2014 Inflation & Tread",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_rear_right",
+   "fieldtype": "Select",
+   "label": "Rear Right \u2014 Inflation & Tread",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_spare_tire",
+   "fieldtype": "Select",
+   "label": "Spare Tire \u2014 Secured & Inflated (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_lug_nuts",
+   "fieldtype": "Select",
+   "label": "Lug Nuts \u2014 All Present & Tight",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_sidewalls",
+   "fieldtype": "Select",
+   "label": "Sidewalls \u2014 No Cuts / Bulges",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_valve_stems",
+   "fieldtype": "Select",
+   "label": "Valve Stems & Caps",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_wheel_covers",
+   "fieldtype": "Select",
+   "label": "Wheel Covers / Hub Caps Secure",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_brakes_section",
+   "fieldtype": "Section Break",
+   "label": "5. Brakes"
+  },
+  {
+   "fieldname": "pd_brake_pedal",
+   "fieldtype": "Select",
+   "label": "Brake Pedal \u2014 Firm, No Fade",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_parking_brake",
+   "fieldtype": "Select",
+   "label": "Parking / Emergency Brake",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_brake_lines",
+   "fieldtype": "Select",
+   "label": "Brake Lines \u2014 No Leaks / Damage",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_abs_light",
+   "fieldtype": "Select",
+   "label": "ABS Warning Light \u2014 Extinguishes",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_safety_section",
+   "fieldtype": "Section Break",
+   "label": "6. Safety & Operational Equipment"
+  },
+  {
+   "fieldname": "pd_seat_belts",
+   "fieldtype": "Select",
+   "label": "Seat Belts \u2014 All Rows Functional",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_horn",
+   "fieldtype": "Select",
+   "label": "Horn \u2014 Audible",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_wipers_front",
+   "fieldtype": "Select",
+   "label": "Wipers & Washers \u2014 Front",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_wipers_rear",
+   "fieldtype": "Select",
+   "label": "Wipers & Washers \u2014 Rear (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_defroster",
+   "fieldtype": "Select",
+   "label": "Defroster \u2014 Front & Rear",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_hvac",
+   "fieldtype": "Select",
+   "label": "HVAC / Heater Operation",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_fire_extinguisher",
+   "fieldtype": "Select",
+   "label": "Fire Extinguisher \u2014 Present & Charged",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_first_aid",
+   "fieldtype": "Select",
+   "label": "First Aid Kit \u2014 Stocked",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_hi_vis",
+   "fieldtype": "Select",
+   "label": "Hi-Vis Vest(s) \u2014 Present",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_warning_triangles",
+   "fieldtype": "Select",
+   "label": "Warning Triangles / Flares",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_backup_camera",
+   "fieldtype": "Select",
+   "label": "Backup Camera / Sensors (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_gps_tracker",
+   "fieldtype": "Select",
+   "label": "GPS / Fleet Tracker \u2014 Powered On",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_van_cargo_section",
+   "fieldtype": "Section Break",
+   "label": "7. Van Cargo Area (Vans only)"
+  },
+  {
+   "fieldname": "pd_cargo_area",
+   "fieldtype": "Select",
+   "label": "Cargo Area \u2014 Clean & Organized",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_sliding_doors",
+   "fieldtype": "Select",
+   "label": "Sliding / Rear Doors \u2014 Latch & Seal",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_cargo_shelving",
+   "fieldtype": "Select",
+   "label": "Cargo Shelving / Racking \u2014 Secure",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_tools_stowed",
+   "fieldtype": "Select",
+   "label": "Tools & Equipment \u2014 Stowed & Tied",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_no_loose_items",
+   "fieldtype": "Select",
+   "label": "No Loose Items in Cab Area",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_cargo_floor",
+   "fieldtype": "Select",
+   "label": "Cargo Floor \u2014 No Damage / Grease",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_pickup_section",
+   "fieldtype": "Section Break",
+   "label": "8. Pickup Bed & Trailer Equipment (Pickups only)"
+  },
+  {
+   "fieldname": "pd_tailgate",
+   "fieldtype": "Select",
+   "label": "Tailgate \u2014 Latches & Opens Freely",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_bed_liner",
+   "fieldtype": "Select",
+   "label": "Bed Liner \u2014 Intact, No Cracks",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_bed_tiedown",
+   "fieldtype": "Select",
+   "label": "Bed Tie-Down Rings / E-Track",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_tonneau_cover",
+   "fieldtype": "Select",
+   "label": "Tonneau Cover / Camper Shell (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_truck_toolbox",
+   "fieldtype": "Select",
+   "label": "Truck Tool Box \u2014 Locked & Secure (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_trailer_hitch",
+   "fieldtype": "Select",
+   "label": "Trailer Hitch / Ball Mount (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_trailer_wiring",
+   "fieldtype": "Select",
+   "label": "Trailer Wiring / 7-Pin Connector (if equipped)",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_lcs_equipment_section",
+   "fieldtype": "Section Break",
+   "label": "9. LCS Calibration Equipment & Field Gear"
+  },
+  {
+   "fieldname": "pd_cal_tools",
+   "fieldtype": "Select",
+   "label": "Calibration Tools \u2014 Cased & Stowed",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_test_weights",
+   "fieldtype": "Select",
+   "label": "Test Weights \u2014 Secured / Padded",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_portable_standard",
+   "fieldtype": "Select",
+   "label": "Portable Reference Standard \u2014 Secure",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pd_equipment_crates",
+   "fieldtype": "Select",
+   "label": "Equipment Crates / Cases \u2014 Latched",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_ipad_tablet",
+   "fieldtype": "Select",
+   "label": "LCS iPad / Tablet \u2014 Charged",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_ppe",
+   "fieldtype": "Select",
+   "label": "PPE \u2014 Hard Hat, Safety Glasses, Vest",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_work_orders",
+   "fieldtype": "Select",
+   "label": "Work Order / Job Docs On-Hand",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_cell_phone",
+   "fieldtype": "Select",
+   "label": "Company Cell Phone \u2014 Charged",
+   "options": "OK\nNeeds Attention\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pd_defect_remarks",
+   "fieldtype": "Small Text",
+   "label": "Defects / Items Needing Attention"
+  },
+  {
+   "fieldname": "pd_certified",
+   "fieldtype": "Check",
+   "label": "I have inspected this vehicle and confirm it is safe to operate for today's service.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pd_certified_time",
+   "fieldtype": "Datetime",
+   "label": "Pre-Departure Certification Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_eod",
+   "fieldtype": "Section Break",
+   "label": "End-of-Day Return Inspection"
+  },
+  {
+   "fieldname": "eod_exterior",
+   "fieldtype": "Select",
+   "label": "Exterior \u2014 No New Damage",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_lights",
+   "fieldtype": "Select",
+   "label": "Lights \u2014 All Functional",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_tires",
+   "fieldtype": "Select",
+   "label": "Tires \u2014 OK / Pressure Held",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_brakes",
+   "fieldtype": "Select",
+   "label": "Brakes \u2014 No Change",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_fluid_leaks",
+   "fieldtype": "Select",
+   "label": "Fluid Leaks Observed?",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_equipment_returned",
+   "fieldtype": "Select",
+   "label": "Equipment Returned & Stowed",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_fuel_adequate",
+   "fieldtype": "Select",
+   "label": "Fuel Level Adequate for AM",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_vehicle_secured",
+   "fieldtype": "Select",
+   "label": "Vehicle Secured / Locked",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_keys_returned",
+   "fieldtype": "Select",
+   "label": "Keys Returned to Cabinet",
+   "options": "OK\nNeeds Attention\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "eod_new_defects",
+   "fieldtype": "Small Text",
+   "label": "New Defects / Damage Observed During Day"
+  },
+  {
+   "fieldname": "eod_fuel_added",
+   "fieldtype": "Float",
+   "label": "Fuel Added (gal)"
+  },
+  {
+   "fieldname": "eod_fuel_location",
+   "fieldtype": "Data",
+   "label": "Fuel Location"
+  },
+  {
+   "fieldname": "eod_receipt_number",
+   "fieldtype": "Data",
+   "label": "Receipt #"
+  },
+  {
+   "fieldname": "eod_certified",
+   "fieldtype": "Check",
+   "label": "I have returned this vehicle in the same or better condition. Any new defects are noted above."
+  },
+  {
+   "fieldname": "eod_certified_time",
+   "fieldtype": "Datetime",
+   "label": "End-of-Day Certification Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_supervisor",
+   "fieldtype": "Section Break",
+   "label": "Supervisor / Fleet Manager Review (Desk Only)"
+  },
+  {
+   "fieldname": "sup_defect_status",
+   "fieldtype": "Select",
+   "label": "Defect Status",
+   "options": "\nNo defects reported\nDefects corrected\nVehicle out of service"
+  },
+  {
+   "fieldname": "sup_work_order",
+   "fieldtype": "Data",
+   "label": "Work Order #"
+  },
+  {
+   "fieldname": "sup_repair_date",
+   "fieldtype": "Date",
+   "label": "Repair Date"
+  },
+  {
+   "fieldname": "sup_repair_notes",
+   "fieldtype": "Small Text",
+   "label": "Repair / Action Notes"
+  },
+  {
+   "fieldname": "sup_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name"
+  },
+  {
+   "fieldname": "sup_date",
+   "fieldtype": "Date",
+   "label": "Date Reviewed"
+  },
+  {
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "label": "Inspection Status",
+   "options": "Pre-Departure Complete\nComplete",
+   "default": "Pre-Departure Complete",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fuel_level",
+   "fieldtype": "Select",
+   "label": "Fuel Level at Return",
+   "options": "\nEmpty\n1/4\n1/2\n3/4\nFull"
+  }
+ ],
+ "links": [],
+ "modified": "2026-06-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Light Vehicle Inspection",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "inspection_date",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

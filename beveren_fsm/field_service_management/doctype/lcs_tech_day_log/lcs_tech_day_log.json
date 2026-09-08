@@ -1,0 +1,33 @@
+{
+  "doctype": "DocType",
+  "name": "LCS Tech Day Log",
+  "module": "Field Service Management",
+  "custom": 0,
+  "naming_rule": "Expression",
+  "autoname": "format:TDL-{employee}-{log_date}",
+  "track_changes": 1,
+  "fields": [
+    { "fieldname": "employee", "label": "Employee", "fieldtype": "Link", "options": "Employee", "reqd": 1, "in_list_view": 1 },
+    { "fieldname": "log_date", "label": "Log Date", "fieldtype": "Date", "reqd": 1, "in_list_view": 1 },
+    { "fieldname": "capacity", "label": "Vehicle Capacity", "fieldtype": "Select", "options": "Light\nHeavy", "default": "Light" },
+    { "fieldname": "schedule_type", "label": "Schedule", "fieldtype": "Select", "options": "CA Standard\nCA Alternative\nArizona", "reqd": 1 },
+    { "fieldname": "day_state", "label": "Day State", "fieldtype": "Select", "options": "Not Started\nActive\nEnded", "default": "Not Started", "in_list_view": 1 },
+    { "fieldname": "needs_review_count", "label": "Flagged Segments", "fieldtype": "Int", "default": 0, "in_list_view": 1, "read_only": 1 },
+    { "fieldname": "current_job", "label": "Current Job", "fieldtype": "Link", "options": "Service Appointment", "read_only": 1,
+      "description": "Live status board field (Technician Status Board). Mirrors the reference_appointment of whatever segment is currently open -- kept on the parent instead of re-deriving from segments on every board refresh. Cleared whenever Travel/Prep/Shop opens or the day ends." },
+    { "fieldname": "on_lunch", "label": "On Lunch", "fieldtype": "Check", "default": 0, "read_only": 1,
+      "description": "Live status board field. Set by LUNCH_OUT, cleared by LUNCH_IN and whenever a new segment opens. Independent of job_paused -- a technician can go to lunch while a job pause is still open underneath (see ReturnFromLunchModal's 'Still Paused' vs 'Resume Job' choice on the way back)." },
+    { "fieldname": "job_paused", "label": "Job Paused", "fieldtype": "Check", "default": 0, "read_only": 1,
+      "description": "Live status board field. Set by PAUSE_JOB, cleared by RESUME_JOB and whenever a new segment opens." },
+    { "fieldname": "column_break_1", "fieldtype": "Column Break" },
+    { "fieldname": "segments", "label": "Segments", "fieldtype": "Table", "options": "LCS Tech Day Log Segment" },
+    { "fieldname": "total_paid_minutes", "label": "Total Paid Minutes", "fieldtype": "Int", "read_only": 1 },
+    { "fieldname": "overtime_minutes", "label": "Overtime Minutes", "fieldtype": "Int", "read_only": 1 },
+    { "fieldname": "doubletime_minutes", "label": "Doubletime Minutes", "fieldtype": "Int", "read_only": 1 }
+  ],
+  "permissions": [
+    { "role": "Field Service User", "read": 1, "write": 1, "create": 1, "if_owner": 1 },
+    { "role": "Field Service Manager", "read": 1, "write": 1, "create": 1, "report": 1 },
+    { "role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1 }
+  ]
+}

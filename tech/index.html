@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Local dev entry only (`yarn dev` / `yarn preview`). The page Frappe
+     actually serves in production is server/www/tech.html — this file
+     never gets deployed. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+    <meta name="theme-color" content="#002957" />
+    <title>LCS Field Tech</title>
+    <link rel="manifest" href="/tech/manifest.json" />
+    <link rel="apple-touch-icon" href="/tech/icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      // Set the theme before first paint so there's no flash of the wrong
+      // mode. Mirrors the resolution logic in src/hooks/useTheme.js —
+      // keep the two in sync if that logic ever changes.
+      (function () {
+        var stored = localStorage.getItem('lcs-theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -90,7 +90,10 @@ frappe.ui.form.on("Service Order", {
           }
         });
 
-        if (non_invoiced_items.length) {
+        if (
+          non_invoiced_items.length &&
+          frappe.user.has_role(["System Manager", "Accounts Manager", "Accounts User", "Service Administrator"])
+        ) {
           frm.add_custom_button(
             __("Sales Invoice"),
             () => {
@@ -150,18 +153,18 @@ frappe.ui.form.on("Service Order", {
   customer: function (frm) {
     frm.set_query("customer_address", function (doc) {
       return {
-        filters: {
-          link_doctype: "Customer",
-          link_name: doc.customer,
-        },
+        filters: [
+          ["Dynamic Link", "link_doctype", "=", "Customer"],
+          ["Dynamic Link", "link_name", "=", doc.customer],
+        ],
       };
     });
     frm.set_query("customer_contact", function (doc) {
       return {
-        filters: {
-          link_doctype: "Customer",
-          link_name: doc.customer,
-        },
+        filters: [
+          ["Dynamic Link", "link_doctype", "=", "Customer"],
+          ["Dynamic Link", "link_name", "=", doc.customer],
+        ],
       };
     });
   },
@@ -1093,7 +1096,7 @@ frappe.ui.form.on("Service Order", {
           selectedItems = tableData.map((row) => ({
             item_code: row.item_code,
             qty: row.qty,
-            max_qty: row.max_qty,
+            max_qty: row.qty,
             rate: row.rate,
             amount: row.amount,
             warehouse: row.warehouse,
@@ -1293,6 +1296,45 @@ beveren_fsm.field_service_management.ServiceOrderController = class ServiceOrder
   onload(doc, dt, dn) {
     super.onload(doc, dt, dn);
   }
+
+  // ------------------------------------------------------------------
+  // Override added to fix: SellingController's inherited due_date()
+  // handler unconditionally reads doc.payment_schedule.length, but
+  // Service Order has no payment_schedule field (it's not a full sales
+  // transaction doctype). Left unoverridden, every due_date change
+  // (e.g. after picking a Customer) threw a silent console TypeError:
+  // "Cannot read properties of undefined (reading 'length')". No
+  // visible break -- due_date itself still saved fine -- but it's
+  // dead/broken inherited logic that doesn't apply to this doctype, so
+  // it's stubbed out here rather than left throwing on every change.
+  // ------------------------------------------------------------------
+  due_date() {
+    // no-op: Service Order doesn't use payment-terms-driven due dates
+  }
+
+  // ------------------------------------------------------------------
+  // Override added to fix: base_grand_total silently ignoring tax.
+  // Core ERPNext's shared calculate_totals() (taxes_and_totals.js) only
+  // recomputes base_grand_total = grand_total * conversion_rate for a
+  // hardcoded doctype whitelist (Quotation, Sales Order, Delivery Note,
+  // Sales Invoice, POS Invoice). Service Order isn't on that list, so
+  // it falls into the "else" branch built for Buying-side tax
+  // categories ("Valuation and Total" / "Total"), which our Sales
+  // Taxes and Charges rows don't set -- leaving base_grand_total
+  // pinned at base_net_total (pre-tax) any time a sales tax is
+  // applied, even though grand_total itself is correct. This silently
+  // produced a wrong base_in_words on save (in_words was right,
+  // base_in_words wasn't) -- found while verifying the in_words fix.
+  // Recompute base_grand_total the same way the whitelisted Sales
+  // doctypes do.
+  // ------------------------------------------------------------------
+  calculate_totals() {
+    super.calculate_totals();
+    this.frm.doc.base_grand_total = this.frm.doc.total_taxes_and_charges
+      ? flt(this.frm.doc.grand_total * this.frm.doc.conversion_rate)
+      : this.frm.doc.base_net_total;
+  }
+
   refresh(doc, dt, dn) {
     super.refresh(doc, dt, dn);
     if (doc.__islocal && !doc.posting_date) {

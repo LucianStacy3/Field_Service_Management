@@ -1,0 +1,119 @@
+{
+   "actions": [],
+   "allow_rename": 1,
+   "autoname": "hash",
+   "creation": "2026-08-28 00:00:00.000000",
+   "doctype": "DocType",
+   "engine": "InnoDB",
+   "field_order": [
+       "primary_label",
+       "primary_manufacturer",
+       "source",
+       "column_break_1",
+       "coti_sku",
+       "zemic_ntep_cc",
+       "section_break_1",
+       "equivalents"
+   ],
+   "fields": [
+       {
+            "fieldname": "primary_label",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Primary Label",
+            "reqd": 1,
+            "description": "The part number/model as printed in the source chart or on Coti's product link (e.g. 20210 \"S\" Cell, H9N, CG-23)."
+       },
+       {
+            "fieldname": "primary_manufacturer",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Primary Manufacturer",
+            "options": "Airweigh\nArtech\nBLH\nCAS\nCardinal\nCeltron (VPG)\nCoti Global\nElectroscale\nEpelsa\nFairbanks\nFirst Weigh\nFlintec\nHBM\nHowe Richardson\nInterface\nMassload\nMasstron\nMettler Toledo\nNCI\nNMB\nOther\nRevere (VPG)\nRice Lake / RLWS\nSI Lodec\nSI-RTI\nScaime\nSensortronics (VPG)\nStreeter Amet\nTedea-Huntleigh (VPG)\nThurman\nTotalcomp\nTranscell\nUnibridge\nWeigh-Tronix\nZemic",
+            "reqd": 1,
+            "description": "Which manufacturer's chart this family is anchored to (Artech, Zemic, or the manufacturer whose Coti Global page listed it)."
+       },
+       {
+            "fieldname": "source",
+            "fieldtype": "Select",
+            "in_standard_filter": 1,
+            "label": "Source",
+            "options": "Artech Cross-Reference Chart\nZemic Cross-Reference Chart\nCoti Global Manufacturer Directory",
+            "reqd": 1
+       },
+       {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+       },
+       {
+            "fieldname": "coti_sku",
+            "fieldtype": "Data",
+            "label": "Coti SKU",
+            "description": "Coti Global's own part number for this family, when known. Used as the connective key across manufacturer pages on cotiglobal.com."
+       },
+       {
+            "fieldname": "zemic_ntep_cc",
+            "fieldtype": "Data",
+            "label": "Zemic NTEP CC#",
+            "description": "Zemic's NTEP Certificate of Conformance number, when the Zemic chart listed one."
+       },
+       {
+            "fieldname": "section_break_1",
+            "fieldtype": "Section Break",
+            "label": "Equivalents"
+       },
+       {
+            "fieldname": "equivalents",
+            "fieldtype": "Table",
+            "label": "Equivalents",
+            "options": "LCS Load Cell Equivalent"
+       }
+   ],
+   "links": [],
+   "modified": "2026-08-28 00:00:00.000000",
+   "modified_by": "Administrator",
+   "module": "Field Service Management",
+   "name": "LCS Load Cell Family",
+   "naming_rule": "Random",
+   "owner": "Administrator",
+   "permissions": [
+       {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+       },
+       {
+            "create": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Service Administrator",
+            "share": 1,
+            "write": 1
+       },
+       {
+            "read": 1,
+            "report": 1,
+            "role": "Employee"
+       },
+       {
+            "read": 1,
+            "role": "All"
+       }
+   ],
+   "search_fields": "primary_label,primary_manufacturer,coti_sku",
+   "sort_field": "primary_manufacturer",
+   "sort_order": "ASC",
+   "title_field": "primary_label",
+   "track_changes": 0
+}

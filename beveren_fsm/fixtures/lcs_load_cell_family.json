@@ -1,0 +1,6172 @@
+[
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0001",
+  "primary_label": "20210 \"S\" Cell",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CGSB-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CGSB-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "U1T"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "*60001"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0002",
+  "primary_label": "SS20210 \"S\" Cell",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CGSB-SS1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CGSB-SS1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20000SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "9363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "*60050"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0003",
+  "primary_label": "30310 Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-23",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-23"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "A35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL30000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3411"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0004",
+  "primary_label": "SS30310 Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-23SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-23SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "B35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL30000SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "9123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3421"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0005",
+  "primary_label": "30410 Link Shear",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5723"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0006",
+  "primary_label": "SS30410 Link Shear",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "9723"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0007",
+  "primary_label": "SS30510 Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CGBLC-C",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CGBLC-C"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BLC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLBLC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "933"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0008",
+  "primary_label": "SS30610 Herm Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-SSB",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-SSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "SSB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0009",
+  "primary_label": "40210 Bending Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5102"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0010",
+  "primary_label": "40310 Bending Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-BBS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "LPB1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-BBS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BBS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL40BBS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60007"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0011",
+  "primary_label": "50210 Bending Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-60040",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-60040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL50210SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5503"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60040"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0012",
+  "primary_label": "60210 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SP10AL"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1010AL"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "662A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1010AL"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0013",
+  "primary_label": "SS60210 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-51",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-51"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60051"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1010"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark III & IX"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0014",
+  "primary_label": "60410 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-50",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-50"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW12"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1250"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "652"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60060"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1250"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0015",
+  "primary_label": "60510 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-40",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-40"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1040"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0016",
+  "primary_label": "878 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "C2G1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1521A"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0017",
+  "primary_label": "879 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-42",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-42"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SP4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1042"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "642"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1042"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0018",
+  "primary_label": "60610 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "562"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "*60008"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0019",
+  "primary_label": "61010 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark IV"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0020",
+  "primary_label": "SS61010 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-MK4",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-MK4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLMK4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "*60051"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark IV"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0021",
+  "primary_label": "SS61010CW Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "HPS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0022",
+  "primary_label": "62610 Single Point",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "462"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0023",
+  "primary_label": "70210 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-5103",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-5103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "*60058"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0024",
+  "primary_label": "SS70210 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG5103-SS1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG5103-SS1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70000SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "9103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60058SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0025",
+  "primary_label": "70310 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-58",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-58"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5303"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "4158"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0026",
+  "primary_label": "70510 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-16",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0027",
+  "primary_label": "SS70510 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "9203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0028",
+  "primary_label": "80210 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-5223 or CG-8021",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-5223 or CG-8021"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5225"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040-1127"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0029",
+  "primary_label": "80310 Dble Ended Shear Beam",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-BE40",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-BE40"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "5323"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0030",
+  "primary_label": "90210 Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-175",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-175"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLCSP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "CP / *392"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65088-1000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0031",
+  "primary_label": "90310 Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-26S5",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-26S5"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLCSP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "CSP / *692"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65088-1000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0032",
+  "primary_label": "902 Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "92"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0033",
+  "primary_label": "903 Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "93"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0034",
+  "primary_label": "90510 Ten/Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-62",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-62"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "62 / 42"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0035",
+  "primary_label": "90515 Ten/Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "CG-TC43",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CG-TC43"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI-RTI",
+    "model": "63 / 43"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0036",
+  "primary_label": "90710 Comp Canister",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Other",
+    "model": "Cardinal SCA 50K"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0037",
+  "primary_label": "825 Button Load Cell",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLS1000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0038",
+  "primary_label": "SS833 Pancake Low Profile",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Other",
+    "model": "Sensotec Model 43"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0039",
+  "primary_label": "SS835 Pancake Low Profile",
+  "primary_manufacturer": "Artech",
+  "source": "Artech Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Other",
+    "model": "Sensotec Model 41"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0040",
+  "primary_label": "BCL",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1004"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0041",
+  "primary_label": "L6B",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1004"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0042",
+  "primary_label": "L6C",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0043",
+  "primary_label": "H2A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0044",
+  "primary_label": "H2D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0045",
+  "primary_label": "H2F",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0046",
+  "primary_label": "H2J1",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0047",
+  "primary_label": "L3H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0048",
+  "primary_label": "BM3",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0049",
+  "primary_label": "H3",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CISB",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60001-0221 Compact"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CISB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0050",
+  "primary_label": "H3C",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0051",
+  "primary_label": "H3E",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0052",
+  "primary_label": "H3F",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CISB",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60001"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CISB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0053",
+  "primary_label": "H3G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "M363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60001"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0054",
+  "primary_label": "H3G-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60001"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0055",
+  "primary_label": "H3Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0056",
+  "primary_label": "L3H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "6362"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0057",
+  "primary_label": "L6D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-22",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "640"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW6-2"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1022"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LPS 600g ~ 35kg"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-22"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1521"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "C2G1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "4900"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NMB",
+    "model": "C2C1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0058",
+  "primary_label": "L6D4",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW6K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1022"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LPS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0059",
+  "primary_label": "L6D5",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0060",
+  "primary_label": "L6E",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "11-062",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0061",
+  "primary_label": "L6E3",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "11-062",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0062",
+  "primary_label": "L6E3-R1",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "11-062",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0063",
+  "primary_label": "L6F",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1320"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HOC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0064",
+  "primary_label": "L6G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "672"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1263"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LOC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0065",
+  "primary_label": "L6H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0066",
+  "primary_label": "L6Q",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "650"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1241"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LPS 60kg ~ 200kg"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0067",
+  "primary_label": "L6J",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0068",
+  "primary_label": "L6J1",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1006"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0069",
+  "primary_label": "L6J5",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0070",
+  "primary_label": "L6L",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0071",
+  "primary_label": "L6N",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "11-055",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "642"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SP4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1042"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "MT1041"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0072",
+  "primary_label": "L6S",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1030"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0073",
+  "primary_label": "L6T",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "652"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1252"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0074",
+  "primary_label": "L6X",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0075",
+  "primary_label": "L6Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0076",
+  "primary_label": "H6G5",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0077",
+  "primary_label": "H6B",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0078",
+  "primary_label": "H8",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "SB3"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0079",
+  "primary_label": "H8A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0080",
+  "primary_label": "H8B",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "Z7"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0081",
+  "primary_label": "H8C",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-23",
+  "zemic_ntep_cc": "07-012A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3411"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-23"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "30310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL35023"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TSB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0082",
+  "primary_label": "H8K",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5723"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0083",
+  "primary_label": "H9A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0084",
+  "primary_label": "H9B",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "MDB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0085",
+  "primary_label": "H9D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-16",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DSR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "70510"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0086",
+  "primary_label": "H9G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0087",
+  "primary_label": "H9G1",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0088",
+  "primary_label": "H9C-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-5103",
+  "zemic_ntep_cc": "07-018A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "CSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-5103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "70210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0089",
+  "primary_label": "H9D-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5203"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0090",
+  "primary_label": "H9H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "BE40",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DLB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "BE40"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "80310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE40"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "TSC840"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0091",
+  "primary_label": "H9N",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-58",
+  "zemic_ntep_cc": "10-057A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5303"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "4158"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "CLB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-58"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75058"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0092",
+  "primary_label": "H10",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0093",
+  "primary_label": "H10A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0094",
+  "primary_label": "B3G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "M9363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60050"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0095",
+  "primary_label": "B3G-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "06-099A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60050"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0096",
+  "primary_label": "B8D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "12-022",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "M9123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3410"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0097",
+  "primary_label": "B8D-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "12-022",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3421"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0098",
+  "primary_label": "B8H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "ALC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HVC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65083S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0099",
+  "primary_label": "BM6A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "HPS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60064"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0100",
+  "primary_label": "B8K",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9723"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0101",
+  "primary_label": "BM8D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "10-056A2",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0102",
+  "primary_label": "BM8L",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9113"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0103",
+  "primary_label": "BM8F",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9523"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0104",
+  "primary_label": "BM8H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "10-056A2",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "ACB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "HLC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HVC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65084"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0105",
+  "primary_label": "BM8G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-SB3",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "SSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-SB3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSSB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0106",
+  "primary_label": "HM8",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0107",
+  "primary_label": "B9C-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-5103-SSW",
+  "zemic_ntep_cc": "07-018A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-5103-SSW"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL7100HE"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0108",
+  "primary_label": "B9D-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-16-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DSR-HSS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016W"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-16-SSW"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0109",
+  "primary_label": "B9E-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9223"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0110",
+  "primary_label": "B9F-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "BE40-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9323"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DLB SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "BE40-SSW"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75040A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "TSC840"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0111",
+  "primary_label": "B9N",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9303"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65058SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0112",
+  "primary_label": "B9H-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "BE40-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9903"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DLB SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "BE40-SSW"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75040A"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0113",
+  "primary_label": "B9J",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9803"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0114",
+  "primary_label": "B9K",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9423"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0115",
+  "primary_label": "HM9B",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0116",
+  "primary_label": "HM9E-Y",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CI-5223",
+  "zemic_ntep_cc": "10-057A1",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HED"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040-1127W"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CI-5223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "TSC800"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0117",
+  "primary_label": "BM11",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "07-020",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "SHB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "Z6"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "355"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HBB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0118",
+  "primary_label": "BM14A",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CP26S5",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "CSP"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65088-1000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CP26S5"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "90310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLCSP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TCSP1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0119",
+  "primary_label": "BM14C",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0120",
+  "primary_label": "BM14G",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "10-087",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "ASC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0121",
+  "primary_label": "BM14K",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "CP26S4",
+  "zemic_ntep_cc": "10-087",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "C16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Coti Global",
+    "model": "CP26S4"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0122",
+  "primary_label": "HM14C",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0123",
+  "primary_label": "B14H",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "CCC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0124",
+  "primary_label": "B14D",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0125",
+  "primary_label": "H24L",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0126",
+  "primary_label": "HM24M",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": []
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0127",
+  "primary_label": "B6Q",
+  "primary_manufacturer": "Zemic",
+  "source": "Zemic Cross-Reference Chart",
+  "coti_sku": "",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1241 S.S."
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0128",
+  "primary_label": "CGSB-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CGSB-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "20210 \"S\" Cell"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0129",
+  "primary_label": "CG-23-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "30210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL30002"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3410"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0130",
+  "primary_label": "CG-23",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "30310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "A35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL30000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL35023"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "3411"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "SBS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0131",
+  "primary_label": "CG-23-LP",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-LP",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "30315"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023A-5507"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0132",
+  "primary_label": "CG-BBS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BBS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "40310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-481XX-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-486XX-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "LBG1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BBS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL40BBS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60007"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0133",
+  "primary_label": "CG-60040",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-60040",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "50210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5503"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9503"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL50210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL60040SST"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60040"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0134",
+  "primary_label": "CG-50",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-50",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "60410"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "CAS",
+    "model": "BCM"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LOC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW12"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "652"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1250"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLPWM12"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60060"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1250"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "FAY"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0135",
+  "primary_label": "CG-50-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-50-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "60410"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "CAS",
+    "model": "BCM"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LOC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Flintec",
+    "model": "PCB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW12"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "652"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1250"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLPWM12"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1250"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "FAY"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0136",
+  "primary_label": "CG-22",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-22",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "61022"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "4900 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "C2G1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LPS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW6K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NMB",
+    "model": "C2G1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1521A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1022"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0137",
+  "primary_label": "CG-5103",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-5103",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "70210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "CSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "SLD-430"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "GDE03"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE03"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0138",
+  "primary_label": "CG-58",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-58",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "70310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "CLB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5303"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75058"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65058A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "4158"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE58"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0139",
+  "primary_label": "CG-16",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-16",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "70510"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DSR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "0792"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "SLD-525"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "GDE16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "DBS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0140",
+  "primary_label": "CG-5223",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-5223",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "80210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "5223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75223"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040A-XX-1127W"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "TSC 800"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "GDE23"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE23"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Unibridge",
+    "model": "DL90000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0141",
+  "primary_label": "CG-BE40",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BE40",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "80310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Airweigh",
+    "model": "AW900"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DLB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9323 50Kse-75Kse"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "TSC 840"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TDE40"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0142",
+  "primary_label": "CG-42",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-42",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "879"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "CAS",
+    "model": "BCA"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "TSP"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Flintec",
+    "model": "PC 42"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SP4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "642"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1042"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSP4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Scaime",
+    "model": "AG"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1042"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0143",
+  "primary_label": "CG-175",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-175",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "90210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "CP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Howe Richardson",
+    "model": "20908XXX"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "392B"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "CP"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Streeter Amet",
+    "model": "3751940"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Streeter Amet",
+    "model": "3752030"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Streeter Amet",
+    "model": "3752040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Streeter Amet",
+    "model": "3753070"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TCP1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0144",
+  "primary_label": "CG-26S5",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S5",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "90310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Howe Richardson",
+    "model": "244699-000X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "692B"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "CSP"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "CSP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLCSP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65088-1000"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Streeter Amet",
+    "model": "3760XXX"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TCSP1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0145",
+  "primary_label": "CG-26S3",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S3",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "90405"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-38065-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-38066-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "C2P1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "C-10"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10011900A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10014900A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10049200A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10049300A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "792"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL8C2P1SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TC-C2P1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0146",
+  "primary_label": "CG-TC43",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-TC43",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "90515"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "43U"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T43"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0147",
+  "primary_label": "CGSB-SS-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CGSB-SS-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS20210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9363"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20000SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0148",
+  "primary_label": "CG-23-SS-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-SS-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS30210"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0149",
+  "primary_label": "CG-23-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS30310"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "B35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL35023S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL39123"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65023S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0150",
+  "primary_label": "CG-23-SSW-03-C20",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-SSW-03-C20",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS30310 (Teflon Cable)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-54786-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "SQB HSS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "H35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB601016-008 2500 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB601016-020 1000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB601017-020 4000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB601018-008 5000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB601019-008 500 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL35083"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLH35"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65083"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0151",
+  "primary_label": "CG-BLC-C",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BLC-C",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS30510"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BLC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13552100A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLBLC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0152",
+  "primary_label": "CG-SSB",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SSB",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS30610"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "SSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSSB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0153",
+  "primary_label": "CG-51",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-51",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS60210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark III"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark IX"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60051"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0154",
+  "primary_label": "CG-40-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-40-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS60510"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW15AH"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1140"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1140"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TP40-SS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0155",
+  "primary_label": "CG-MK4",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-MK4",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS61010"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark IV"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLMK4"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "Mark IV"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0156",
+  "primary_label": "CG-5103-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-5103-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Artech",
+    "model": "SS70210"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "SLD-530"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9103"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70000 SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL71000 HE"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0157",
+  "primary_label": "CG-31",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-31",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-38054-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-39897-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-40766-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "C3P1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "T3P1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "1004400A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10048X00A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10049100A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "KB200570"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "KN713700"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "KN75066"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TC3P1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0158",
+  "primary_label": "CG-26S3-10",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S3-10",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-43076-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-43076-2"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-43076-3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TC-C2P1-1000"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0159",
+  "primary_label": "CG-SBF",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SBF",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-48363-1A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-48424-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SBF"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSBF"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0160",
+  "primary_label": "CG-BLF",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BLF",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-52921-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-53581-X"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BLF"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLBLF"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0161",
+  "primary_label": "CG-FB",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-FB",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-551761-1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "3-55383-2"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0162",
+  "primary_label": "CG-26S1-65114",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S1-65114",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "63951"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65114"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0163",
+  "primary_label": "CG-26S1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "64166"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "LCF-HR4020-2 50K LE"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75114 50K le"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0164",
+  "primary_label": "CG-21",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-21",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "657090"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "657091"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "BLH",
+    "model": "T2P1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TT2P1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0165",
+  "primary_label": "CG-26S6",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S6",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "70510 30t"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "LCF-HR-4020-2A 30t"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "LCF-HR-4020-4A 50t"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Flintec",
+    "model": "RC3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL70510 30t"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0166",
+  "primary_label": "CG-STR1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-STR1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "90814 40K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "91088 50K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65061A"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0167",
+  "primary_label": "CG-STR1-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-STR1-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "90814 40K (SS)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "91088 50K (SS)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "Rodan"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65061A"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0168",
+  "primary_label": "CG-26S2",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S2",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Fairbanks",
+    "model": "LCF-HR-4020-19"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Flintec",
+    "model": "RC1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0169",
+  "primary_label": "CG-80210",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-80210",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Airweigh",
+    "model": "AW900 (50K SE)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Airweigh",
+    "model": "AW900B (60K SE)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9423"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040-1134"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0170",
+  "primary_label": "CG-Z6",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-Z6",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "CB6"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "HBB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "Z6"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "MTB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "SHB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLHBB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "355"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TZ6"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0171",
+  "primary_label": "CG-DB50000S",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-DB50000S",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "DB35000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "DB50000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "DB75000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLDB50000S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0172",
+  "primary_label": "CG-26S",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "HDD"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SCA"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSCA"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TCSCA"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0173",
+  "primary_label": "CG-HMT",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-HMT",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "LFB-1000HMT 500kg"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "LFB-2500HMT 1250kg"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "LFB-500HMT 250kg"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0174",
+  "primary_label": "CG-SB250",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB250",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SB10000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SB20000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SB2500S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SB5000S"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSB250"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0175",
+  "primary_label": "CG-SPL",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SPL",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SP-L"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0176",
+  "primary_label": "CG-SPLM",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SPLM",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Cardinal",
+    "model": "SP-LM"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0177",
+  "primary_label": "CG-16-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-16-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "DSR HSS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9203"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016SS-W"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75016WHE"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016W"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65016WH"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0178",
+  "primary_label": "CG-40",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-40",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "LOC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "MT1041"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1040"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TP40-A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "FAS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0179",
+  "primary_label": "CGSB",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CGSB",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20001"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60001"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0180",
+  "primary_label": "CGSB-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CGSB-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC HSS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL20001HE"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60063"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0181",
+  "primary_label": "CGSB-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CGSB-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Celtron (VPG)",
+    "model": "STC SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60050"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0182",
+  "primary_label": "CG-60030",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-60030",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Electroscale",
+    "model": "LCB Base"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60030"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0183",
+  "primary_label": "CG-STR-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-STR-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Epelsa",
+    "model": "STR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "First Weigh",
+    "model": "LC32"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0184",
+  "primary_label": "CG-STR",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-STR",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Epelsa",
+    "model": "STR"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "First Weigh",
+    "model": "LC32"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0185",
+  "primary_label": "CG-LC22",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-LC22",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "First Weigh",
+    "model": "LC22"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0186",
+  "primary_label": "CG-SB4",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB4",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Flintec",
+    "model": "SB4"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0187",
+  "primary_label": "CG-BLC-T",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BLC-T",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "BLC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "084759-020"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLBLC"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0188",
+  "primary_label": "CG-26S4",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S4",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "C16"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0189",
+  "primary_label": "CG-JRT",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-JRT",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "JRT"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "600862-035 50K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "600864-035 100K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "790"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0190",
+  "primary_label": "CG-42-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-42-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW15"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLPWM15"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1142"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0191",
+  "primary_label": "CG-50-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-50-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "MT1260"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1260"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLPWM16"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1260"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1260S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0192",
+  "primary_label": "CG-50-2",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-50-2",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PW24"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1263"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Transcell",
+    "model": "FAV"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0193",
+  "primary_label": "CG-PWA",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-PWA",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PWA"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0194",
+  "primary_label": "CG-PWS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-PWS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "PWS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1380"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0195",
+  "primary_label": "CG-SB3-1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB3-1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB3"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0196",
+  "primary_label": "CG-SB3",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB3",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB3"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "SSB"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSSB"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0197",
+  "primary_label": "CG-SSB-10",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SSB-10",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "SB4"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0198",
+  "primary_label": "CG-745",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-745",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "HBM",
+    "model": "THC"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "745 Mount"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600261 4000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600342 2500 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600343 5000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600363 1250 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600364 10000 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600529 500 lb"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL30745"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TB745"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0199",
+  "primary_label": "CG-1210",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1210",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Interface",
+    "model": "1210"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0200",
+  "primary_label": "CG-1211",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1211",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Interface",
+    "model": "1211"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0201",
+  "primary_label": "CG-SLS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SLS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Massload",
+    "model": "ML-1100"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0202",
+  "primary_label": "CG-743",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-743",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4311 (1K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4331 (3K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4350 (5K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4410 (10K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4420 (20K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13077500 (20K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13078400 (10K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13078900 (5K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13079300 (3K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "13136900 (1K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "71208066 (20K)"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "743 Mount"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TB743"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0203",
+  "primary_label": "CG-SMB6",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SMB6",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4447"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4449"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "1332900B"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TBM4"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0204",
+  "primary_label": "CG-SMB6-2",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SMB6-2",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4447"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Masstron",
+    "model": "ML4449"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "1332900B"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TBM42"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0205",
+  "primary_label": "CG-CP22",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-CP22",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "04966 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "04967 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "04968 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T496"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0206",
+  "primary_label": "CG-26S7",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-26S7",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "0782"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0207",
+  "primary_label": "CG-F1",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-F1",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "10049400A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "F1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "Railmaster 7200 Series"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0208",
+  "primary_label": "CG-TB2",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-TB2",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "1110 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "1178 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "11785600A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "11785700A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "11786900A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "11788500A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "12744300B"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "2095 Platform"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "2155 Base"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "2855 Base"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL32155"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0209",
+  "primary_label": "CG-23-SSW-02-C20",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-23-SSW-02-C20",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "715 Series"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "TB600531 2.5K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL35082"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65083S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0210",
+  "primary_label": "CG-SB2L",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB2L",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "743"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSB2L"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TBM4"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0211",
+  "primary_label": "CG-CC22",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-CC22",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "B10883600A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Mettler Toledo",
+    "model": "B10887700A"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T752"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0212",
+  "primary_label": "CG-MK21",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-MK21",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "3270 Series Checkweigher"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLMK21"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "3270 Series Checkweigher"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0213",
+  "primary_label": "CG-MK15",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-MK15",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark 15"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TBMK"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0214",
+  "primary_label": "CG-MK5",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-MK5",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark V"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0215",
+  "primary_label": "CG-60048",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-60048",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "NCI",
+    "model": "Mark V"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "60048SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "Mark V"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0216",
+  "primary_label": "CG-TC42",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-TC42",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "42U"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T42"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0217",
+  "primary_label": "CG-62",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-62",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "62HU"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T62"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0218",
+  "primary_label": "CG-63",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-63",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "63HU"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T63"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0219",
+  "primary_label": "CG-92",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-92",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "92"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T92"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0220",
+  "primary_label": "CG-93",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-93",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "93"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T93"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0221",
+  "primary_label": "CG-BLC-2",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BLC-2",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "9803"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Thurman",
+    "model": "10088970A 50K"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0222",
+  "primary_label": "CG-HPS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-HPS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "HPS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0223",
+  "primary_label": "CG-33",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-33",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Revere (VPG)",
+    "model": "USP1"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TUSP1"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0224",
+  "primary_label": "CG-WB-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-WB-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "32011WB-L"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL75000 SS"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "13498-0127 5K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "13851-0078 10K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "17257-0129 5K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "WBT Series Chainlink Style"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "Weigh bar"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0225",
+  "primary_label": "CG-WBL-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-WBL-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "32011WB-T"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "41035-0029 1.25K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "41035-1027 1.25K"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "41036-1057 2.5K"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0226",
+  "primary_label": "CG-1010",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1010",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL1010"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1010"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0227",
+  "primary_label": "CG-FLS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-FLS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RL800WT"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "49098"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "49100"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "FLS"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0228",
+  "primary_label": "CG-SB2M",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-SB2M",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Rice Lake / RLWS",
+    "model": "RLSB2M"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "TBM42"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0229",
+  "primary_label": "CG-BE40-SSW",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-BE40-SSW",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65040S"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0230",
+  "primary_label": "CG-94",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-94",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65094"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0231",
+  "primary_label": "CG-94-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-94-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Sensortronics (VPG)",
+    "model": "65094"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0232",
+  "primary_label": "CG-LODEC",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-LODEC",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "SI Lodec",
+    "model": "Lodec"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0233",
+  "primary_label": "CG-1130",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1130",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1130"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "MK29"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0234",
+  "primary_label": "CG-1240-SS",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1240-SS",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1240"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0235",
+  "primary_label": "CG-1241",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-1241",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Tedea-Huntleigh (VPG)",
+    "model": "1241"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Totalcomp",
+    "model": "T1241"
+   }
+  ]
+ },
+ {
+  "doctype": "LCS Load Cell Family",
+  "name": "LLCF-0236",
+  "primary_label": "CG-WBM",
+  "primary_manufacturer": "Coti Global",
+  "source": "Coti Global Manufacturer Directory",
+  "coti_sku": "CG-WBM",
+  "zemic_ntep_cc": "",
+  "equivalents": [
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "18561-0029"
+   },
+   {
+    "doctype": "LCS Load Cell Equivalent",
+    "manufacturer": "Weigh-Tronix",
+    "model": "WBM"
+   }
+  ]
+ }
+]

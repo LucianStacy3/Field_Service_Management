@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:reference_standard_id",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_standard_id",
+  "description",
+  "standard_class",
+  "col_break_1",
+  "owning_test_truck",
+  "serial_number",
+  "section_calibration",
+  "last_certified_date",
+  "recalibration_interval_months",
+  "col_break_2",
+  "recalibration_due_date",
+  "traceability_agency",
+  "traceability_certificate_number",
+  "smarter_certs_url",
+  "section_status",
+  "status",
+  "section_history",
+  "status_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_standard_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference Standard ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "e.g. \"50 lb Class F Tolerance Weight\"",
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "description": "e.g. NIST Class F test weights, thermal probe, torque standard",
+   "fieldname": "standard_class",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Standard Class"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "owning_test_truck",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Owning Test Truck",
+   "options": "LCS Vehicle"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "section_calibration",
+   "fieldtype": "Section Break",
+   "label": "Calibration & Traceability"
+  },
+  {
+   "fieldname": "last_certified_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Last Certified Date"
+  },
+  {
+   "default": "12",
+   "fieldname": "recalibration_interval_months",
+   "fieldtype": "Int",
+   "label": "Recalibration Interval (Months)"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Computed: last day of the month, N months (Recalibration Interval) after Last Certified Date -- matches the issuing lab's own \"valid for one year, recertify by the last day of the original test month\" convention.",
+   "fieldname": "recalibration_due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Recalibration Due Date",
+   "read_only": 1
+  },
+  {
+   "description": "Issuing lab, e.g. \"Arizona Dept. of Agriculture -- Weights and Measures Services Division, Metrology Laboratory\"",
+   "fieldname": "traceability_agency",
+   "fieldtype": "Data",
+   "label": "Traceability Agency"
+  },
+  {
+   "description": "Issuing lab's traceability / report number for the certificate covering this standard.",
+   "fieldname": "traceability_certificate_number",
+   "fieldtype": "Data",
+   "label": "Traceability Certificate #"
+  },
+  {
+   "fieldname": "smarter_certs_url",
+   "fieldtype": "Data",
+   "label": "SmarterCerts URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "section_status",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "In Service",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "In Service\nDue for Recalibration\nOut for Recalibration\nRetired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_history",
+   "fieldtype": "Section Break",
+   "label": "Status History"
+  },
+  {
+   "fieldname": "status_log",
+   "fieldtype": "Table",
+   "label": "Status History",
+   "options": "LCS Status Log Entry"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Reference Standard",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "reference_standard_id",
+ "sort_order": "ASC",
+ "title_field": "description",
+ "track_changes": 1
+}

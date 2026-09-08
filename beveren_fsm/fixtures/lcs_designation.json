@@ -1,0 +1,82 @@
+[
+  {
+    "doctype": "Designation",
+    "designation_name": "Account Manager",
+    "name": "Account Manager"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Accountant",
+    "name": "Accountant"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Administrative Assistant",
+    "name": "Administrative Assistant"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Chief Executive Officer",
+    "name": "Chief Executive Officer"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Chief Financial Officer",
+    "name": "Chief Financial Officer"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Data Specialist",
+    "name": "Data Specialist"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "General Manager",
+    "name": "General Manager"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Inside Sales",
+    "name": "Inside Sales"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Marketing Coordinator",
+    "name": "Marketing Coordinator"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Master Technician",
+    "name": "Master Technician"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Sales Admin",
+    "name": "Sales Admin"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Sales Manager",
+    "name": "Sales Manager"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Service Administrator",
+    "name": "Service Administrator"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Service Manager",
+    "name": "Service Manager"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Shop Technician",
+    "name": "Shop Technician"
+  },
+  {
+    "doctype": "Designation",
+    "designation_name": "Technician",
+    "name": "Technician"
+  }
+]

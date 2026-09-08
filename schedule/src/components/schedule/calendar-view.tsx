@@ -11,7 +11,20 @@ interface CalendarViewProps {
   selectedDate: Date;
   onDateChange: (date: Date) => void;
   onAppointmentClick?: (appointment: Appointment) => void;
+  serviceAreaFilter?: string;
 }
+
+// Fix added: same area-derivation helper used in grid-view.tsx /
+// schedule-left-panel.tsx. Calendar view previously had no
+// serviceAreaFilter prop at all, so the "All Areas" dropdown had zero
+// effect here -- appointments outside the selected area still showed up
+// on every day cell.
+const getAppointmentServiceArea = (apt: Appointment): string | undefined => {
+  if (apt.location && typeof apt.location === "object" && apt.location.service_area) {
+    return apt.location.service_area;
+  }
+  return apt.service_area;
+};
 
 const getStatusColor = (status: string): string => {
   const colors: Record<string, string> = {
@@ -44,6 +57,7 @@ export function CalendarView({
   onAppointmentClick,
   currentMonth,
   onMonthChange,
+  serviceAreaFilter = "all",
 }: CalendarViewProps & {
   currentMonth: Date;
   onMonthChange: (month: Date) => void;
@@ -52,7 +66,11 @@ export function CalendarView({
   // Group appointments by posting_date
   const appointmentsByDate = useMemo(() => {
     const grouped: Record<string, Appointment[]> = {};
-    appointments.forEach((apt) => {
+    const areaFiltered =
+      serviceAreaFilter === "all"
+        ? appointments
+        : appointments.filter((apt) => getAppointmentServiceArea(apt) === serviceAreaFilter);
+    areaFiltered.forEach((apt) => {
       if (apt.posting_date) {
         const dateKey = format(new Date(apt.posting_date), "yyyy-MM-dd");
         if (!grouped[dateKey]) {
@@ -62,7 +80,7 @@ export function CalendarView({
       }
     });
     return grouped;
-  }, [appointments]);
+  }, [appointments, serviceAreaFilter]);
 
   // Get appointments for selected date
   const selectedDateAppointments = useMemo(() => {

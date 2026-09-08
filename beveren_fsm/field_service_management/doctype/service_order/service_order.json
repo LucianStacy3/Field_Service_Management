@@ -89,6 +89,8 @@
   "warranty_expiry_date",
   "amc_contract",
   "amc_expiry_date",
+  "calibration_traceability_section",
+  "calibration_traceability",
   "appointment_preference_section",
   "preferred_date_1",
   "preferred_date_2",
@@ -826,6 +828,18 @@
    "label": "Product Location",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "calibration_traceability_section",
+   "fieldtype": "Section Break",
+   "label": "Calibration Traceability"
+  },
+  {
+   "description": "Reference standards used to perform this job, and whether each was in calibration on the date used. Submission is blocked if any linked standard was out of cal (Phase 7B Active Brief Section 6.6).",
+   "fieldname": "calibration_traceability",
+   "fieldtype": "Table",
+   "label": "Calibration Traceability",
+   "options": "LCS Calibration Traceability Link"
   }
  ],
  "index_web_pages_for_search": 1,

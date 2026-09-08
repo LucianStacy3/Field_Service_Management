@@ -57,9 +57,11 @@ interface ScheduleLeftPanelProps {
   selectedAppointments: string[];
   statusFilter: string;
   serviceOrderStatusFilter: string;
+  serviceAreaFilter: string;
   appointmentDateRange: { startDate: Date | null; endDate: Date | null };
   onStatusFilterChange: (status: string) => void;
   onServiceOrderFilterChange: (status: string) => void;
+  onServiceAreaFilterChange: (area: string) => void;
   onDateRangeChange: (range: { startDate: Date | null; endDate: Date | null }) => void;
   onAppointmentSelect: (appointmentId: string, checked: boolean) => void;
   onSelectAll: (checked: boolean) => void;
@@ -77,9 +79,11 @@ export function ScheduleLeftPanel({
   selectedAppointments,
   statusFilter,
   serviceOrderStatusFilter,
+  serviceAreaFilter,
   appointmentDateRange,
   onStatusFilterChange,
   onServiceOrderFilterChange,
+  onServiceAreaFilterChange,
   onDateRangeChange,
   onAppointmentSelect,
   onSelectAll,
@@ -192,8 +196,28 @@ const getOrderStatusColor = (status?: string) => {
     )
   ).sort();
 
+  // Derive sorted unique service area names from appointments + service orders
+  const serviceAreaOptions = useMemo(() => {
+    const areas = new Set<string>();
+    appointments.forEach((a) => {
+      const area = typeof a.location === "object" && a.location?.service_area
+        ? a.location.service_area
+        : a.service_area;
+      if (area) areas.add(area);
+    });
+    serviceOrders.forEach((o) => {
+      if ((o as any).service_area) areas.add((o as any).service_area);
+    });
+    return Array.from(areas).sort();
+  }, [appointments, serviceOrders]);
+
   const filteredServiceOrders = useMemo(() => {
-    const statusFiltered = serviceOrders.filter((order) => {
+    const areaFiltered = serviceOrders.filter((order) => {
+      if (serviceAreaFilter === "all") return true;
+      return (order as any).service_area === serviceAreaFilter;
+    });
+
+    const statusFiltered = areaFiltered.filter((order) => {
       if (serviceOrderStatusFilter === "all") return true;
       const status = (order.status || "").toLowerCase();
       return status === serviceOrderStatusFilter.toLowerCase();
@@ -236,16 +260,24 @@ const getOrderStatusColor = (status?: string) => {
   ]);
 
   const filteredAppointments = useMemo(() => {
+    const areaFiltered = appointments.filter((appointment) => {
+      if (serviceAreaFilter === "all") return true;
+      const area = typeof appointment.location === "object" && appointment.location?.service_area
+        ? appointment.location.service_area
+        : appointment.service_area;
+      return area === serviceAreaFilter;
+    });
+
     if (!appointmentSearchTerm.trim()) {
-      return appointments;
+      return areaFiltered;
     }
     const term = appointmentSearchTerm.toLowerCase();
-    return appointments.filter((appointment) => {
+    return areaFiltered.filter((appointment) => {
       const idMatch = appointment.name?.toLowerCase().includes(term);
       const customerMatch = appointment.customer?.toLowerCase().includes(term);
       return idMatch || customerMatch;
     });
-  }, [appointments, appointmentSearchTerm]);
+  }, [appointments, appointmentSearchTerm, serviceAreaFilter]);
 
   const isOrderMode = mode === "orders";
 
@@ -646,6 +678,25 @@ const getOrderStatusColor = (status?: string) => {
             </div>
           </div>
 
+          {/* Service Area Filter */}
+          {serviceAreaOptions.length > 0 && (
+            <div className="mt-2">
+              <Select value={serviceAreaFilter} onValueChange={onServiceAreaFilterChange}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="All Areas" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Areas</SelectItem>
+                  {serviceAreaOptions.map((area) => (
+                    <SelectItem key={area} value={area}>
+                      {area}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
           {!isOrderMode && selectedAppointments.length > 0 && (
             <div className="mt-3 pt-3 border-t border-border">
               <MassActionsDropdown
@@ -788,12 +839,15 @@ const getOrderStatusColor = (status?: string) => {
                           </div>
                           {appointment.service_technicians &&
                             appointment.service_technicians.length > 0 && (
-                              <div className="mt-2 text-xs text-muted-foreground">
-                                <span>
-                                  {appointment.service_technicians
-                                    .map((t) => t.full_name)
-                                    .join(", ")}
-                                </span>
+                              <div className="mt-2 text-xs text-muted-foreground space-y-0.5">
+                                {appointment.service_technicians.map((t, idx) => (
+                                  <div key={t.service_technician || idx} className="flex items-center gap-1">
+                                    {t.custom_is_crew_leader && (
+                                      <span title="Crew Leader" className="text-yellow-500 text-[11px] leading-none flex-shrink-0">★</span>
+                                    )}
+                                    <span>{t.full_name}</span>
+                                  </div>
+                                ))}
                               </div>
                             )}
                         </div>

@@ -1,0 +1,239 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "work_order",
+  "customer_equipment",
+  "equipment_description",
+  "col_break_1",
+  "date_identified",
+  "identified_by",
+  "source",
+  "severity",
+  "section_details",
+  "description_of_nonconformity",
+  "initial_actions_taken",
+  "col_break_2",
+  "test_report_reference",
+  "supplying_vendor",
+  "customer",
+  "section_disposition",
+  "disposition",
+  "customer_approval_reference",
+  "col_break_3",
+  "status",
+  "tag_equipment_out_of_service",
+  "section_history",
+  "status_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "NCR-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "work_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Work Order",
+   "options": "Service Order"
+  },
+  {
+   "description": "Structured link used by the Out of Service tag automation below. equipment_description is the free-text field from SOP-013 Section 5.3.2.",
+   "fieldname": "customer_equipment",
+   "fieldtype": "Link",
+   "label": "Customer Equipment",
+   "options": "LCS Customer Equipment"
+  },
+  {
+   "fieldname": "equipment_description",
+   "fieldtype": "Data",
+   "label": "Equipment Description"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date_identified",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Identified",
+   "reqd": 1
+  },
+  {
+   "fieldname": "identified_by",
+   "fieldtype": "Link",
+   "label": "Identified By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Internal Audit\nCustomer Complaint\nEquipment Failure\nProcess Deviation\nExternal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Severity",
+   "options": "Minor\nMajor\nCritical",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_details",
+   "fieldtype": "Section Break",
+   "label": "Nonconformity"
+  },
+  {
+   "fieldname": "description_of_nonconformity",
+   "fieldtype": "Text Editor",
+   "label": "Description of Nonconformity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "initial_actions_taken",
+   "fieldtype": "Text",
+   "label": "Initial Actions Taken On-Site"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Smarter Certs or paper reference \u2014 same shape as smarter_certs_url on Customer Equipment.",
+   "fieldname": "test_report_reference",
+   "fieldtype": "Data",
+   "label": "Test Report Reference",
+   "options": "URL"
+  },
+  {
+   "fieldname": "supplying_vendor",
+   "fieldtype": "Link",
+   "label": "Supplying Vendor",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "section_disposition",
+   "fieldtype": "Section Break",
+   "label": "Disposition & Status"
+  },
+  {
+   "fieldname": "disposition",
+   "fieldtype": "Select",
+   "label": "Disposition",
+   "options": "\nRework/Repair\nReplacement\nAccept with Justification\nReturn to Customer As-Is\nScrap\nRetain for Spare Parts"
+  },
+  {
+   "depends_on": "eval:doc.disposition=='Accept with Justification'",
+   "description": "Documented customer approval required for this disposition (SOP-013 Section 5.4.2).",
+   "fieldname": "customer_approval_reference",
+   "fieldtype": "Data",
+   "label": "Customer Approval Reference",
+   "mandatory_depends_on": "eval:doc.disposition=='Accept with Justification'"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nUnder Investigation\nCorrective Action Pending\nClosed",
+   "reqd": 1
+  },
+  {
+   "description": "When checked with Customer Equipment set, tags that equipment record Out of Service (SOP-013 Section 5.3.3).",
+   "fieldname": "tag_equipment_out_of_service",
+   "fieldtype": "Check",
+   "label": "Tag Equipment Out of Service"
+  },
+  {
+   "fieldname": "section_history",
+   "fieldtype": "Section Break",
+   "label": "Status History"
+  },
+  {
+   "fieldname": "status_log",
+   "fieldtype": "Table",
+   "label": "Status History",
+   "options": "LCS Status Log Entry"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS NCR",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

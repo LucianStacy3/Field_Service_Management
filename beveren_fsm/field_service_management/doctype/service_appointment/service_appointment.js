@@ -76,7 +76,10 @@ frappe.ui.form.on("Service Appointment", {
         }
       });
 
-      if (non_invoiced_items.length) {
+      if (
+        non_invoiced_items.length &&
+        frappe.user.has_role(["System Manager", "Accounts Manager", "Accounts User", "Service Administrator"])
+      ) {
         frm.add_custom_button(
           __("Sales Invoice"),
           () => {

@@ -20,11 +20,14 @@
   "column_break_bczc",
   "actual_start_datetime",
   "actual_finish_datetime",
+  "en_route_notified_at",
   "description_section",
   "description",
   "service_details_tab",
   "service_team_section",
   "service_technicians",
+  "resources_section",
+  "appointment_resources",
   "services_section",
   "items",
   "amended_from",
@@ -51,7 +54,6 @@
    "fieldtype": "Tab Break",
    "label": "Service Details"
   },
-
   {
    "fieldname": "services_section",
    "fieldtype": "Section Break",
@@ -125,6 +127,17 @@
    "reqd": 1
   },
   {
+   "fieldname": "resources_section",
+   "fieldtype": "Section Break",
+   "label": "Non-Human Resources"
+  },
+  {
+   "fieldname": "appointment_resources",
+   "fieldtype": "Table",
+   "label": "Resources",
+   "options": "LCS Appointment Resource"
+  },
+  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -140,6 +153,14 @@
    "fieldtype": "Datetime",
    "label": "Actual Finish Datetime",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "en_route_notified_at",
+   "fieldtype": "Datetime",
+   "label": "En Route Notified At",
+   "read_only": 1,
+   "description": "Set once notify_on_my_way() successfully sends the en-route notification. Also serves as the idempotency guard so a technician re-tapping the button doesn't re-send. See LCS ERPNext Implementation Roadmap, Section 9.3."
   },
   {
    "fieldname": "scheduled_time_column",

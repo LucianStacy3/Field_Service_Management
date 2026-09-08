@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "clause_reference",
+  "finding_type",
+  "description",
+  "linked_ncr"
+ ],
+ "fields": [
+  {
+   "description": "Free text pending the real ISO/IEC 17025:2017 clause list from F14-Internal-Audit-Checklist-rev0.docx being seeded as a fixture \u2014 see Phase 7B Active Brief Section 5/6.4.",
+   "fieldname": "clause_reference",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Clause Reference",
+   "reqd": 1
+  },
+  {
+   "fieldname": "finding_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Finding Type",
+   "options": "Conformance\nNonconformance\nObservation\nOpportunity for Improvement",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "linked_ncr",
+   "fieldtype": "Link",
+   "label": "Linked NCR",
+   "options": "LCS NCR"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Audit Finding",
+ "owner": "Administrator",
+ "permissions": []
+}

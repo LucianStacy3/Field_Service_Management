@@ -1,0 +1,117 @@
+{
+  "actions": [],
+  "creation": "2026-06-11 00:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Child Document",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "location",
+    "scale_type",
+    "difficulty",
+    "make",
+    "model",
+    "serial_no",
+    "capacity",
+    "capacity_unit",
+    "quantity",
+    "unit_price",
+    "extended_price",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "location",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Location / Dept",
+      "description": "Where on site this scale is located"
+    },
+    {
+      "fieldname": "scale_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Scale Type",
+      "reqd": 1,
+      "options": "\nBench Scale — 0–30 lb\nBench Scale — 31–100 lb\nBench Scale — 101–250 lb\nBench Scale — NTEP / Legal-for-Trade\nBench Scale — Washdown (IP65/69K)\nCounting Scale — 0–30 lb\nCounting Scale — 31–100 lb\nCounting Scale — Dual-Range\nRetail / Price-Computing Scale\nFloor Scale — 0–1,000 lb\nFloor Scale — 1,001–5,000 lb\nFloor Scale — 5,001–10,000 lb\nFloor Scale — 10,001–20,000 lb\nFloor Scale — Pit-Mounted (add-on)\nPallet Jack Scale\nPallet Jack Scale — Wireless\nTank / Hopper Scale — Single Vessel\nTank / Hopper Scale — Multi-Vessel\nConveyor / Belt Scale\nAnimal / Livestock Scale\nTruck Scale — Steel Deck, Above Ground\nTruck Scale — Steel Deck, Pit Mounted\nTruck Scale — Portable / Axle Pad\nOnboard Truck Weighing System\nCrane / Overhead Scale\nRail Scale\nMixer / Batch Scale\nOther (see Notes)"
+    },
+    {
+      "fieldname": "difficulty",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Difficulty",
+      "reqd": 1,
+      "options": "Normal\nDifficult\nVery Difficult",
+      "default": "Normal",
+      "description": "Normal = standard access; Difficult = confined/pit/height; Very Difficult = extreme conditions"
+    },
+    {
+      "fieldname": "make",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Make"
+    },
+    {
+      "fieldname": "model",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Model"
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Data",
+      "label": "Serial No"
+    },
+    {
+      "fieldname": "capacity",
+      "fieldtype": "Float",
+      "label": "Capacity"
+    },
+    {
+      "fieldname": "capacity_unit",
+      "fieldtype": "Select",
+      "label": "Unit",
+      "options": "lb\nkg\nt\ng\nton"
+    },
+    {
+      "fieldname": "quantity",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Qty",
+      "default": "1",
+      "reqd": 1
+    },
+    {
+      "fieldname": "unit_price",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Unit Price",
+      "description": "Price per calibration visit for this scale — auto-suggested, editable"
+    },
+    {
+      "fieldname": "extended_price",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Extended Price",
+      "read_only": 1,
+      "description": "Unit Price × Qty"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-06-11 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Field Service Management",
+  "name": "LCS Service Agreement Quote Item",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

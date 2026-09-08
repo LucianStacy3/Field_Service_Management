@@ -1,0 +1,20 @@
+{
+  "doctype": "DocType",
+  "name": "LCS Appointment Photo",
+  "module": "Field Service Management",
+  "custom": 0,
+  "naming_rule": "By fieldname",
+  "autoname": "hash",
+  "fields": [
+    { "fieldname": "appointment", "label": "Appointment", "fieldtype": "Link", "options": "Service Appointment", "reqd": 1, "in_list_view": 1 },
+    { "fieldname": "photo", "label": "Photo", "fieldtype": "Attach Image", "reqd": 1 },
+    { "fieldname": "caption", "label": "Caption", "fieldtype": "Small Text" },
+    { "fieldname": "taken_by", "label": "Taken By", "fieldtype": "Link", "options": "User", "read_only": 1 },
+    { "fieldname": "taken_at", "label": "Taken At", "fieldtype": "Datetime", "read_only": 1, "in_list_view": 1 }
+  ],
+  "permissions": [
+    { "role": "Field Service User", "read": 1, "write": 1, "create": 1, "if_owner": 1 },
+    { "role": "Field Service Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1 },
+    { "role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1 }
+  ]
+}

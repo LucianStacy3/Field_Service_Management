@@ -1,0 +1,174 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Load Cell Cross-Reference{% endblock %}
+
+{% block head_include %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LOAD CELL CROSS-REFERENCE — DocType-driven search over
+   LCS Load Cell Family / LCS Load Cell Equivalent
+   Palette: Navy #002050 | Crimson #900010 | Gold #C8A020
+             Steel Blue #004080 | Light Blue #D6E4F7
+   (matches www/shortcuts/index.html)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.lcx-page {
+  background: #0d1824;
+  color: #e8edf4;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.lcx-header {
+  background: #002050;
+  border-bottom: 3px solid #C8A020;
+  padding: 1.5rem 2rem 1.25rem;
+}
+.lcx-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.8rem; font-weight: 700;
+  letter-spacing: 0.04em; color: #fff; margin-bottom: 4px;
+}
+.lcx-sub { font-size: 0.85rem; color: #D6E4F7; max-width: 640px; }
+
+.lcx-search-wrap {
+  max-width: 720px;
+  margin-top: 1rem;
+  background: #061020;
+  border: 1px solid #004080;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+.lcx-search-label {
+  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #6E8AB0; display: flex; justify-content: space-between; margin-bottom: 6px;
+}
+.lcx-search-input {
+  width: 100%; background: transparent; border: none; outline: none;
+  font-family: 'Barlow Condensed', monospace; font-size: 1.3rem; font-weight: 600;
+  color: #C8A020;
+}
+.lcx-search-input::placeholder { color: #3E5876; }
+
+.lcx-body { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 3rem; }
+.lcx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.lcx-card { background: #13233a; border: 1px solid #1a3355; border-radius: 8px; padding: 14px; }
+.lcx-card-src {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #C8A020;
+}
+.lcx-card-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700;
+  color: #fff; margin: 4px 0 8px;
+}
+.lcx-chip {
+  display: inline-block; background: #061020; border: 1px solid #1a3355; border-radius: 6px;
+  padding: 4px 8px; margin: 0 6px 6px 0; font-size: 0.75rem;
+}
+.lcx-chip b { color: #9bb3cc; font-weight: 600; }
+.lcx-empty { color: #6E8AB0; text-align: center; padding: 3rem 0; }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<script>document.body.classList.add('lcx-page');</script>
+
+<div class="lcx-header">
+  <div class="lcx-title">Load Cell Cross-Reference</div>
+  <div class="lcx-sub">Search any manufacturer's part number to see its equivalents across the industry.</div>
+  <div class="lcx-search-wrap">
+    <div class="lcx-search-label">
+      <span>Part number or manufacturer</span>
+      <span id="lcx-count"></span>
+    </div>
+    <input id="lcx-input" class="lcx-search-input" type="text" placeholder="e.g. RL75058, H9N, CG-23..." autofocus />
+  </div>
+</div>
+
+<div class="lcx-body">
+  <div id="lcx-results" class="lcx-grid"></div>
+</div>
+
+<script>
+(function () {
+  // Matches the app's established CSRF pattern: read fresh from cookie,
+  // falling back to window.csrf_token, and only send it on non-GET.
+  function getCsrfToken() {
+    const m = document.cookie.match(/(?:^|;\s*)csrf_token=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : (window.csrf_token ?? "");
+  }
+
+  async function apiGet(path) {
+    const headers = {};
+    const res = await fetch(path, { method: "GET", headers, credentials: "same-origin" });
+    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+    return res.json();
+  }
+
+  const input = document.getElementById("lcx-input");
+  const results = document.getElementById("lcx-results");
+  const count = document.getElementById("lcx-count");
+  let timer = null;
+
+  // All family/equivalent text is Desk-editable data (System Manager /
+  // Service Administrator), not developer-controlled markup, so it is
+  // escaped before ever touching innerHTML.
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    }[ch]));
+  }
+
+  function render(families) {
+    results.innerHTML = "";
+    count.textContent = families.length + " match" + (families.length === 1 ? "" : "es");
+    if (!families.length) {
+      results.innerHTML = '<div class="lcx-empty">No matches. Try a shorter fragment.</div>';
+      return;
+    }
+    families.forEach((fam) => {
+      const card = document.createElement("div");
+      card.className = "lcx-card";
+      const chips = (fam.equivalents || [])
+        .map((e) => `<span class="lcx-chip"><b>${escapeHtml(e.manufacturer)}:</b> ${escapeHtml(e.model)}</span>`)
+        .join("");
+      card.innerHTML =
+        `<div class="lcx-card-src">${escapeHtml(fam.source)}</div>` +
+        `<div class="lcx-card-title">${escapeHtml(fam.primary_manufacturer)} ${escapeHtml(fam.primary_label)}</div>` +
+        (chips || '<div style="color:#6E8AB0;font-size:0.75rem;">No cross-referenced equivalents on file.</div>');
+      results.appendChild(card);
+    });
+  }
+
+  async function runSearch(query) {
+    try {
+      const data = await apiGet(
+        "/api/method/beveren_fsm.field_service_management.api.load_cell_xref.search?query=" +
+          encodeURIComponent(query)
+      );
+      render(data.message || []);
+    } catch (e) {
+      count.textContent = "Search failed";
+      console.error(e);
+    }
+  }
+
+  input.addEventListener("input", () => {
+    clearTimeout(timer);
+    const query = input.value;
+    timer = setTimeout(() => runSearch(query), 200);
+  });
+
+  runSearch("");
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,269 @@
+{
+  "name": "LCS Customer Equipment",
+  "doctype": "DocType",
+  "module": "Field Service Management",
+  "naming_series": "CEQ-.YYYY.-",
+  "autoname": "naming_series:",
+  "is_submittable": 0,
+  "track_changes": 1,
+  "title_field": "serial_number",
+  "description": "Scale registry per customer.",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "CEQ-.YYYY.-",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "label": "Customer",
+      "fieldtype": "Link",
+      "options": "Customer",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "service_address",
+      "label": "Service Address",
+      "fieldtype": "Link",
+      "options": "Address",
+      "in_list_view": 1,
+      "description": "Filtered to addresses linked to the selected customer"
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Active\nInactive\nRetired",
+      "default": "Active",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "equipment_section",
+      "label": "Equipment",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "equipment_type",
+      "label": "Equipment Type",
+      "fieldtype": "Select",
+      "options": "Unit\nDisplay\nBase",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "description": "Unit = single combined scale. Display = indicator only. Base = scale base only."
+    },
+    {
+      "fieldname": "manufacturer",
+      "label": "Manufacturer",
+      "fieldtype": "Link",
+      "options": "Manufacturer",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "scale_model",
+      "label": "Model",
+      "fieldtype": "Link",
+      "options": "LCS Scale Model",
+      "reqd": 1,
+      "in_list_view": 1,
+      "description": "Filtered to models belonging to the selected manufacturer"
+    },
+    {
+      "fieldname": "serial_number",
+      "label": "Serial Number",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "capacity",
+      "label": "Capacity",
+      "fieldtype": "Float",
+      "description": "Auto-filled from model; override if needed"
+    },
+    {
+      "fieldname": "capacity_unit",
+      "label": "Capacity Unit",
+      "fieldtype": "Select",
+      "options": "\nlb\nkg\ng\noz\nt"
+    },
+    {
+      "fieldname": "resolution",
+      "label": "Resolution",
+      "fieldtype": "Float",
+      "description": "Auto-filled from model; override if needed"
+    },
+    {
+      "fieldname": "resolution_unit",
+      "label": "Resolution Unit",
+      "fieldtype": "Select",
+      "options": "\nlb\nkg\ng\noz",
+      "read_only": 1
+    },
+    {
+      "fieldname": "paired_component",
+      "label": "Paired Component",
+      "fieldtype": "Link",
+      "options": "LCS Customer Equipment",
+      "read_only": 1,
+      "description": "Auto-populated when a paired base is created from this record"
+    },
+    {
+      "fieldname": "paired_base_section",
+      "label": "Paired Base",
+      "fieldtype": "Section Break",
+      "depends_on": "eval:doc.equipment_type === 'Display'",
+      "description": "Enter the scale base paired with this display. A separate equipment record will be created automatically on save."
+    },
+    {
+      "fieldname": "base_manufacturer",
+      "label": "Base Manufacturer",
+      "fieldtype": "Link",
+      "options": "Manufacturer",
+      "depends_on": "eval:doc.equipment_type === 'Display'"
+    },
+    {
+      "fieldname": "base_scale_model",
+      "label": "Base Model",
+      "fieldtype": "Link",
+      "options": "LCS Scale Model",
+      "depends_on": "eval:doc.equipment_type === 'Display'",
+      "description": "Filtered to models belonging to the selected base manufacturer"
+    },
+    {
+      "fieldname": "base_serial_number",
+      "label": "Base Serial Number",
+      "fieldtype": "Data",
+      "depends_on": "eval:doc.equipment_type === 'Display'"
+    },
+    {
+      "fieldname": "col_break_2",
+      "fieldtype": "Column Break",
+      "depends_on": "eval:doc.equipment_type === 'Display'"
+    },
+    {
+      "fieldname": "base_capacity",
+      "label": "Base Capacity",
+      "fieldtype": "Float",
+      "depends_on": "eval:doc.equipment_type === 'Display'",
+      "description": "Auto-filled from base model; override if needed"
+    },
+    {
+      "fieldname": "base_capacity_unit",
+      "label": "Base Capacity Unit",
+      "fieldtype": "Select",
+      "options": "\nlb\nkg\ng\noz\nt",
+      "depends_on": "eval:doc.equipment_type === 'Display'"
+    },
+    {
+      "fieldname": "base_resolution",
+      "label": "Base Resolution",
+      "fieldtype": "Float",
+      "depends_on": "eval:doc.equipment_type === 'Display'",
+      "description": "Auto-filled from base model; override if needed"
+    },
+    {
+      "fieldname": "base_resolution_unit",
+      "label": "Base Resolution Unit",
+      "fieldtype": "Select",
+      "options": "\nlb\nkg\ng\noz",
+      "depends_on": "eval:doc.equipment_type === 'Display'",
+      "read_only": 1
+    },
+    {
+      "fieldname": "location_section",
+      "label": "Location",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "location_description",
+      "label": "Location Description",
+      "fieldtype": "Small Text",
+      "description": "Where on customer premises this equipment is installed"
+    },
+    {
+      "fieldname": "calibration_section",
+      "label": "Calibration",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "calibration_interval_months",
+      "label": "Calibration Interval (Months)",
+      "fieldtype": "Int",
+      "default": 12
+    },
+    {
+      "fieldname": "last_calibration_date",
+      "label": "Last Calibration Date",
+      "fieldtype": "Date",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "col_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "calibration_due_date",
+      "label": "Calibration Due Date",
+      "fieldtype": "Date",
+      "read_only": 1,
+      "description": "Computed: Last Calibration Date + Calibration Interval Months",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "smarter_certs_url",
+      "label": "SmarterCerts URL",
+      "fieldtype": "Data",
+      "options": "URL",
+      "description": "Link to this equipment's certificate record in SmarterCerts"
+    },
+    {
+      "fieldname": "amended_from",
+      "label": "Amended From",
+      "fieldtype": "Link",
+      "options": "LCS Customer Equipment",
+      "read_only": 1,
+      "print_hide": 1,
+      "no_copy": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Dispatch Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0
+    },
+    {
+      "role": "Field Technician",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "delete": 0
+    }
+  ],
+  "links": [],
+  "actions": []
+}

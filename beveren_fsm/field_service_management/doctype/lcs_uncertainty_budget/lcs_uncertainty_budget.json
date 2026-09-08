@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-09-02 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "service_type",
+  "item",
+  "col_break_1",
+  "allow_manual_override",
+  "section_ranges",
+  "uncertainty_ranges"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "UNC-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "description": "Applies to all jobs of this Service Type unless narrowed by Item below. At least one of Service Type / Item is required.",
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Type",
+   "options": "Service Type"
+  },
+  {
+   "description": "Optional: narrows this budget to one specific Item rather than the whole Service Type.",
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Technician can override the default uncertainty budget for a specific job.",
+   "fieldname": "allow_manual_override",
+   "fieldtype": "Check",
+   "label": "Allow Manual Override"
+  },
+  {
+   "fieldname": "section_ranges",
+   "fieldtype": "Section Break",
+   "label": "Uncertainty Ranges"
+  },
+  {
+   "description": "Range-based uncertainty per SOP-012/SOP-026 -- scale tolerance/uncertainty varies by weight range under NIST HB 44.",
+   "fieldname": "uncertainty_ranges",
+   "fieldtype": "Table",
+   "label": "Uncertainty Ranges",
+   "options": "LCS Uncertainty Range"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS Uncertainty Budget",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

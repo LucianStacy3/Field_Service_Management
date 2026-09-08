@@ -1,0 +1,922 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-06-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "vehicle",
+  "driver",
+  "inspection_date",
+  "col_break_1",
+  "vehicle_year_make_model",
+  "license_plate",
+  "plate_state",
+  "vin_last_4",
+  "col_break_2",
+  "odometer_start",
+  "odometer_end",
+  "total_miles",
+  "dispatch_branch",
+  "section_pretrip",
+  "pt_brakes_section",
+  "pt_service_brakes",
+  "pt_parking_brake",
+  "pt_brake_drums",
+  "pt_brake_lines",
+  "pt_brake_linings",
+  "pt_abs_light",
+  "pt_steering_section",
+  "pt_steering_freeplay",
+  "pt_steering_column",
+  "pt_power_steering_fluid",
+  "pt_tie_rods",
+  "pt_wheel_bearings",
+  "pt_front_axle",
+  "pt_lights_section",
+  "pt_headlights",
+  "pt_tail_lights",
+  "pt_stop_lights",
+  "pt_turn_signals",
+  "pt_marker_lights",
+  "pt_reverse_lights",
+  "pt_hazard_flashers",
+  "pt_instrument_warning",
+  "pt_tires_section",
+  "pt_front_tread",
+  "pt_rear_tread",
+  "pt_tire_inflation",
+  "pt_tire_sidewalls",
+  "pt_dual_spacing",
+  "pt_lug_nuts",
+  "pt_valve_stems",
+  "pt_spare_tire",
+  "pt_engine_section",
+  "pt_oil_level",
+  "pt_coolant_level",
+  "pt_trans_fluid",
+  "pt_belts_hoses",
+  "pt_battery",
+  "pt_air_filter",
+  "pt_fuel_level",
+  "pt_fluid_leaks",
+  "pt_body_section",
+  "pt_body_panels",
+  "pt_frame_chassis",
+  "pt_exhaust",
+  "pt_windshield",
+  "pt_wipers",
+  "pt_mirrors",
+  "pt_horn",
+  "pt_defroster",
+  "pt_doors_section",
+  "pt_cab_doors",
+  "pt_cargo_doors",
+  "pt_door_hinges",
+  "pt_steps_handrails",
+  "pt_safety_section",
+  "pt_fire_extinguisher",
+  "pt_warning_triangles",
+  "pt_first_aid",
+  "pt_seat_belt",
+  "pt_cargo_section",
+  "pt_weights_secured",
+  "pt_weight_cart",
+  "pt_tiedown_straps",
+  "pt_load_deck",
+  "pt_liftgate",
+  "pt_load_locks",
+  "pt_weight_inventory",
+  "pt_weight_cert_tags",
+  "pt_defect_remarks",
+  "pt_certified",
+  "pt_certified_time",
+  "section_posttrip",
+  "post_brakes",
+  "post_steering",
+  "post_lights",
+  "post_tires",
+  "post_engine",
+  "post_body",
+  "post_safety",
+  "post_cargo",
+  "post_defect_remarks",
+  "post_certified",
+  "post_certified_time",
+  "inspection_status",
+  "fuel_level",
+  "section_mechanic",
+  "defect_status",
+  "work_order_number",
+  "repair_date",
+  "repair_notes",
+  "mechanic_name",
+  "mechanic_date",
+  "fleet_manager_name",
+  "fleet_manager_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Series",
+   "label": "Series",
+   "options": "LCS-DOT-.YYYY.-.####"
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "LCS Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_year_make_model",
+   "fieldtype": "Data",
+   "label": "Year / Make / Model",
+   "read_only": 1
+  },
+  {
+   "fieldname": "license_plate",
+   "fieldtype": "Data",
+   "label": "License Plate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plate_state",
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vin_last_4",
+   "fieldtype": "Data",
+   "label": "VIN (Last 4)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "odometer_start",
+   "fieldtype": "Int",
+   "label": "Odometer \u2014 Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "odometer_end",
+   "fieldtype": "Int",
+   "label": "Odometer \u2014 End"
+  },
+  {
+   "fieldname": "total_miles",
+   "fieldtype": "Int",
+   "label": "Total Miles",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dispatch_branch",
+   "fieldtype": "Select",
+   "label": "Dispatch Branch",
+   "options": "\nPerris\nSan Diego\nEl Centro\nApache Junction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_pretrip",
+   "fieldtype": "Section Break",
+   "label": "Pre-Trip Inspection"
+  },
+  {
+   "fieldname": "pt_brakes_section",
+   "fieldtype": "Section Break",
+   "label": "1. Brakes"
+  },
+  {
+   "fieldname": "pt_service_brakes",
+   "fieldtype": "Select",
+   "label": "Service Brakes",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_parking_brake",
+   "fieldtype": "Select",
+   "label": "Parking / Emergency Brake",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_brake_drums",
+   "fieldtype": "Select",
+   "label": "Brake Drums / Rotors",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_brake_lines",
+   "fieldtype": "Select",
+   "label": "Brake Lines & Hoses",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_brake_linings",
+   "fieldtype": "Select",
+   "label": "Brake Linings / Pads (wear indicators)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_abs_light",
+   "fieldtype": "Select",
+   "label": "ABS Warning Light (verify extinguishes)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_steering_section",
+   "fieldtype": "Section Break",
+   "label": "2. Steering & Front Axle"
+  },
+  {
+   "fieldname": "pt_steering_freeplay",
+   "fieldtype": "Select",
+   "label": "Steering Wheel Free Play (\u2264 2 in / 30\u00b0)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_steering_column",
+   "fieldtype": "Select",
+   "label": "Steering Column / Shaft",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_power_steering_fluid",
+   "fieldtype": "Select",
+   "label": "Power Steering Fluid Level",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tie_rods",
+   "fieldtype": "Select",
+   "label": "Tie Rods & Drag Links",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_wheel_bearings",
+   "fieldtype": "Select",
+   "label": "Wheel Bearings / Seals",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_front_axle",
+   "fieldtype": "Select",
+   "label": "Front Axle Condition",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_lights_section",
+   "fieldtype": "Section Break",
+   "label": "3. Lights & Electrical"
+  },
+  {
+   "fieldname": "pt_headlights",
+   "fieldtype": "Select",
+   "label": "Headlights \u2014 High & Low Beam",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tail_lights",
+   "fieldtype": "Select",
+   "label": "Tail Lights",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_stop_lights",
+   "fieldtype": "Select",
+   "label": "Stop / Brake Lights",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_turn_signals",
+   "fieldtype": "Select",
+   "label": "Turn Signals \u2014 Front & Rear",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_marker_lights",
+   "fieldtype": "Select",
+   "label": "Marker / Clearance Lights",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_reverse_lights",
+   "fieldtype": "Select",
+   "label": "Reverse / Back-Up Lights",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_hazard_flashers",
+   "fieldtype": "Select",
+   "label": "Hazard / 4-Way Flashers",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_instrument_warning",
+   "fieldtype": "Select",
+   "label": "Instrument Panel Warning Lights (clear before departure)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tires_section",
+   "fieldtype": "Section Break",
+   "label": "4. Tires & Wheels"
+  },
+  {
+   "fieldname": "pt_front_tread",
+   "fieldtype": "Select",
+   "label": "Front Tire Tread Depth (\u2265 4/32 in steering axle)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_rear_tread",
+   "fieldtype": "Select",
+   "label": "Rear Tire Tread Depth (\u2265 2/32 in other axles)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tire_inflation",
+   "fieldtype": "Select",
+   "label": "Tire Inflation \u2014 All Positions",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tire_sidewalls",
+   "fieldtype": "Select",
+   "label": "Tire Sidewalls / Cuts / Bulges",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_dual_spacing",
+   "fieldtype": "Select",
+   "label": "Dual Tire Spacing (no contact)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_lug_nuts",
+   "fieldtype": "Select",
+   "label": "Wheel Nuts / Lug Nuts Torque",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_valve_stems",
+   "fieldtype": "Select",
+   "label": "Valve Stems & Caps",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_spare_tire",
+   "fieldtype": "Select",
+   "label": "Spare Tire & Mount (if equipped)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pt_engine_section",
+   "fieldtype": "Section Break",
+   "label": "5. Engine Compartment"
+  },
+  {
+   "fieldname": "pt_oil_level",
+   "fieldtype": "Select",
+   "label": "Engine Oil Level",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_coolant_level",
+   "fieldtype": "Select",
+   "label": "Coolant Level",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_trans_fluid",
+   "fieldtype": "Select",
+   "label": "Transmission Fluid Level",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_belts_hoses",
+   "fieldtype": "Select",
+   "label": "Belts & Hoses \u2014 Condition",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_battery",
+   "fieldtype": "Select",
+   "label": "Battery \u2014 Secure & Corrosion Free",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_air_filter",
+   "fieldtype": "Select",
+   "label": "Air Filter Indicator",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_fuel_level",
+   "fieldtype": "Select",
+   "label": "Fuel Level & Fuel Cap Tight",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_fluid_leaks",
+   "fieldtype": "Select",
+   "label": "Oil / Fluid Leaks \u2014 Under Hood",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_body_section",
+   "fieldtype": "Section Break",
+   "label": "6. Body, Cab & Accessories"
+  },
+  {
+   "fieldname": "pt_body_panels",
+   "fieldtype": "Select",
+   "label": "Body Panels & Cab Integrity",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_frame_chassis",
+   "fieldtype": "Select",
+   "label": "Frame / Chassis \u2014 Cracks / Damage",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_exhaust",
+   "fieldtype": "Select",
+   "label": "Exhaust System \u2014 Leaks / Damage",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_windshield",
+   "fieldtype": "Select",
+   "label": "Windshield \u2014 Cracks / Chips",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_wipers",
+   "fieldtype": "Select",
+   "label": "Windshield Wipers & Washers",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_mirrors",
+   "fieldtype": "Select",
+   "label": "Mirrors \u2014 Adjusted & Secure",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_horn",
+   "fieldtype": "Select",
+   "label": "Horn \u2014 Audible Signal",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_defroster",
+   "fieldtype": "Select",
+   "label": "Defroster / Heater Operation",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_doors_section",
+   "fieldtype": "Section Break",
+   "label": "7. Doors & Entry"
+  },
+  {
+   "fieldname": "pt_cab_doors",
+   "fieldtype": "Select",
+   "label": "Cab Doors \u2014 Latch & Seal",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_cargo_doors",
+   "fieldtype": "Select",
+   "label": "Cargo / Body Doors \u2014 Latch & Lock",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_door_hinges",
+   "fieldtype": "Select",
+   "label": "Door Hinges & Hardware",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_steps_handrails",
+   "fieldtype": "Select",
+   "label": "Steps, Handrails & Grab Handles",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_safety_section",
+   "fieldtype": "Section Break",
+   "label": "8. Safety Equipment"
+  },
+  {
+   "fieldname": "pt_fire_extinguisher",
+   "fieldtype": "Select",
+   "label": "Fire Extinguisher Present & Charged",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_warning_triangles",
+   "fieldtype": "Select",
+   "label": "Warning Triangles / Flares (3 req'd)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_first_aid",
+   "fieldtype": "Select",
+   "label": "First Aid Kit",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_seat_belt",
+   "fieldtype": "Select",
+   "label": "Seat Belt \u2014 Functional & Secure",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_cargo_section",
+   "fieldtype": "Section Break",
+   "label": "9. Test Weight / Cargo Equipment (LCS Specific)"
+  },
+  {
+   "fieldname": "pt_weights_secured",
+   "fieldtype": "Select",
+   "label": "Test Weights Secured / Strapped",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_weight_cart",
+   "fieldtype": "Select",
+   "label": "Weight Cart / Pallet Jack Secured",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_tiedown_straps",
+   "fieldtype": "Select",
+   "label": "Tie-Down Straps \u2014 Condition & Count",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_load_deck",
+   "fieldtype": "Select",
+   "label": "Load Deck / Bed Condition",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_liftgate",
+   "fieldtype": "Select",
+   "label": "Liftgate Function & Safety Latch (if equipped)",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "N/A"
+  },
+  {
+   "fieldname": "pt_load_locks",
+   "fieldtype": "Select",
+   "label": "Load Lock Bars / E-Track Secure",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_weight_inventory",
+   "fieldtype": "Select",
+   "label": "Test Weight Inventory Matches Manifest",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_weight_cert_tags",
+   "fieldtype": "Select",
+   "label": "Weight Certification Tags Legible",
+   "options": "OK\nDefect\nN/A",
+   "reqd": 1,
+   "default": "OK"
+  },
+  {
+   "fieldname": "pt_defect_remarks",
+   "fieldtype": "Small Text",
+   "label": "Pre-Trip Defect Details / Remarks"
+  },
+  {
+   "fieldname": "pt_certified",
+   "fieldtype": "Check",
+   "label": "I certify that I have inspected the above vehicle and that it is in safe operating condition.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pt_certified_time",
+   "fieldtype": "Datetime",
+   "label": "Pre-Trip Certification Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_posttrip",
+   "fieldtype": "Section Break",
+   "label": "Post-Trip Inspection"
+  },
+  {
+   "fieldname": "post_brakes",
+   "fieldtype": "Select",
+   "label": "Brakes",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_steering",
+   "fieldtype": "Select",
+   "label": "Steering",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_lights",
+   "fieldtype": "Select",
+   "label": "Lights & Electrical",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_tires",
+   "fieldtype": "Select",
+   "label": "Tires & Wheels",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_engine",
+   "fieldtype": "Select",
+   "label": "Engine / Fluids",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_body",
+   "fieldtype": "Select",
+   "label": "Body / Cab",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_safety",
+   "fieldtype": "Select",
+   "label": "Safety Equipment",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_cargo",
+   "fieldtype": "Select",
+   "label": "Test Weight / Cargo Equipment",
+   "options": "OK\nDefect\nN/A",
+   "default": "OK"
+  },
+  {
+   "fieldname": "post_defect_remarks",
+   "fieldtype": "Small Text",
+   "label": "Post-Trip Defect Details / Remarks"
+  },
+  {
+   "fieldname": "post_certified",
+   "fieldtype": "Check",
+   "label": "I certify that this report was prepared by me at the completion of the above trip and all defects are accurately reported."
+  },
+  {
+   "fieldname": "post_certified_time",
+   "fieldtype": "Datetime",
+   "label": "Post-Trip Certification Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_mechanic",
+   "fieldtype": "Section Break",
+   "label": "Mechanic / Supervisor Review (Desk Only)"
+  },
+  {
+   "fieldname": "defect_status",
+   "fieldtype": "Select",
+   "label": "Defect Status",
+   "options": "\nNo defects reported\nDefects corrected\nDefects need not be corrected \u2014 safe to operate"
+  },
+  {
+   "fieldname": "work_order_number",
+   "fieldtype": "Data",
+   "label": "Work Order #"
+  },
+  {
+   "fieldname": "repair_date",
+   "fieldtype": "Date",
+   "label": "Repair Date"
+  },
+  {
+   "fieldname": "repair_notes",
+   "fieldtype": "Small Text",
+   "label": "Repair Notes"
+  },
+  {
+   "fieldname": "mechanic_name",
+   "fieldtype": "Data",
+   "label": "Mechanic / Supervisor Name"
+  },
+  {
+   "fieldname": "mechanic_date",
+   "fieldtype": "Date",
+   "label": "Mechanic Review Date"
+  },
+  {
+   "fieldname": "fleet_manager_name",
+   "fieldtype": "Data",
+   "label": "Fleet Manager Name"
+  },
+  {
+   "fieldname": "fleet_manager_date",
+   "fieldtype": "Date",
+   "label": "Fleet Manager Date"
+  },
+  {
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "label": "Inspection Status",
+   "options": "Pre-Trip Complete\nComplete",
+   "default": "Pre-Trip Complete",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fuel_level",
+   "fieldtype": "Select",
+   "label": "Fuel Level at Return",
+   "options": "\nEmpty\n1/4\n1/2\n3/4\nFull"
+  }
+ ],
+ "links": [],
+ "modified": "2026-06-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "LCS DOT Inspection",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "Employee"
+  }
+ ],
+ "sort_field": "inspection_date",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

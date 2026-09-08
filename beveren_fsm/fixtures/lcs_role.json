@@ -1,0 +1,30 @@
+[
+  {
+    "doctype": "Role",
+    "name": "CRM User",
+    "role_name": "CRM User",
+    "desk_access": 1,
+    "disabled": 0
+  },
+  {
+    "doctype": "Role",
+    "name": "CRM Manager",
+    "role_name": "CRM Manager",
+    "desk_access": 1,
+    "disabled": 0
+  },
+  {
+    "doctype": "Role",
+    "name": "Helpdesk Agent",
+    "role_name": "Helpdesk Agent",
+    "desk_access": 1,
+    "disabled": 0
+  },
+  {
+    "doctype": "Role",
+    "name": "Helpdesk Manager",
+    "role_name": "Helpdesk Manager",
+    "desk_access": 1,
+    "disabled": 0
+  }
+]

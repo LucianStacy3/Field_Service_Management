@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LCS Service Agreement Quote</title>
+<!--
+  beveren_fsm/www/service-agreement-quote/index.html
+  Route: /service-agreement-quote
+  DocType: LCS Service Agreement Quote
+  Child:   LCS Service Agreement Quote Item (equipment_items)
+-->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#F0F4F8;color:#1A1A2E;font-size:14px;}
+:root{
+  --navy:#002050;--steel:#004080;--blue:#2E74B5;
+  --lbl:#D6E4F7;--crimson:#900010;--gold:#C8A020;
+  --gbg:#F5F7FA;--gbdr:#D0D7E0;--mid:#4A5568;--muted:#718096;
+}
+.pg{max-width:1020px;margin:0 auto;padding:20px 16px 60px;}
+
+/* DEBUG */
+#dbg{background:#1A1A2E;color:#00FF88;font-family:monospace;font-size:11px;padding:8px 12px;border-radius:6px;margin-bottom:12px;white-space:pre-wrap;max-height:80px;overflow-y:auto;}
+
+/* HEADER */
+.hdr{background:var(--navy);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.hdr-icon{width:40px;height:40px;border-radius:8px;background:var(--crimson);display:flex;align-items:center;justify-content:center;}
+.hdr-icon svg{width:20px;height:20px;fill:white;}
+.hdr h1{font-size:1.05rem;font-weight:700;color:white;margin:0;}
+.hdr p{font-size:.68rem;color:var(--lbl);margin:2px 0 0;}
+
+/* MODE */
+.mode-bar{display:flex;background:white;border-radius:8px;border:2px solid var(--navy);overflow:hidden;margin-bottom:12px;}
+.mo{flex:1;padding:9px 10px;text-align:center;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;border-right:1px solid var(--gbdr);}
+.mo:last-child{border-right:none;}
+.mo.on{background:var(--navy);color:white;}
+
+/* CARDS */
+.card{background:white;border-radius:12px;border:1px solid var(--gbdr);margin-bottom:12px;overflow:hidden;}
+.card-hd{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--gbdr);background:var(--gbg);}
+.card-hd h2{font-size:.84rem;font-weight:700;color:var(--navy);margin:0;flex:1;}
+.bdg{font-size:.62rem;font-weight:700;padding:3px 8px;border-radius:20px;background:var(--lbl);color:var(--steel);}
+.bdg-int{background:#FBF5E0;color:#7A5E00;}
+.card-bd{padding:14px 16px;}
+
+/* FIELDS */
+.fg{display:grid;gap:10px;margin-bottom:10px;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.g4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.g5{grid-template-columns:1fr 1fr 1fr 1fr 1fr;}
+.last{margin-bottom:0;}
+.f label{display:block;font-size:.67rem;font-weight:600;color:var(--mid);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em;}
+.req{color:var(--crimson);}
+.f input,.f select,.f textarea{width:100%;padding:6px 9px;font-size:.81rem;border:1.5px solid var(--gbdr);border-radius:4px;background:white;color:#1A1A2E;font-family:inherit;outline:none;}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--blue);}
+.f textarea{resize:vertical;min-height:70px;}
+.hint{font-size:.64rem;color:var(--muted);margin-top:2px;}
+.itag{font-size:.61rem;padding:2px 6px;border-radius:12px;background:#FBF5E0;color:#7A5E00;font-weight:700;display:inline-block;margin-top:2px;}
+
+/* CAPACITY TOGGLE */
+.cap-row{display:flex;gap:8px;margin-bottom:3px;}
+.co{flex:1;padding:7px;text-align:center;border:1.5px solid var(--gbdr);border-radius:4px;font-size:.77rem;font-weight:700;cursor:pointer;color:var(--muted);}
+.co.on-l{background:var(--lbl);border-color:var(--blue);color:var(--steel);}
+.co.on-h{background:var(--navy);border-color:var(--navy);color:white;}
+
+/* SCHEDULE */
+.sb-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.sb{padding:5px 11px;font-size:.72rem;font-weight:700;border:1.5px solid var(--gbdr);border-radius:20px;background:white;color:var(--mid);cursor:pointer;font-family:inherit;}
+.sb.on{background:var(--navy);border-color:var(--navy);color:white;}
+
+/* PRICING PARAMS */
+.params-bar{background:var(--gbg);border:1px solid var(--gbdr);border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+.params-bar h3{font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em;}
+
+/* GLOBAL MODS */
+.gmod-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:0;}
+.gchip{display:flex;align-items:center;gap:6px;padding:5px 9px;background:white;border:1px solid var(--gbdr);border-radius:4px;font-size:.72rem;cursor:pointer;}
+.gchip input{accent-color:var(--crimson);}
+
+/* EQUIPMENT TABLE — wider columns for the integrated approach */
+.eq-wrap{overflow-x:auto;margin-bottom:10px;}
+.eq-tbl{width:100%;border-collapse:collapse;min-width:960px;font-size:.78rem;}
+.eq-tbl th{padding:6px 6px;text-align:left;font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;background:var(--gbg);border-bottom:2px solid var(--gbdr);white-space:nowrap;}
+.eq-tbl th.int-col{color:var(--gold);background:#FEFCE8;}
+.eq-tbl td{padding:4px 3px;border-bottom:1px solid var(--gbdr);vertical-align:middle;}
+.eq-tbl tr:last-child td{border-bottom:none;}
+.eq-tbl td input[type=text],.eq-tbl td select{width:100%;padding:5px 5px;font-size:.76rem;border:1px solid var(--gbdr);border-radius:4px;background:white;font-family:inherit;outline:none;}
+.eq-tbl td input[type=number]{width:100%;padding:5px 5px;font-size:.76rem;border:1px solid var(--gbdr);border-radius:4px;background:white;font-family:inherit;outline:none;text-align:right;}
+.eq-tbl td input:focus,.eq-tbl td select:focus{border-color:var(--blue);}
+.rn{font-size:.67rem;font-weight:700;color:var(--muted);text-align:center;width:24px;}
+/* internal cols slightly muted */
+.int-cell{background:#FEFCE8;}
+.hrs-cell{font-size:.74rem;font-weight:700;color:#7A5E00;text-align:center;background:#FEFCE8;}
+.up-cell{font-size:.76rem;font-weight:700;color:var(--navy);text-align:right;}
+.ext-cell{font-size:.76rem;font-weight:700;color:var(--navy);text-align:right;padding-right:6px;}
+.delbtn{width:24px;height:24px;border-radius:4px;background:#FEF2F2;border:1px solid rgba(144,0,16,.2);color:var(--crimson);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.delbtn svg{width:12px;height:12px;fill:var(--crimson);}
+/* override indicator */
+.override-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;margin-left:3px;vertical-align:middle;display:none;}
+
+/* BANNERS */
+.ban{display:flex;align-items:flex-start;gap:8px;padding:8px 11px;border-radius:4px;font-size:.75rem;border:1px solid;line-height:1.5;margin-bottom:10px;}
+.ban svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;}
+.ban-tip{background:#FFFBEB;border-color:#FDE68A;color:#78530A;}
+.ban-tip svg{fill:#D97706;}
+.ban-info{background:#EFF6FF;border-color:#BFDBFE;color:var(--steel);}
+.ban-info svg{fill:var(--blue);}
+.ban-ok{background:#ECFDF5;border-color:#6EE7B7;color:#065F46;display:none;}
+.ban-ok svg{fill:#059669;}
+.ban-ok.show{display:flex;}
+
+/* SUMMARY */
+.sum{background:var(--navy);border-radius:12px;padding:14px 18px;margin-bottom:14px;}
+.sum h3{font-size:.66rem;font-weight:700;color:var(--lbl);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(214,228,247,.2);}
+.pr{display:flex;justify-content:space-between;padding:3px 0;font-size:.78rem;border-bottom:1px solid rgba(214,228,247,.1);}
+.pr:last-child{border-bottom:none;}
+.pr .l{color:var(--lbl);}
+.pr .v{color:white;font-weight:600;}
+.pr.ann .l{color:var(--gold);font-weight:700;}.pr.ann .v{color:var(--gold);font-size:.95rem;font-weight:700;}
+.tot{background:white;border-radius:8px;padding:11px 15px;display:flex;justify-content:space-between;align-items:center;border:3px solid var(--crimson);margin-top:10px;}
+.tot .l{font-size:.86rem;font-weight:700;color:var(--navy);}
+.tot .v{font-size:1.35rem;font-weight:700;color:var(--navy);}
+
+/* ACTIONS */
+.actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:4px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;}
+.btn-ghost{background:white;border:1.5px solid var(--gbdr);color:var(--mid);}
+.btn-red{background:var(--crimson);color:white;}
+.btn svg{width:13px;height:13px;fill:currentColor;}
+
+#asbar{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:var(--navy);color:var(--lbl);font-size:.67rem;padding:5px 14px;border-radius:20px;z-index:999;display:none;}
+#asbar.show{display:block;}
+
+/* PRINT — hide internal columns and rates */
+@media print{
+  #dbg,.hdr,.mode-bar,.actions,#asbar,.ban-ok,
+  .int-col,.int-cell,.hrs-cell,.params-bar,
+  .eq-tbl th.int-col{display:none !important;}
+  /* hide qty col header internal label */
+  body{background:white;font-size:10pt;}
+  .pg{max-width:100%;padding:0;}
+  .card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;margin-bottom:8pt;}
+  .sum{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .tot{border:2pt solid var(--crimson)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media(max-width:640px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g2{grid-template-columns:1fr;}.gmod-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<script>
+if (!window.frappe) window.frappe = {};
+window.csrf_token = '{{ csrf_token }}';
+</script>
+<div class="pg">
+
+<div id="dbg">Starting...</div>
+
+<header class="hdr">
+  <div class="hdr-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+  <div><h1>LCS Service Agreement Quote</h1><p>Field Service &amp; Calibration — complete this form to generate a service agreement quotation</p></div>
+</header>
+
+<div class="ban ban-ok" id="savedBan">
+  <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  <span>Saved as <strong id="savedName"></strong> &mdash; find it at beveren_fsm &rarr; LCS Service Agreement Quote. <a id="savedLink" target="_blank" style="color:var(--blue);font-weight:700;">Open record &rarr;</a></span>
+</div>
+
+<!-- MODE -->
+<div class="mode-bar">
+  <div class="mo on" id="mCal">Calibration</div>
+  <div class="mo" id="mPm">Preventive Maintenance (PM)</div>
+  <div class="mo" id="mBoth">Calibration + PM</div>
+</div>
+
+<!-- PRICING PARAMETERS — loaded rate + global mods at top -->
+<div class="card">
+  <div class="card-hd"><h2>Pricing Parameters</h2><span class="bdg bdg-int">Internal — not printed</span></div>
+  <div class="card-bd">
+    <div class="params-bar">
+      <div class="fg g4" style="margin-bottom:10px;">
+        <div class="f">
+          <label>Loaded hourly rate ($/hr)</label>
+          <input type="number" id="hrRate" value="" min="0" step="0.50" placeholder="Fetching from Service-Labor...">
+          <div class="itag">Auto-fetched from Service-Labor item · Drives MLU unit prices</div>
+        </div>
+        <div class="f">
+          <label>Site difficulty (10–50)</label>
+          <input type="range" id="siteScore" min="10" max="50" value="15" style="width:100%;accent-color:var(--crimson);margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;font-size:.67rem;color:var(--muted);margin-top:2px;">
+            <span>Score: <strong id="scoreVal">15</strong></span>
+            <span id="tierLbl" style="background:#DCFCE7;color:#166534;padding:1px 7px;border-radius:20px;font-weight:700;font-size:.67rem;">Normal 1.0x</span>
+          </div>
+        </div>
+        <div class="f">
+          <label>Regular T&amp;M rate ($/hr)</label>
+          <input type="number" id="rate_regular" value="" min="0" step="0.50" placeholder="Auto-filled from loaded rate">
+          <div class="hint">Editable — overtime and holiday rates update automatically</div>
+        </div>
+        <div class="f">
+          <label>Overtime T&amp;M rate ($/hr)</label>
+          <input type="number" id="rate_overtime" value="" min="0" step="0.50" readonly style="background:var(--gbg);">
+          <div class="hint">Regular × 1.5 (auto-calculated)</div>
+        </div>
+      </div>
+      <div class="fg g4 last">
+        <div class="f">
+          <label>Sunday &amp; holiday rate ($/hr)</label>
+          <input type="number" id="rate_holiday" value="" min="0" step="0.50" readonly style="background:var(--gbg);">
+          <div class="hint">Regular × 2.0 (auto-calculated)</div>
+        </div>
+        <div class="f">
+          <label>Rates valid until</label>
+          <input type="date" id="rates_valid_until">
+        </div>
+        <div></div>
+        <div class="f" style="display:flex;align-items:flex-end;gap:8px;padding-bottom:2px;">
+          <input type="checkbox" id="plan_service" style="width:14px;height:14px;accent-color:var(--crimson);">
+          <label for="plan_service" style="font-size:.8rem;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0;margin:0;">Plan Service</label>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-size:.7rem;font-weight:700;color:var(--navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em;">Global job modifiers — applied to all units</h3>
+    <div class="gmod-grid">
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.20"> Outdoor / adverse weather +20%</label>
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.15"> Night / weekend shift +15%</label>
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.20"> W&amp;M inspector witnessed +20%</label>
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.25"> ISO 17025 / GMP documentation +25%</label>
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.15"> Remote location +15%</label>
+      <label class="gchip"><input type="checkbox" class="gmod" value="0.20"> Extended weight transport +20%</label>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE INFO -->
+<div class="card">
+  <div class="card-hd"><h2>Quote Info</h2></div>
+  <div class="card-bd">
+    <div class="fg g4 last">
+      <div class="f"><label>Sales rep <span class="req">*</span></label><input type="text" id="sales_rep" value="{{ sales_rep_name }}" placeholder="Full name"></div>
+      <div class="f"><label>Quote date <span class="req">*</span></label><input type="date" id="quote_date"></div>
+      <div class="f"><label>Valid until</label><input type="date" id="valid_until"></div>
+      <div class="f"><label>Service type</label><input type="text" id="svc_display" readonly style="background:var(--gbg);font-weight:700;color:var(--navy);" value="Calibration"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER -->
+<div class="card">
+  <div class="card-hd"><h2>Customer &amp; Contact</h2></div>
+  <div class="card-bd">
+    <div class="fg g2">
+      <div class="f"><label>Customer / Company name <span class="req">*</span></label><input type="text" id="customer_name" placeholder="Acme Produce, Inc."></div>
+      <div class="f"><label>Service address</label><input type="text" id="service_address" placeholder="123 Industrial Blvd, Suite 4B"></div>
+    </div>
+    <!-- capacity_class hidden — set by Vehicle 1 capacity in Zone section -->
+    <input type="hidden" id="capacity_class" value="Light Capacity">
+    <div class="fg g2">
+      <div class="f"><label>City, State, ZIP</label><input type="text" id="city_state_zip" placeholder="Riverside, CA 92507"></div>
+    </div>
+    <div class="fg g3">
+      <div class="f"><label>Contact name <span class="req">*</span></label><input type="text" id="contact_name" placeholder="Jane Smith"></div>
+      <div class="f"><label>Phone</label><input type="tel" id="contact_phone" placeholder="(555) 000-0000"></div>
+      <div class="f"><label>Email</label><input type="email" id="contact_email" placeholder="jane@company.com"></div>
+    </div>
+    <div class="fg g2 last">
+      <div class="f"><label>Alternate contact</label><input type="text" id="alt_contact"></div>
+      <div class="f"><label>Alt phone</label><input type="tel" id="alt_phone"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+<div class="card">
+  <div class="card-hd"><h2>Service Schedule</h2><span class="bdg" id="schedBadge">Annual</span></div>
+  <div class="card-bd">
+    <div class="sb-row">
+      <button class="sb" id="sb1">Monthly</button>
+      <button class="sb" id="sb3">Quarterly</button>
+      <button class="sb" id="sb6">Semi-annual</button>
+      <button class="sb on" id="sb12">Annual</button>
+      <button class="sb" id="sb24">Every 2 years</button>
+    </div>
+    <div class="fg g2 last">
+      <div class="f">
+        <label>Schedule type <span class="req">*</span></label>
+        <select id="schedule_type">
+          <option value="Interval">Interval — every N months</option>
+          <option value="Fixed Monthly">Fixed Monthly — specific months of year</option>
+        </select>
+      </div>
+      <div class="f" id="intField">
+        <label>Interval (months) <span class="req">*</span></label>
+        <input type="number" id="interval_months" value="12" min="1" max="24">
+        <div class="hint">3 = quarterly &nbsp;·&nbsp; 6 = semi-annual &nbsp;·&nbsp; 12 = annual</div>
+      </div>
+    </div>
+    <div id="fixedField" style="display:none;margin-top:8px;">
+      <label style="font-size:.67rem;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:5px;">Select service months</label>
+      <div id="monthGrid" style="display:flex;flex-wrap:wrap;gap:5px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EQUIPMENT — integrated with auto-pricing -->
+<div class="card">
+  <div class="card-hd">
+    <h2>Equipment to be Calibrated / Serviced</h2>
+    <span class="bdg" id="eqBadge">0 units</span>
+  </div>
+  <div class="card-bd">
+    <div class="ban ban-tip">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Unit Price is auto-calculated from the MLU standard hours &times; loaded rate. Override any unit price by typing directly in the field. Gold columns are internal and do not print.
+    </div>
+    <div class="eq-wrap">
+      <table class="eq-tbl">
+        <thead><tr>
+          <th style="width:24px;">#</th>
+          <th style="min-width:135px;">Scale type <span class="req">*</span></th>
+          <th style="min-width:90px;">Make</th>
+          <th style="min-width:90px;">Model</th>
+          <th style="min-width:100px;">Serial no.</th>
+          <th style="min-width:100px;">Location/Dept</th>
+          <th style="min-width:85px;">Difficulty</th>
+          <th class="int-col" style="min-width:60px;">MLU hrs</th>
+          <th class="int-col" style="min-width:85px;">Unit price ($)</th>
+          <th style="min-width:80px;">Price/visit</th>
+          <th style="width:52px;"></th>
+        </tr></thead>
+        <tbody id="eqBody"></tbody>
+      </table>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn btn-ghost" id="addUnitBtn">+ Add unit</button>
+      <button class="btn btn-ghost" id="addIdentBtn">+ Add identical units...</button>
+      <span style="font-size:.67rem;color:var(--muted);margin-left:4px;align-self:center;">Each unit = own row + serial number</span>
+    </div>
+  </div>
+</div>
+
+<!-- ZONE & ADDITIONAL CHARGES -->
+<div class="card">
+  <div class="card-hd"><h2>Zone Charge &amp; Additional Charges</h2></div>
+  <div class="card-bd">
+
+    <!-- ZONE NUMBER — shared by both vehicles -->
+    <div class="fg g2" style="margin-bottom:10px;">
+      <div class="f">
+        <label>Zone number</label>
+        <select id="zoneNum">
+          <option value="">No zone charge</option>
+          <option value="1">Zone 1 — office/shop (no travel time)</option>
+          <option value="2">Zone 2 — 1 hr travel</option>
+          <option value="3">Zone 3 — 2 hrs travel</option>
+          <option value="4">Zone 4 — 3 hrs travel</option>
+          <option value="5">Zone 5 — 4 hrs travel</option>
+          <option value="6">Zone 6 — 5 hrs travel</option>
+        </select>
+        <div class="hint">Zone applies to all vehicles — same site</div>
+      </div>
+      <div class="f">
+        <label>Travel time per trip</label>
+        <input type="number" id="zoneTravelHrs" value="0" min="0" step="0.5" readonly style="background:var(--gbg);font-weight:700;color:var(--navy);">
+        <div class="hint">Zone − 1 hours (Zone 1 = 0 hrs)</div>
+      </div>
+    </div>
+
+    <!-- VEHICLE 1 -->
+    <div style="background:var(--gbg);border:1px solid var(--gbdr);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+      <div style="font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em;">Vehicle 1 — Primary</div>
+      <div class="fg g4 last">
+        <div class="f">
+          <label>Capacity class <span class="req">*</span></label>
+          <div class="cap-row">
+            <div class="co on-l" id="v1Light">Light (&lt;1,000 lb)</div>
+            <div class="co" id="v1Heavy">Heavy (&gt;1,000 lb)</div>
+          </div>
+          <div class="hint">Light = &lt;1,000 lb test weight</div>
+        </div>
+        <div class="f">
+          <label>Flat zone fee</label>
+          <input type="number" id="v1ZoneFee" value="" min="0" step="0.01" readonly style="background:var(--gbg);font-weight:700;color:var(--navy);" placeholder="Auto-filled">
+          <div class="hint" id="v1ItemCode" style="font-size:.65rem;color:var(--muted);"></div>
+        </div>
+        <div class="f">
+          <label>Return trips (qty)</label>
+          <input type="number" id="v1ReturnTrips" value="0" min="0" step="1">
+          <div class="hint">0 = primary only &nbsp;·&nbsp; 1 = 2× zone total</div>
+        </div>
+        <div class="f">
+          <label style="font-weight:700;color:var(--navy);">V1 travel total</label>
+          <input type="number" id="v1Total" value="0" readonly style="background:var(--navy);color:white;font-weight:700;font-size:.88rem;border-color:var(--navy);">
+          <div class="hint" id="v1TotalHint">Zone fee × trips</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VEHICLE 2 -->
+    <div style="background:var(--gbg);border:1px solid var(--gbdr);border-radius:8px;padding:12px 14px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <input type="checkbox" id="v2Enable" style="width:14px;height:14px;accent-color:var(--crimson);">
+        <span style="font-size:.72rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;">Vehicle 2 — Additional (optional)</span>
+      </div>
+      <div id="v2Fields" style="display:none;">
+        <div class="fg g4 last">
+          <div class="f">
+            <label>Capacity class</label>
+            <div class="cap-row">
+              <div class="co on-l" id="v2Light">Light (&lt;1,000 lb)</div>
+              <div class="co" id="v2Heavy">Heavy (&gt;1,000 lb)</div>
+            </div>
+            <div class="hint">Independent of Vehicle 1</div>
+          </div>
+          <div class="f">
+            <label>Flat zone fee</label>
+            <input type="number" id="v2ZoneFee" value="" min="0" step="0.01" readonly style="background:var(--gbg);font-weight:700;color:var(--navy);" placeholder="Auto-filled">
+            <div class="hint" id="v2ItemCode" style="font-size:.65rem;color:var(--muted);"></div>
+          </div>
+          <div class="f">
+            <label>Return trips (qty)</label>
+            <input type="number" id="v2ReturnTrips" value="0" min="0" step="1">
+            <div class="hint">0 = primary only &nbsp;·&nbsp; 1 = 2× zone total</div>
+          </div>
+          <div class="f">
+            <label style="font-weight:700;color:var(--navy);">V2 travel total</label>
+            <input type="number" id="v2Total" value="0" readonly style="background:var(--navy);color:white;font-weight:700;font-size:.88rem;border-color:var(--navy);">
+            <div class="hint" id="v2TotalHint">Zone fee × trips</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBINED TRAVEL TOTAL -->
+    <div class="fg g2" style="margin-bottom:12px;">
+      <div></div>
+      <div class="f">
+        <label style="font-weight:700;color:var(--crimson);">Total travel charge (all vehicles)</label>
+        <input type="number" id="zoneTotalCharge" value="0" readonly style="background:var(--crimson);color:white;font-weight:700;font-size:1rem;border-color:var(--crimson);">
+        <div class="hint" id="zoneTotalHint">V1 total + V2 total</div>
+      </div>
+    </div>
+    <!-- Additional Charges -->
+    <h3 style="font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em;">Additional Charges</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <input type="checkbox" id="chCerts" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chCerts" style="font-size:.78rem;flex:1;cursor:pointer;">Smarter Certs</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vCerts" value="25" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+      </div>
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <input type="checkbox" id="chShipping" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chShipping" style="font-size:.78rem;flex:1;cursor:pointer;">Shipping Recovery</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vShipping" value="25" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+      </div>
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <input type="checkbox" id="chShop" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chShop" style="font-size:.78rem;flex:1;cursor:pointer;">Shop Supplies</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vShop" value="25" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+      </div>
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <input type="checkbox" id="chCheckin" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chCheckin" style="font-size:.78rem;flex:1;cursor:pointer;">Check In/Out Time</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vCheckin" value="0" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+      </div>
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <input type="checkbox" id="chMisc" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chMisc" style="font-size:.78rem;flex:1;cursor:pointer;">Misc Charge 1</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vMisc" value="0" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+        <input type="text" id="dMisc" placeholder="Description..." style="width:100%;padding:4px 7px;font-size:.76rem;border:1px solid var(--gbdr);border-radius:4px;background:white;">
+      </div>
+      <div style="padding:8px 10px;background:var(--gbg);border:1px solid var(--gbdr);border-radius:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <input type="checkbox" id="chMisc2" style="accent-color:var(--crimson);width:14px;height:14px;">
+          <label for="chMisc2" style="font-size:.78rem;flex:1;cursor:pointer;">Misc Charge 2</label>
+          <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:.75rem;color:var(--muted);">$</span><input type="number" id="vMisc2" value="0" min="0" step="1" style="width:65px;text-align:right;padding:4px 6px;font-size:.78rem;border:1px solid var(--gbdr);border-radius:4px;"></div>
+        </div>
+        <input type="text" id="dMisc2" placeholder="Description..." style="width:100%;padding:4px 7px;font-size:.76rem;border:1px solid var(--gbdr);border-radius:4px;background:white;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS -->
+<div class="card">
+  <div class="card-hd"><h2>Terms &amp; Conditions</h2></div>
+  <div class="card-bd"><div class="fg g1 last"><div class="f"><textarea id="terms" style="min-height:150px;"></textarea></div></div></div>
+</div>
+
+<!-- INTERNAL NOTES -->
+<div class="card">
+  <div class="card-hd"><h2>Internal Notes</h2><span class="bdg bdg-int">Not printed</span></div>
+  <div class="card-bd"><div class="fg g1 last"><div class="f"><textarea id="internal_notes" style="min-height:70px;" placeholder="Site access, pricing rationale, follow-up notes..."></textarea></div></div></div>
+</div>
+
+<!-- SUMMARY -->
+<div class="sum">
+  <h3>Customer-Facing Pricing</h3>
+  <div class="pr"><span class="l">Equipment service subtotal</span><span class="v" id="sumEquip">$0.00</span></div>
+  <div class="pr"><span class="l" id="sumZoneLbl">Travel charge (zone fee + travel time)</span><span class="v" id="sumZone">—</span></div>
+  <div class="pr"><span class="l">Additional charges</span><span class="v" id="sumAddl">—</span></div>
+  <div class="pr"><span class="l">Price per service visit</span><span class="v" id="sumPV">$0.00</span></div>
+  <div class="pr"><span class="l">Visits per year (<span id="sumSchedLbl">Annual</span>)</span><span class="v" id="sumVPY">1</span></div>
+  <div class="pr ann"><span class="l">Extended annual price</span><span class="v" id="sumAnn">$0.00</span></div>
+  <div style="border-top:1px solid rgba(214,228,247,.2);margin:10px 0;padding-top:10px;">
+    <h3 style="margin-bottom:8px;">Internal Costing (not printed)</h3>
+    <div class="pr"><span class="l">Total estimated hours / visit</span><span class="v" id="sumHrs">0.00 hrs</span></div>
+    <div class="pr"><span class="l">Internal labor cost / visit</span><span class="v" id="sumLbr">$0.00</span></div>
+    <div class="pr"><span class="l">Gross margin</span><span class="v" id="sumMgn">—</span></div>
+  </div>
+  <div class="tot"><span class="l">Per-Visit Quoted Price</span><span class="v" id="sumTot">$0.00</span></div>
+</div>
+
+<div class="actions">
+  <button class="btn btn-ghost" id="clearBtn"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>Clear</button>
+  <button class="btn btn-ghost" id="printBtn"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print quote</button>
+  <button class="btn btn-red" id="saveBtn"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>Save Draft to ERPNext</button>
+</div>
+<div id="asbar">Draft saved locally</div>
+
+</div><!-- .pg -->
+<script>
+// ════════════════════════════════════════════
+
+// DIFFICULTY MODIFIERS (added on top of base hours)
+var DIFF_MOD = {
+  'Normal':           0,
+  'In Pit':           0.25,   // +25% (pit-mounted add-on from MLU)
+  'Confined Space':   0.50,
+  'Washdown':         0.30,
+  'Hazardous':        0.40,
+  'Elevated Platform':0.20
+};
+
+// Exact scale_type values from LCS Service Agreement Quote Item DocType
+var SCALE_TYPES = [
+  '',
+  'Bench Scale — 0–30 lb',
+  'Bench Scale — 31–100 lb',
+  'Bench Scale — 101–250 lb',
+  'Bench Scale — NTEP / Legal-for-Trade',
+  'Bench Scale — Washdown (IP65/69K)',
+  'Counting Scale — 0–30 lb',
+  'Counting Scale — 31–100 lb',
+  'Counting Scale — Dual-Range',
+  'Retail / Price-Computing Scale',
+  'Floor Scale — 0–1,000 lb',
+  'Floor Scale — 1,001–5,000 lb',
+  'Floor Scale — 5,001–10,000 lb',
+  'Floor Scale — 10,001–20,000 lb',
+  'Floor Scale — Pit-Mounted (add-on)',
+  'Pallet Jack Scale',
+  'Pallet Jack Scale — Wireless',
+  'Tank / Hopper Scale — Single Vessel',
+  'Tank / Hopper Scale — Multi-Vessel',
+  'Conveyor / Belt Scale',
+  'Animal / Livestock Scale',
+  'Truck Scale — Steel Deck, Above Ground',
+  'Truck Scale — Steel Deck, Pit Mounted',
+  'Truck Scale — Portable / Axle Pad',
+  'Onboard Truck Weighing System',
+  'Crane / Overhead Scale',
+  'Rail Scale',
+  'Mixer / Batch Scale',
+  'Other (see Notes)'
+];
+
+// MLU hours lookup by scale_type exact value
+// Returns {cal: hrs, pm: hrs} for each type
+var MLU_BY_TYPE = {
+  'Bench Scale — 0–30 lb':                  {cal:0.20, pm:0.38},
+  'Bench Scale — 31–100 lb':                {cal:0.25, pm:0.38},
+  'Bench Scale — 101–250 lb':               {cal:0.28, pm:0.38},
+  'Bench Scale — NTEP / Legal-for-Trade':   {cal:0.38, pm:0.38},
+  'Bench Scale — Washdown (IP65/69K)':      {cal:0.38, pm:0.50},
+  'Counting Scale — 0–30 lb':               {cal:0.20, pm:0.38},
+  'Counting Scale — 31–100 lb':             {cal:0.25, pm:0.38},
+  'Counting Scale — Dual-Range':            {cal:0.38, pm:0.38},
+  'Retail / Price-Computing Scale':         {cal:0.38, pm:0.38},
+  'Floor Scale — 0–1,000 lb':              {cal:0.38, pm:0.63},
+  'Floor Scale — 1,001–5,000 lb':          {cal:0.50, pm:0.63},
+  'Floor Scale — 5,001–10,000 lb':         {cal:0.63, pm:0.88},
+  'Floor Scale — 10,001–20,000 lb':        {cal:0.75, pm:1.25},
+  'Floor Scale — Pit-Mounted (add-on)':    {cal:0.25, pm:0.25},
+  'Pallet Jack Scale':                      {cal:0.50, pm:0.75},
+  'Pallet Jack Scale — Wireless':           {cal:0.63, pm:0.75},
+  'Tank / Hopper Scale — Single Vessel':    {cal:0.75, pm:1.00},
+  'Tank / Hopper Scale — Multi-Vessel':     {cal:1.00, pm:1.50},
+  'Conveyor / Belt Scale':                  {cal:1.00, pm:1.50},
+  'Animal / Livestock Scale':               {cal:0.50, pm:0.75},
+  'Truck Scale — Steel Deck, Above Ground': {cal:1.50, pm:2.50},
+  'Truck Scale — Steel Deck, Pit Mounted':  {cal:2.00, pm:3.00},
+  'Truck Scale — Portable / Axle Pad':      {cal:0.75, pm:1.00},
+  'Onboard Truck Weighing System':          {cal:1.25, pm:1.50},
+  'Crane / Overhead Scale':                 {cal:0.75, pm:1.00},
+  'Rail Scale':                             {cal:2.00, pm:3.00},
+  'Mixer / Batch Scale':                    {cal:1.00, pm:1.50},
+  'Other (see Notes)':                      {cal:1.00, pm:1.00}
+};
+var DIFF_OPTS   = ['Normal','In Pit','Confined Space','Washdown','Hazardous','Elevated Platform'];
+var MONTHS      = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var SCHED_MAP   = {'1':12,'3':4,'6':2,'12':1,'24':0.5};
+
+var DEFAULT_TERMS = 'Left Coast Scales will inspect and test with certified weights and standards all assets listed above, according to the schedule stated above.\nAll units will be tested with approved standards in accordance with NIST Handbook 44 tolerances set forth by the National Institute of Standards and Technology.\nAll reports and certifications are stored digitally for future reference.\nAny additional services required beyond the scope above will be performed with your authorization at our agreed-upon labor rates.\nEmergency service will be billed using the enclosed rate schedule, including mechanic time, travel time, and mileage.\nThis agreement will renew automatically. A written notice is required to terminate, sent at least 30 days prior to the next scheduled service.';
+
+// ════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════
+var svcMode = 'cal';
+var units   = [];
+var uid     = 1;
+var LS_KEY  = 'lcs_saq_v5';
+
+// ════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════
+function fv(id){ var e=document.getElementById(id); return e?e.value:''; }
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fmt(n){ return '$'+(parseFloat(n)||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtD(d){ return d.toISOString().split('T')[0]; }
+function getUnit(id){ for(var i=0;i<units.length;i++) if(units[i].id===id) return units[i]; return null; }
+function getVPY(){ var iv=String(parseInt(fv('interval_months'))||12); return SCHED_MAP[iv]||1; }
+function getSchedLabel(){
+  var iv=parseInt(fv('interval_months'))||12;
+  var m={1:'Monthly',3:'Quarterly',6:'Semi-annual',12:'Annual',24:'Every 2 years'};
+  return m[iv]||'Every '+iv+' months';
+}
+function dbg(msg){
+  var el=document.getElementById('dbg');
+  if(el) el.textContent=msg;
+}
+
+// ════════════════════════════════════════════
+// MLU CALCULATION
+// Returns {hrs, unitPrice} for a given unit
+// ════════════════════════════════════════════
+function calcMLU(u) {
+  var hr       = parseFloat(fv('hrRate')) || 165;
+  var score    = parseInt(fv('siteScore')) || 10;
+  var siteMult = score >= 37 ? 2.5 : score >= 23 ? 1.5 : 1.0;
+
+  var gMod = 0;
+  var gcbs = document.querySelectorAll('.gmod:checked');
+  for (var g=0; g<gcbs.length; g++) gMod += parseFloat(gcbs[g].value);
+
+  var entry   = MLU_BY_TYPE[u.scale_type];
+  var baseHrs = 0;
+  if (entry) {
+    if (svcMode === 'cal')  baseHrs = entry.cal;
+    else if (svcMode === 'pm')   baseHrs = entry.pm;
+    else                         baseHrs = entry.cal + entry.pm;
+  }
+
+  var diffMod  = DIFF_MOD[u.difficulty] || 0;
+  var discount = u._multiDiscount ? 0.85 : 1.0;
+  var adjHrs   = baseHrs * discount * siteMult * (1 + gMod + diffMod);
+  var unitPrice = adjHrs * hr;
+
+  return { hrs: adjHrs, unitPrice: unitPrice };
+}
+
+// ════════════════════════════════════════════
+// MODE
+// ════════════════════════════════════════════
+function setMode(m) {
+  svcMode = m;
+  var labels = {cal:'Calibration', pm:'Preventive Maintenance (PM)', both:'Calibration + PM'};
+  var el = document.getElementById('svc_display');
+  if(el) el.value = labels[m];
+  document.getElementById('mCal').className  = 'mo'+(m==='cal'?' on':'');
+  document.getElementById('mPm').className   = 'mo'+(m==='pm'?' on':'');
+  document.getElementById('mBoth').className = 'mo'+(m==='both'?' on':'');
+  recalcAllUnits();
+}
+
+// ════════════════════════════════════════════
+// CAPACITY CLASS
+// ════════════════════════════════════════════
+// setCap kept for DocType payload compatibility — driven by v1Cap now
+function setCap(val) {
+  document.getElementById('capacity_class').value = val;
+}
+
+// ════════════════════════════════════════════
+// SCHEDULE
+// ════════════════════════════════════════════
+function setSched(months) {
+  document.getElementById('interval_months').value = months;
+  document.getElementById('schedule_type').value = 'Interval';
+  document.getElementById('intField').style.display = '';
+  document.getElementById('fixedField').style.display = 'none';
+  var ids=[1,3,6,12,24];
+  for(var i=0;i<ids.length;i++){
+    var btn=document.getElementById('sb'+ids[i]);
+    if(btn) btn.className='sb'+(ids[i]===months?' on':'');
+  }
+  updateSchedBadge();
+  calcSummary();
+}
+function onSchedType() {
+  var isFixed = fv('schedule_type')==='Fixed Monthly';
+  document.getElementById('intField').style.display   = isFixed?'none':'';
+  document.getElementById('fixedField').style.display  = isFixed?'':'none';
+  if(isFixed) buildMonthGrid();
+  updateSchedBadge();
+  calcSummary();
+}
+function updateSchedBadge(){
+  var b=document.getElementById('schedBadge');
+  if(b) b.textContent=getSchedLabel();
+  var s=document.getElementById('sumSchedLbl');
+  if(s) s.textContent=getSchedLabel();
+}
+function buildMonthGrid(){
+  var g=document.getElementById('monthGrid');
+  if(!g||g.children.length) return;
+  for(var i=0;i<MONTHS.length;i++){
+    (function(month){
+      var lbl=document.createElement('label');
+      lbl.style.cssText='display:flex;align-items:center;gap:4px;padding:4px 9px;background:white;border:1px solid var(--gbdr);border-radius:20px;font-size:.73rem;cursor:pointer;';
+      var cb=document.createElement('input'); cb.type='checkbox'; cb.style.accentColor='var(--crimson)';
+      cb.addEventListener('change',calcSummary);
+      lbl.appendChild(cb); lbl.appendChild(document.createTextNode(' '+month));
+      g.appendChild(lbl);
+    })(MONTHS[i]);
+  }
+}
+
+// ════════════════════════════════════════════
+// EQUIPMENT
+// ════════════════════════════════════════════
+function addUnit(pre) {
+  var id = uid++;
+  units.push(pre||{id:id,scale_type:'Floor scale',make:'',model:'',sn:'',location_dept:'',difficulty:'Normal',unit_price:0,_override:false,_multiDiscount:false});
+  renderEq();
+}
+function addIdentical() {
+  if (!units.length) { alert('Add at least one unit first — identical units are copied from the last row.'); return; }
+  var n = parseInt(prompt('How many additional identical units? (copies all fields from last row except serial number)'));
+  if (!n || n < 1) return;
+  var src = units[units.length - 1];
+  for (var i = 0; i < n; i++) {
+    units.push({
+      id: uid++,
+      scale_type:    src.scale_type,
+      make:          src.make,
+      model:         src.model,
+      sn:            '',           // blank — salesperson fills each
+      location_dept: src.location_dept,
+      difficulty:    src.difficulty,
+      
+      unit_price:    0,            // recalculated after render
+      _override:     false,
+      _multiDiscount:false
+    });
+  }
+  renderEq();
+}
+function removeUnit(id) {
+  units=units.filter(function(u){return u.id!==id;});
+  renderEq();
+}
+function readUnit(id) {
+  var tr=document.getElementById('eq-'+id); if(!tr) return;
+  var u=getUnit(id); if(!u) return;
+  u.scale_type    = tr.querySelector('select.eqtype').value;
+  u.make          = tr.querySelector('input.eqmake').value;
+  u.model         = tr.querySelector('input.eqmodel').value;
+  u.sn            = tr.querySelector('input.eqsn').value;
+  u.location_dept = tr.querySelector('input.eqloc').value;
+  u.difficulty    = tr.querySelector('select.eqdiff').value;
+  var upEl = tr.querySelector('input.equp');
+  var newUp = parseFloat(upEl.value)||0;
+  if (Math.abs(newUp - u.unit_price) > 0.005 && upEl._touched) {
+    u._override = true;
+    u.unit_price = newUp;
+  }
+}
+function onEqChange(id) {
+  readUnit(id);
+  updateMultiDiscounts();
+  recalcUnit(id);
+  calcSummary();
+}
+function onUnitPriceChange(id) {
+  var tr=document.getElementById('eq-'+id); if(!tr) return;
+  var u=getUnit(id); if(!u) return;
+  var upEl=tr.querySelector('input.equp');
+  upEl._touched=true;
+  u._override=true;
+  u.unit_price=parseFloat(upEl.value)||0;
+  var extEl=document.getElementById('ext-'+id);
+  if(extEl) extEl.textContent=u.unit_price>0?fmt(u.unit_price):'-';
+  calcSummary();
+}
+function updateMultiDiscounts() {
+  var typeSeen = {};
+  for (var i = 0; i < units.length; i++) {
+    // scale_type already includes capacity (e.g. "Floor Scale — 0–1,000 lb")
+    // so it's the natural discount grouping key
+    var key = units[i].scale_type;
+    typeSeen[key] = (typeSeen[key] || 0) + 1;
+    units[i]._multiDiscount = typeSeen[key] > 1;
+  }
+}
+function recalcUnit(id) {
+  var u=getUnit(id); if(!u) return;
+  if(u._override) {
+    var extEl=document.getElementById('ext-'+id);
+    if(extEl) extEl.textContent=u.unit_price>0?fmt(u.unit_price):'-';
+    return;
+  }
+  var result=calcMLU(u);
+  u.unit_price=result.unitPrice;
+  var tr=document.getElementById('eq-'+id); if(!tr) return;
+  var hrsEl=tr.querySelector('.hrs-cell');
+  var upEl=tr.querySelector('input.equp');
+  var extEl=document.getElementById('ext-'+id);
+  if(hrsEl) hrsEl.textContent=result.hrs>0?result.hrs.toFixed(2)+' h':'-';
+  if(upEl && !upEl._touched) upEl.value=result.unitPrice>0?result.unitPrice.toFixed(2):'';
+  if(extEl) extEl.textContent=result.unitPrice>0?fmt(result.unitPrice):'-';
+}
+function recalcAllUnits() {
+  updateMultiDiscounts();
+  for(var i=0;i<units.length;i++) recalcUnit(units[i].id);
+  // Recalc zone travel costs since they use loaded rate
+  if (fv('zoneNum')) lookupZone();
+  else calcSummary();
+}
+function renderEq() {
+  var tb=document.getElementById('eqBody'); if(!tb) return;
+  tb.innerHTML='';
+  updateMultiDiscounts();
+  for(var i=0;i<units.length;i++){
+    var u=units[i];
+    var result=u._override?{hrs:0,unitPrice:u.unit_price}:calcMLU(u);
+    if(!u._override) u.unit_price=result.unitPrice;
+    var typeOpts=SCALE_TYPES.map(function(t){return '<option'+(t===u.scale_type?' selected':'')+'>'+esc(t)+'</option>';}).join('');
+    var diffOpts=DIFF_OPTS.map(function(d){return '<option'+(d===u.difficulty?' selected':'')+'>'+d+'</option>';}).join('');
+    var snBdr=u.sn?'':'style="border-color:var(--crimson);"';
+    var discTag=u._multiDiscount?'<span style="font-size:.58rem;background:#FBF5E0;color:#7A5E00;border-radius:10px;padding:1px 5px;display:block;">85%</span>':'';
+    var tr=document.createElement('tr');
+    tr.id='eq-'+u.id;
+    tr.innerHTML=
+      '<td class="rn">'+discTag+(i+1)+'</td>'+
+      '<td><select class="eqtype" data-id="'+u.id+'">'+typeOpts+'</select></td>'+
+      '<td><input type="text" class="eqmake" data-id="'+u.id+'" value="'+esc(u.make)+'" placeholder="Mettler-Toledo"></td>'+
+      '<td><input type="text" class="eqmodel" data-id="'+u.id+'" value="'+esc(u.model)+'" placeholder="IND570"></td>'+
+      '<td><input type="text" class="eqsn" id="sn-'+u.id+'" data-id="'+u.id+'" value="'+esc(u.sn)+'" placeholder="S/N *" '+snBdr+'></td>'+
+      '<td><input type="text" class="eqloc" data-id="'+u.id+'" value="'+esc(u.location_dept)+'" placeholder="Dock 3"></td>'+
+      '<td><select class="eqdiff" data-id="'+u.id+'">'+diffOpts+'</select></td>'+
+      '<td class="hrs-cell int-cell">'+(result.hrs>0?result.hrs.toFixed(2)+' h':'-')+'</td>'+
+      '<td class="int-cell"><input type="number" class="equp" data-id="'+u.id+'" value="'+(u.unit_price>0?u.unit_price.toFixed(2):'')+'" min="0" step="0.01" placeholder="Auto" style="text-align:right;'+(u._override?'border-color:var(--gold);':'')+'" title="'+(u._override?'Manually overridden':'Auto-calculated from MLU')+'"></td>'+
+      '<td class="ext-cell" id="ext-'+u.id+'">'+(u.unit_price>0?fmt(u.unit_price):'-')+'</td>'+
+      '<td style="display:flex;gap:3px;">'+
+        '<button class="delbtn" data-id="'+u.id+'" title="Remove"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>'+
+        '<button class="dupbtn" data-id="'+u.id+'" title="Copy this row as template for identical units" style="width:24px;height:24px;border-radius:4px;background:var(--lbl);border:1px solid var(--gbdr);color:var(--steel);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">+</button>'+
+      '</td>';
+    tb.appendChild(tr);
+  }
+  document.getElementById('eqBadge').textContent=units.length+(units.length===1?' unit':' units');
+  calcSummary();
+}
+
+// ════════════════════════════════════════════
+// SUMMARY
+// ════════════════════════════════════════════
+function calcSummary() {
+  var hr=parseFloat(fv('hrRate'))||165;
+  var score=parseInt(fv('siteScore'))||10;
+  var siteMult=score>=37?2.5:score>=23?1.5:1.0;
+  var tierTxt=siteMult===2.5?'Very Difficult 2.5x':siteMult===1.5?'Difficult 1.5x':'Normal 1.0x';
+  var tierCls=siteMult===2.5?'background:#FEF2F2;color:var(--crimson);':siteMult===1.5?'background:#FEF9C3;color:#713F12;':'background:#DCFCE7;color:#166534;';
+  var sv=document.getElementById('scoreVal'); if(sv) sv.textContent=score;
+  var tl=document.getElementById('tierLbl'); if(tl){tl.textContent=tierTxt;tl.style.cssText='padding:1px 7px;border-radius:20px;font-weight:700;font-size:.67rem;'+tierCls;}
+
+  // Equipment subtotal — apply 1-hour minimum to total labor (not including travel)
+  var equipTotal=0, totalHrs=0;
+  for(var k=0;k<units.length;k++){
+    var u=units[k];
+    if(!u._override){ var r=calcMLU(u); totalHrs+=r.hrs; }
+  }
+  // Apply 1-hour minimum to total job labor
+  var minApplied = false;
+  if(totalHrs > 0 && totalHrs < 1.0){
+    totalHrs = 1.0;
+    minApplied = true;
+  }
+  // Recalculate equipment prices — if minimum applied, scale unit prices proportionally
+  for(var k=0;k<units.length;k++){
+    var u=units[k];
+    if(!u._override){
+      var r=calcMLU(u);
+      var unitHrs = r.hrs;
+      if(minApplied && r.hrs > 0){
+        // Scale this unit's hours proportionally to meet the 1-hr minimum
+        var rawTotal = 0;
+        for(var j=0;j<units.length;j++) if(!units[j]._override) rawTotal += calcMLU(units[j]).hrs;
+        unitHrs = rawTotal > 0 ? (r.hrs / rawTotal) * 1.0 : 1.0 / units.length;
+      }
+      var hr2 = parseFloat(fv('hrRate'))||165;
+      u.unit_price = unitHrs * hr2;
+      equipTotal += u.unit_price;
+      // Update the displayed unit price in the table
+      var upEl = document.querySelector('#eq-'+u.id+' input.equp');
+      var extEl = document.getElementById('ext-'+u.id);
+      var hrsEl = document.querySelector('#eq-'+u.id+' .hrs-cell');
+      if(upEl && !upEl._touched) upEl.value = u.unit_price.toFixed(2);
+      if(extEl) extEl.textContent = u.unit_price > 0 ? fmt(u.unit_price) : '-';
+      if(hrsEl) hrsEl.textContent = unitHrs.toFixed(2) + ' h';
+    } else {
+      equipTotal += (u.unit_price || 0);
+    }
+  }
+
+  // Zone total (flat fee + travel time cost)
+  var zoneAmt=parseFloat(fv('zoneTotalCharge'))||0;
+  var v2on=document.getElementById('v2Enable').checked;
+  var zoneLbl=document.getElementById('sumZoneLbl');
+  if(zoneLbl){
+    if(!fv('zoneNum')) zoneLbl.textContent='Travel charge';
+    else if(v2on) zoneLbl.textContent='Travel charge (2 vehicles)';
+    else zoneLbl.textContent='Travel charge (zone fee + travel time)';
+  }
+
+  // Additional charges
+  var addlTotal=0;
+  var addlDefs=[
+    {cb:'chCerts',   vl:'vCerts'},
+    {cb:'chShipping',vl:'vShipping'},
+    {cb:'chShop',    vl:'vShop'},
+    {cb:'chCheckin', vl:'vCheckin'},
+    {cb:'chMisc',    vl:'vMisc'},
+    {cb:'chMisc2',   vl:'vMisc2'}
+  ];
+  for(var a=0;a<addlDefs.length;a++){
+    var cbEl=document.getElementById(addlDefs[a].cb);
+    var vlEl=document.getElementById(addlDefs[a].vl);
+    if(cbEl&&cbEl.checked&&vlEl) addlTotal+=parseFloat(vlEl.value)||0;
+  }
+
+  var perVisit=equipTotal+zoneAmt+addlTotal;
+  var vpy=getVPY(), annual=perVisit*vpy;
+  var laborCost=totalHrs*hr;
+  var margin=perVisit>0&&laborCost>0?Math.round((perVisit-laborCost)/perVisit*100)+'%':'-';
+
+  var el;
+  el=document.getElementById('sumEquip'); if(el) el.textContent=fmt(equipTotal);
+  el=document.getElementById('sumZone');  if(el) el.textContent=zoneAmt>0?fmt(zoneAmt):'—';
+  el=document.getElementById('sumAddl');  if(el) el.textContent=addlTotal>0?fmt(addlTotal):'—';
+  el=document.getElementById('sumPV');    if(el) el.textContent=fmt(perVisit);
+  el=document.getElementById('sumVPY');   if(el) el.textContent=vpy%1===0?vpy:vpy.toFixed(1);
+  el=document.getElementById('sumAnn');   if(el) el.textContent=fmt(annual);
+  el=document.getElementById('sumHrs');   if(el) el.textContent=totalHrs.toFixed(2)+' hrs'+(minApplied?' (1 hr min)':'');
+  el=document.getElementById('sumLbr');   if(el) el.textContent=fmt(laborCost);
+  el=document.getElementById('sumMgn');   if(el) el.textContent=margin;
+  el=document.getElementById('sumTot');   if(el) el.textContent=fmt(perVisit);
+  updateSchedBadge();
+}
+
+// ════════════════════════════════════════════
+// SAVE
+// ════════════════════════════════════════════
+function saveDraft() {
+  var cust=fv('customer_name').trim();
+  if(!cust){alert('Please enter a Customer / Company Name.');return;}
+  if(units.length === 0){alert('Please add at least one piece of equipment before saving.');return;}
+  // Check all units have a serial number
+  var missingSN = units.filter(function(u){return !u.sn;});
+  if(missingSN.length > 0){
+    if(!confirm(missingSN.length + ' unit(s) are missing serial numbers. Save anyway?')) return;
+  }
+  var eq=units.map(function(u){
+    return{location_dept:u.location_dept||'',scale_type:u.scale_type||'',
+      difficulty:u.difficulty||'Normal',make:u.make||'',model:u.model||'',
+      qty:u.qty||1,unit_price:u.unit_price||0,
+      extended_price:(u.unit_price||0)*(u.qty||1)};
+  });
+  var notes=fv('internal_notes');
+  if(units.some(function(u){return u.sn;})){
+    notes+=(notes?'\n\n':'')+'SERIAL NUMBERS:\n'+
+      units.map(function(u,i){return(i+1)+'. '+u.scale_type+' '+u.make+' '+u.model+' - S/N: '+(u.sn||'(not recorded)');}).join('\n');
+  }
+  var perVisit=0;
+  for(var k=0;k<units.length;k++) perVisit+=(units[k].unit_price||0)*(units[k].qty||1);
+  var doc={
+    doctype:'LCS Service Agreement Quote',status:'Draft',
+    quote_date:fv('quote_date'),valid_until:fv('valid_until')||null,
+    sales_rep:fv('sales_rep'),customer_name:cust,
+    service_address:fv('service_address'),city_state_zip:fv('city_state_zip'),
+    contact_name:fv('contact_name'),contact_phone:fv('contact_phone'),contact_email:fv('contact_email'),
+    alt_contact:fv('alt_contact'),alt_phone:fv('alt_phone'),
+    capacity_class:fv('capacity_class'),schedule_type:fv('schedule_type'),
+    interval_months:parseInt(fv('interval_months'))||12,
+    equipment_items:eq,price_per_service:perVisit,
+    rate_regular:parseFloat(fv('rate_regular'))||0,
+    rate_overtime:parseFloat(fv('rate_overtime'))||0,
+    rate_holiday:parseFloat(fv('rate_holiday'))||0,
+    rates_valid_until:fv('rates_valid_until')||null,
+    est_man_hours:parseFloat(document.getElementById('sumHrs').textContent)||null,
+    plan_service:document.getElementById('plan_service').checked?1:0,
+    terms:fv('terms'),internal_notes:notes
+  };
+  dbg('Saving...');
+  var token = getCsrfToken();
+  dbg('CSRF token: ' + (token ? token.substring(0,12)+'...' : 'MISSING'));
+
+  fetch('/api/method/frappe.client.insert', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Frappe-CSRF-Token': token,
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({ doc: doc })
+  })
+  .then(function(res){
+    dbg('HTTP status: ' + res.status);
+    if (res.status === 417) {
+      dbg('417 — CSRF token rejected. Cookie: ' + document.cookie.substring(0,80));
+    }
+    return res.json();
+  })
+  .then(function(data) {
+    dbg('Save response: ' + JSON.stringify(data).substring(0, 150));
+    if (data.message && data.message.name) {
+      var n = data.message.name;
+      dbg('Saved: ' + n);
+      document.getElementById('savedName').textContent = n;
+      document.getElementById('savedLink').href = '/app/lcs-service-agreement-quote/' + n;
+      document.getElementById('savedBan').classList.add('show');
+      localStorage.removeItem(LS_KEY);
+      document.getElementById('savedBan').scrollIntoView({behavior:'smooth', block:'nearest'});
+    } else {
+      dbg('Save failed: ' + JSON.stringify(data).substring(0, 300));
+      alert('Could not save. Debug bar has details.');
+    }
+  })
+  .catch(function(err) {
+    dbg('Save error: ' + err.message);
+    alert('Network error: ' + err.message);
+  });
+}
+
+// ════════════════════════════════════════════
+// AUTOSAVE
+// ════════════════════════════════════════════
+var _at=null;
+function autoSave(){
+  if(_at) clearTimeout(_at);
+  _at=setTimeout(function(){
+    try{
+      var snap={v:5,svcMode:svcMode,units:units.slice(),ts:Date.now(),
+        sales_rep:fv('sales_rep'),quote_date:fv('quote_date'),valid_until:fv('valid_until'),
+        customer_name:fv('customer_name'),capacity_class:fv('capacity_class'),
+        service_address:fv('service_address'),city_state_zip:fv('city_state_zip'),
+        contact_name:fv('contact_name'),contact_phone:fv('contact_phone'),contact_email:fv('contact_email'),
+        alt_contact:fv('alt_contact'),alt_phone:fv('alt_phone'),
+        schedule_type:fv('schedule_type'),interval_months:fv('interval_months'),
+        rate_regular:fv('rate_regular'),rate_overtime:fv('rate_overtime'),rate_holiday:fv('rate_holiday'),
+        rates_valid_until:fv('rates_valid_until'),plan_service:document.getElementById('plan_service').checked,
+        terms:fv('terms'),internal_notes:fv('internal_notes'),
+        hrRate:fv('hrRate'),siteScore:fv('siteScore')};
+      if(!snap.customer_name&&!snap.units.length) return;
+      localStorage.setItem(LS_KEY,JSON.stringify(snap));
+      var bar=document.getElementById('asbar');
+      if(bar){bar.classList.add('show');setTimeout(function(){bar.classList.remove('show');},2000);}
+    }catch(e){}
+  },1000);
+}
+
+// ════════════════════════════════════════════
+// CLEAR
+// ════════════════════════════════════════════
+function clearForm(){
+  if(!confirm('Clear all data?')) return;
+  try{localStorage.removeItem(LS_KEY);}catch(e){}
+  units=[];uid=1;
+  var inputs=document.querySelectorAll('input[type=text],input[type=email],input[type=tel],textarea');
+  for(var i=0;i<inputs.length;i++) inputs[i].value='';
+  document.getElementById('rate_regular').value=115;
+  document.getElementById('rate_overtime').value=172.50;
+  document.getElementById('rate_holiday').value=230;
+  document.getElementById('hrRate').value=165;
+  document.getElementById('siteScore').value=15;
+  document.getElementById('plan_service').checked=false;
+  // Zone
+  document.getElementById('zoneNum').value='';
+  document.getElementById('zoneTravelHrs').value=0;
+  document.getElementById('zoneTotalCharge').value=0;
+  // V1
+  setV1Cap('Light Capacity');
+  document.getElementById('v1ZoneFee').value='';
+  document.getElementById('v1ReturnTrips').value=0;
+  document.getElementById('v1Total').value=0;
+  document.getElementById('v1ItemCode').textContent='';
+  // V2
+  document.getElementById('v2Enable').checked=false;
+  document.getElementById('v2Fields').style.display='none';
+  setV2Cap('Light Capacity');
+  document.getElementById('v2ZoneFee').value='';
+  document.getElementById('v2ReturnTrips').value=0;
+  document.getElementById('v2Total').value=0;
+  document.getElementById('v2ItemCode').textContent='';
+  // Additional charges
+  var cbs=['chCerts','chShipping','chShop','chCheckin','chMisc'];
+  for(var i=0;i<cbs.length;i++){ var c=document.getElementById(cbs[i]); if(c) c.checked=false; }
+  document.getElementById('vCerts').value=25;
+  document.getElementById('vShipping').value=25;
+  document.getElementById('vShop').value=25;
+  document.getElementById('vCheckin').value=0;
+  document.getElementById('vMisc').value=0;
+  document.getElementById('savedBan').classList.remove('show');
+  document.getElementById('terms').value=DEFAULT_TERMS;
+  setCap('Light Capacity');
+  setMode('cal');
+  setSched(12);
+  renderEq();
+  calcSummary();
+}
+
+function getCsrfToken() {
+  // Always read fresh from cookie — window.csrf_token can go stale
+  var match = document.cookie.match(/(?:^|;\s*)csrf_token=([^;]*)/);
+  if (match) return decodeURIComponent(match[1]);
+  // Fall back to the injected value
+  return window.csrf_token || '';
+}
+// Sets loaded hourly rate from Service-Labor item Standard Selling price
+// Then derives T&M rates from it
+// ════════════════════════════════════════════
+function fetchServiceLaborRate() {
+  dbg('Fetching Service-Labor price...');
+  fetch('/api/method/frappe.client.get_list', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Frappe-CSRF-Token': window.csrf_token || ''
+    },
+    body: JSON.stringify({
+      doctype: 'Item Price',
+      filters: [
+        ['item_code', '=', 'Service-Labor'],
+        ['price_list', '=', 'Standard Selling']
+      ],
+      fields: ['price_list_rate'],
+      limit_page_length: 1
+    })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data) {
+    var rows = data.message || [];
+    var price = rows.length > 0 ? parseFloat(rows[0].price_list_rate) || 0 : 0;
+    if (price > 0) {
+      document.getElementById('hrRate').value = price.toFixed(2);
+      document.getElementById('hrRate').placeholder = '';
+      updateTMRates(price);
+      recalcAllUnits();
+      dbg('Service-Labor rate: $' + price);
+    } else {
+      document.getElementById('hrRate').value = 165;
+      document.getElementById('hrRate').placeholder = '';
+      updateTMRates(165);
+      recalcAllUnits();
+      dbg('Service-Labor price not found — using default $165');
+    }
+  })
+  .catch(function(err) {
+    document.getElementById('hrRate').value = 165;
+    updateTMRates(165);
+    recalcAllUnits();
+    dbg('Service-Labor fetch error: ' + err.message + ' — using $165');
+  });
+}
+
+// Derive overtime and holiday from Regular T&M rate
+function updateTMRates(regularRate) {
+  var reg = parseFloat(regularRate) || 0;
+  var otEl  = document.getElementById('rate_overtime');
+  var holEl = document.getElementById('rate_holiday');
+  if (otEl)  otEl.value  = (reg * 1.5).toFixed(2);
+  if (holEl) holEl.value = (reg * 2.0).toFixed(2);
+}
+
+// When salesperson changes Regular T&M, re-derive overtime and holiday
+function onRegularRateChange() {
+  var reg = parseFloat(fv('rate_regular')) || 0;
+  updateTMRates(reg);
+}
+// Looks up price from ERPNext Item based on zone + capacity class
+// Item codes: SRV-TRAVEL-Z1LC, SRV-TRAVEL-Z1HC ... SRV-TRAVEL-Z6LC, SRV-TRAVEL-Z6HC
+// ════════════════════════════════════════════
+// VEHICLE CAPACITY STATE
+// ════════════════════════════════════════════
+var v1Cap = 'Light Capacity';
+var v2Cap = 'Light Capacity';
+
+function setV1Cap(val) {
+  v1Cap = val;
+  document.getElementById('v1Light').className = 'co' + (val === 'Light Capacity' ? ' on-l' : '');
+  document.getElementById('v1Heavy').className = 'co' + (val === 'Heavy Capacity' ? ' on-h' : '');
+  // Update hidden capacity_class for DocType payload
+  document.getElementById('capacity_class').value = val;
+  if (fv('zoneNum')) lookupZone();
+}
+
+function setV2Cap(val) {
+  v2Cap = val;
+  document.getElementById('v2Light').className = 'co' + (val === 'Light Capacity' ? ' on-l' : '');
+  document.getElementById('v2Heavy').className = 'co' + (val === 'Heavy Capacity' ? ' on-h' : '');
+  if (fv('zoneNum')) lookupZoneV2();
+}
+
+function onV2Enable() {
+  var enabled = document.getElementById('v2Enable').checked;
+  document.getElementById('v2Fields').style.display = enabled ? '' : 'none';
+  if (enabled && fv('zoneNum')) lookupZoneV2();
+  else {
+    document.getElementById('v2Total').value = 0;
+    recalcZoneTotal();
+  }
+}
+
+// ════════════════════════════════════════════
+// ZONE LOOKUP — fetch flat fee for a given item code
+// Returns promise resolving to price (number)
+// ════════════════════════════════════════════
+function fetchZonePrice(itemCode) {
+  return fetch('/api/method/frappe.client.get_list', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Frappe-CSRF-Token': getCsrfToken()
+    },
+    body: JSON.stringify({
+      doctype: 'Item Price',
+      filters: [['item_code','=',itemCode],['price_list','=','Standard Selling']],
+      fields: ['price_list_rate'],
+      limit_page_length: 1
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    var rows = data.message || [];
+    return rows.length > 0 ? (parseFloat(rows[0].price_list_rate)||0) : 0;
+  })
+  .catch(function(){ return 0; });
+}
+
+// ════════════════════════════════════════════
+// ZONE CALC — update vehicle totals
+// ════════════════════════════════════════════
+function calcVehicleTotal(flatFee, returnTrips) {
+  var zone     = parseInt(fv('zoneNum')) || 0;
+  var hr       = parseFloat(fv('hrRate')) || 0;
+  var travelHrs= zone > 1 ? zone - 1 : 0;
+  var tripCost = flatFee + (travelHrs * hr);
+  return tripCost * (1 + (parseInt(returnTrips)||0));
+}
+
+function recalcZoneTotal() {
+  var v1 = parseFloat(fv('v1Total')) || 0;
+  var v2 = document.getElementById('v2Enable').checked ? (parseFloat(fv('v2Total'))||0) : 0;
+  var total = v1 + v2;
+  document.getElementById('zoneTotalCharge').value = total.toFixed(2);
+
+  // Update hint
+  var hint = document.getElementById('zoneTotalHint');
+  if (hint) {
+    hint.textContent = document.getElementById('v2Enable').checked
+      ? 'V1: ' + fmt(v1) + '  +  V2: ' + fmt(v2)
+      : 'Vehicle 1 only';
+  }
+  calcSummary();
+}
+
+function lookupZone() {
+  var zone = fv('zoneNum');
+  var hr   = parseFloat(fv('hrRate')) || 0;
+  var travelHrs = zone ? (parseInt(zone) > 1 ? parseInt(zone)-1 : 0) : 0;
+
+  // Update shared travel time display
+  document.getElementById('zoneTravelHrs').value = travelHrs;
+
+  if (!zone) {
+    document.getElementById('v1ZoneFee').value = '';
+    document.getElementById('v1Total').value = 0;
+    document.getElementById('v1ItemCode').textContent = '';
+    document.getElementById('v2ZoneFee').value = '';
+    document.getElementById('v2Total').value = 0;
+    document.getElementById('v2ItemCode').textContent = '';
+    document.getElementById('zoneTotalCharge').value = 0;
+    calcSummary();
+    return;
+  }
+
+  var suffix1  = v1Cap === 'Heavy Capacity' ? 'HC' : 'LC';
+  var itemCode1= 'SRV-TRAVEL-Z' + zone + suffix1;
+  document.getElementById('v1ItemCode').textContent = itemCode1;
+  dbg('Zone lookup V1: ' + itemCode1);
+
+  fetchZonePrice(itemCode1).then(function(price1) {
+    var feeEl1 = document.getElementById('v1ZoneFee');
+    feeEl1.value = price1 > 0 ? price1.toFixed(2) : '';
+    feeEl1.readOnly = price1 > 0;
+    feeEl1.style.background = price1 > 0 ? 'var(--gbg)' : 'white';
+    if (!price1) { feeEl1.placeholder = 'Not found — enter manually'; }
+    var v1t = calcVehicleTotal(price1, fv('v1ReturnTrips'));
+    document.getElementById('v1Total').value = v1t.toFixed(2);
+    var h1 = document.getElementById('v1TotalHint');
+    if (h1) {
+      var trips1 = 1 + (parseInt(fv('v1ReturnTrips'))||0);
+      h1.textContent = fmt(price1 + travelHrs*hr) + ' × ' + trips1 + ' trip' + (trips1>1?'s':'');
+    }
+    dbg('V1 fee: $' + price1);
+    // Also refresh V2 if enabled
+    if (document.getElementById('v2Enable').checked) {
+      lookupZoneV2();
+    } else {
+      recalcZoneTotal();
+    }
+  });
+}
+
+function lookupZoneV2() {
+  var zone = fv('zoneNum'); if (!zone) return;
+  var hr   = parseFloat(fv('hrRate')) || 0;
+  var travelHrs = parseInt(zone) > 1 ? parseInt(zone)-1 : 0;
+  var suffix2   = v2Cap === 'Heavy Capacity' ? 'HC' : 'LC';
+  var itemCode2 = 'SRV-TRAVEL-Z' + zone + suffix2;
+  document.getElementById('v2ItemCode').textContent = itemCode2;
+  dbg('Zone lookup V2: ' + itemCode2);
+
+  fetchZonePrice(itemCode2).then(function(price2) {
+    var feeEl2 = document.getElementById('v2ZoneFee');
+    feeEl2.value = price2 > 0 ? price2.toFixed(2) : '';
+    feeEl2.readOnly = price2 > 0;
+    feeEl2.style.background = price2 > 0 ? 'var(--gbg)' : 'white';
+    if (!price2) { feeEl2.placeholder = 'Not found — enter manually'; }
+    var v2t = calcVehicleTotal(price2, fv('v2ReturnTrips'));
+    document.getElementById('v2Total').value = v2t.toFixed(2);
+    var h2 = document.getElementById('v2TotalHint');
+    if (h2) {
+      var trips2 = 1 + (parseInt(fv('v2ReturnTrips'))||0);
+      h2.textContent = fmt(price2 + travelHrs*hr) + ' × ' + trips2 + ' trip' + (trips2>1?'s':'');
+    }
+    recalcZoneTotal();
+  });
+}
+
+function updateV1Trips() {
+  var fee = parseFloat(fv('v1ZoneFee')) || 0;
+  var v1t = calcVehicleTotal(fee, fv('v1ReturnTrips'));
+  document.getElementById('v1Total').value = v1t.toFixed(2);
+  var zone = parseInt(fv('zoneNum'))||0;
+  var hr   = parseFloat(fv('hrRate'))||0;
+  var th   = zone > 1 ? zone-1 : 0;
+  var h1   = document.getElementById('v1TotalHint');
+  if (h1) {
+    var trips1 = 1+(parseInt(fv('v1ReturnTrips'))||0);
+    h1.textContent = fmt(fee+th*hr)+' × '+trips1+' trip'+(trips1>1?'s':'');
+  }
+  recalcZoneTotal();
+}
+
+function updateV2Trips() {
+  var fee = parseFloat(fv('v2ZoneFee')) || 0;
+  var v2t = calcVehicleTotal(fee, fv('v2ReturnTrips'));
+  document.getElementById('v2Total').value = v2t.toFixed(2);
+  var zone = parseInt(fv('zoneNum'))||0;
+  var hr   = parseFloat(fv('hrRate'))||0;
+  var th   = zone > 1 ? zone-1 : 0;
+  var h2   = document.getElementById('v2TotalHint');
+  if (h2) {
+    var trips2 = 1+(parseInt(fv('v2ReturnTrips'))||0);
+    h2.textContent = fmt(fee+th*hr)+' × '+trips2+' trip'+(trips2>1?'s':'');
+  }
+  recalcZoneTotal();
+}
+
+// ════════════════════════════════════════════
+// DUPLICATE UNIT (copy all fields from a row, blank serial)
+// ════════════════════════════════════════════
+function duplicateUnit(srcId) {
+  var src = getUnit(srcId); if (!src) return;
+  var n = parseInt(prompt('How many additional identical units to add?\n(All fields copied from row ' + (units.indexOf(src)+1) + ', serial number left blank)'));
+  if (!n || n < 1) return;
+  for (var i = 0; i < n; i++) {
+    units.push({
+      id:            uid++,
+      scale_type:    src.scale_type,
+      make:          src.make,
+      model:         src.model,
+      sn:            '',
+      location_dept: src.location_dept,
+      difficulty:    src.difficulty,
+      
+      unit_price:    0,
+      _override:     false,
+      _multiDiscount:false
+    });
+  }
+  renderEq();
+}
+function boot(){
+  dbg('boot started');
+
+  // Set dates
+  var today=new Date();
+  document.getElementById('quote_date').value=fmtD(today);
+  var exp=new Date(today); exp.setDate(exp.getDate()+30);
+  document.getElementById('valid_until').value=fmtD(exp);
+  document.getElementById('terms').value=DEFAULT_TERMS;
+  setSched(12);
+  // Form starts empty — salesperson adds units manually
+  // Fetch Service-Labor price to set loaded rate and T&M rates
+  fetchServiceLaborRate();
+
+  // EVENT DELEGATION — all clicks
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.id==='mCal')  {setMode('cal');return;}
+    if(t.id==='mPm')   {setMode('pm');return;}
+    if(t.id==='mBoth') {setMode('both');return;}
+    // V1 capacity
+    if(t.id==='v1Light'){setV1Cap('Light Capacity');return;}
+    if(t.id==='v1Heavy'){setV1Cap('Heavy Capacity');return;}
+    // V2 capacity
+    if(t.id==='v2Light'){setV2Cap('Light Capacity');return;}
+    if(t.id==='v2Heavy'){setV2Cap('Heavy Capacity');return;}
+    if(t.id==='sb1')   {setSched(1);return;}
+    if(t.id==='sb3')   {setSched(3);return;}
+    if(t.id==='sb6')   {setSched(6);return;}
+    if(t.id==='sb12')  {setSched(12);return;}
+    if(t.id==='sb24')  {setSched(24);return;}
+    if(t.id==='addUnitBtn')  {addUnit();return;}
+    if(t.id==='addIdentBtn') {addIdentical();return;}
+    var db=t.closest?t.closest('.delbtn'):null;
+    if(!db&&t.className==='delbtn')db=t;
+    if(db&&db.getAttribute('data-id')){removeUnit(parseInt(db.getAttribute('data-id')));return;}
+    // Duplicate row button
+    var dupb=t.closest?t.closest('.dupbtn'):null;
+    if(!dupb&&t.className==='dupbtn')dupb=t;
+    if(dupb&&dupb.getAttribute('data-id')){duplicateUnit(parseInt(dupb.getAttribute('data-id')));return;}
+    if(t.id==='clearBtn'){clearForm();return;}
+    if(t.id==='printBtn'){window.print();return;}
+    if(t.id==='saveBtn') {saveDraft();return;}
+  });
+
+  // EVENT DELEGATION — change events
+  document.addEventListener('change',function(e){
+    var t=e.target;
+    if(t.id==='schedule_type'){onSchedType();return;}
+    if(t.id==='interval_months'){updateSchedBadge();calcSummary();return;}
+    if(t.id==='siteScore'){calcSummary();return;}
+    if(t.id==='hrRate'){recalcAllUnits();return;}
+    if(t.classList&&t.classList.contains('gmod')){recalcAllUnits();return;}
+    // Zone charge
+    if(t.id==='zoneNum'){lookupZone();return;}
+    if(t.id==='v2Enable'){onV2Enable();return;}
+    if(t.id==='v1ZoneFee'){updateV1Trips();return;}
+    if(t.id==='v2ZoneFee'){updateV2Trips();return;}
+    if(t.id==='v1ReturnTrips'){updateV1Trips();return;}
+    if(t.id==='v2ReturnTrips'){updateV2Trips();return;}
+    // T&M rate derivation
+    if(t.id==='rate_regular'){onRegularRateChange();return;}
+    // Additional charges
+    if(t.id==='chCerts'||t.id==='chShipping'||t.id==='chShop'||t.id==='chCheckin'||t.id==='chMisc'||t.id==='chMisc2'){calcSummary();return;}
+    if(t.id==='vCerts'||t.id==='vShipping'||t.id==='vShop'||t.id==='vCheckin'||t.id==='vMisc'||t.id==='vMisc2'){calcSummary();return;}
+    // Equipment table
+    var id=parseInt(t.getAttribute('data-id'));
+    if(t.classList&&(t.classList.contains('eqtype')||t.classList.contains('eqdiff'))){onEqChange(id);return;}
+    if(t.classList&&t.classList.contains('equp')){onUnitPriceChange(id);return;}
+    autoSave();
+  });
+
+  // EVENT DELEGATION — input events
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(t.id==='siteScore'){calcSummary();return;}
+    if(t.id==='hrRate'){recalcAllUnits();return;}
+    if(t.id==='interval_months'){updateSchedBadge();calcSummary();return;}
+    if(t.id==='v1ZoneFee'){updateV1Trips();return;}
+    if(t.id==='v2ZoneFee'){updateV2Trips();return;}
+    if(t.id==='v1ReturnTrips'){updateV1Trips();return;}
+    if(t.id==='v2ReturnTrips'){updateV2Trips();return;}
+    if(t.id==='vCerts'||t.id==='vShipping'||t.id==='vShop'||t.id==='vCheckin'||t.id==='vMisc'||t.id==='vMisc2'){calcSummary();return;}
+    if(t.id==='rate_regular'){onRegularRateChange();return;}
+    var id=parseInt(t.getAttribute('data-id'));
+    if(t.classList&&(t.classList.contains('eqmake')||t.classList.contains('eqmodel')||t.classList.contains('eqsn')||t.classList.contains('eqloc'))){
+      readUnit(id);autoSave();return;
+    }
+    
+    if(t.classList&&t.classList.contains('equp')){t._touched=true;onUnitPriceChange(id);return;}
+    autoSave();
+  });
+
+  setInterval(autoSave,30000);
+  dbg('boot complete — ready');
+}
+
+// Call boot() directly — script is at bottom of body, DOM is parsed
+boot();
+</script>
+</body>
+</html>

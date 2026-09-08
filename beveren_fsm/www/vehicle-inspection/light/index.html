@@ -1,0 +1,461 @@
+{% extends "templates/web.html" %}
+{% block title %}Daily Vehicle Inspection — Light Vehicle — LCS{% endblock %}
+
+{% block head_include %}
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body.lcs-insp { background: #0d1824; color: #e8edf4; font-family: 'Inter', sans-serif; min-height: 100vh; }
+.insp-header { background: #002050; border-bottom: 3px solid #C8A020; padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.insp-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: .08em; color: #fff; text-transform: uppercase; }
+.insp-logo span { color: #C8A020; }
+.insp-form-badge { background: #004080; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 4px; }
+.back-link { color: #9bb3cc; font-size: .8rem; text-decoration: none; }
+.back-link:hover { color: #C8A020; }
+.insp-body { max-width: 860px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+.phase-banner { border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.phase-banner.pre { background: rgba(200,160,32,.15); border: 1px solid rgba(200,160,32,.4); color: #C8A020; }
+.phase-banner.post { background: rgba(0,64,128,.2); border: 1px solid rgba(0,64,128,.5); color: #7ab0e0; }
+.vehicle-banner { background: #0a1e38; border: 1px solid #1a3050; border-left: 4px solid #004080; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1.5rem; }
+.vb-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: #5a7a9a; }
+.vb-value { font-size: .92rem; font-weight: 600; color: #d0daea; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
+label.fl { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: #7a9ab8; display: block; margin-bottom: .3rem; }
+select.fi, input.fi, textarea.fi { width: 100%; background: #0a1e38; border: 1px solid #1a3050; border-radius: 6px; padding: .5rem .75rem; color: #e8edf4; font-family: 'Inter', sans-serif; font-size: .88rem; outline: none; transition: border-color .15s; }
+select.fi:focus, input.fi:focus, textarea.fi:focus { border-color: #C8A020; }
+textarea.fi { resize: vertical; min-height: 70px; }
+.insp-section { background: #0a1e38; border: 1px solid #1a3050; border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
+.insp-section-head { background: #002050; padding: .65rem 1rem; display: flex; align-items: center; gap: .6rem; cursor: pointer; user-select: none; }
+.insp-section-head .sec-num { background: #004080; color: #fff; font-size: .7rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.insp-section-head .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: .95rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #D6E4F7; flex: 1; }
+.insp-section-head .sec-status { font-size: .7rem; color: #4a6a8a; }
+.insp-section-body { padding: .85rem 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .75rem; }
+.check-item { display: flex; align-items: center; gap: .5rem; background: #0d2540; border: 1px solid #1a3050; border-radius: 6px; padding: .45rem .65rem; }
+.check-label { font-size: .78rem; color: #c0d0e0; flex: 1; line-height: 1.3; }
+.tri-toggle { display: flex; gap: 2px; flex-shrink: 0; }
+.tri-toggle input[type=radio] { display: none; }
+.tri-toggle label { padding: .2rem .4rem; border-radius: 4px; font-size: .65rem; font-weight: 700; letter-spacing: .05em; cursor: pointer; border: 1px solid #1a3050; color: #4a6a8a; background: #0a1e38; transition: all .12s; }
+.tri-toggle input[value="OK"]:checked + label { background: #1a6b3a; border-color: #2a9b5a; color: #fff; }
+.tri-toggle input[value="Defect"]:checked + label { background: #7a1020; border-color: #b01830; color: #fff; }
+.tri-toggle input[value="N/A"]:checked + label { background: #2a3a4a; border-color: #3a5a7a; color: #9ab; }
+.fuel-toggle { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .4rem; }
+.fuel-toggle input[type=radio] { display: none; }
+.fuel-toggle label { padding: .35rem .75rem; border-radius: 6px; font-size: .78rem; font-weight: 600; cursor: pointer; border: 1px solid #1a3050; color: #4a6a8a; background: #0a1e38; transition: all .12s; }
+.fuel-toggle input:checked + label { background: #004080; border-color: #0060c0; color: #fff; }
+.cert-box { background: #0a2040; border: 1px solid #1a4a8a; border-radius: 8px; padding: 1rem; margin: 1rem 0 0; }
+.cert-text { font-size: .78rem; color: #9bb3cc; line-height: 1.5; margin-bottom: .75rem; }
+.cert-check-row { display: flex; align-items: center; gap: .75rem; }
+.cert-check-row input[type=checkbox] { width: 18px; height: 18px; accent-color: #C8A020; flex-shrink: 0; cursor: pointer; }
+.cert-check-row label { font-size: .82rem; font-weight: 600; color: #d0daea; cursor: pointer; }
+.eod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.pretrip-summary { background: #0a1e38; border: 1px solid #1a3050; border-radius: 10px; margin-bottom: 1.25rem; overflow: hidden; }
+.pretrip-summary-head { background: #001830; padding: .65rem 1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.pretrip-summary-head span { font-family: 'Barlow Condensed', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #5a7a9a; }
+.pretrip-summary-body { padding: .75rem 1rem; font-size: .78rem; color: #5a7a9a; display: none; }
+.submit-bar { position: sticky; bottom: 0; background: #002050; border-top: 2px solid #C8A020; padding: .85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.btn-submit { background: #C8A020; color: #002050; border: none; border-radius: 8px; padding: .65rem 1.75rem; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .15s; }
+.btn-submit:hover { background: #d8b030; }
+.btn-submit:disabled { background: #3a5070; color: #6a8aaa; cursor: not-allowed; }
+.btn-submit.post { background: #004080; color: #fff; }
+.btn-submit.post:hover { background: #0060c0; }
+.toast { position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%); background: #1a6b3a; color: #fff; padding: .75rem 1.5rem; border-radius: 8px; font-size: .88rem; font-weight: 600; display: none; z-index: 200; box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+.toast.error { background: #900010; }
+#loading-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 300; }
+.loading-spinner { width: 40px; height: 40px; border: 4px solid #1a3050; border-top-color: #C8A020; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 600px) {
+  .field-row, .insp-section-body, .eod-grid, .vehicle-banner { grid-template-columns: 1fr; }
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<body class="lcs-insp">
+<div id="loading-overlay" style="display:none;"><div class="loading-spinner"></div></div>
+<div class="toast" id="toast"></div>
+<header class="insp-header">
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="/shortcuts" class="back-link">← Hub</a>
+    <span class="insp-logo">Left Coast <span>Scales</span></span>
+  </div>
+  <span class="insp-form-badge">Form LCS-VEH-002</span>
+</header>
+<div class="insp-body" id="insp-body">
+  <div style="text-align:center;padding:3rem 1rem;color:#4a6a8a;">Loading inspection...</div>
+</div>
+<div class="submit-bar">
+  <span style="font-size:.72rem;color:#5a7a9a;" id="submit-hint">Loading...</span>
+  <button class="btn-submit" id="btn-submit" onclick="submitForm()" disabled>Loading...</button>
+</div>
+</body>
+{% endblock %}
+
+{% block script %}
+<script>
+var API = 'beveren_fsm.field_service_management.api.vehicle_inspection';
+var pageState = null;
+var vehicleData = {};
+
+function loadPageState() {
+  frappe.call({
+    method: API + '.get_light_page_state',
+    callback: function(r) {
+      pageState = r.message;
+      if (pageState.mode === 'post_trip') {
+        renderPostTripForm();
+      } else {
+        renderPreDepartureForm();
+      }
+    },
+    error: function() {
+      showToast('Error loading inspection. Please refresh.', true);
+    }
+  });
+}
+
+function renderPreDepartureForm() {
+  var body = document.getElementById('insp-body');
+  body.innerHTML =
+    '<div class="phase-banner pre">&#127749; Pre-Departure Inspection &mdash; Complete Before Leaving the Yard</div>' +
+    '<div style="margin-bottom:1.25rem;">' +
+      '<div class="field-row">' +
+        '<div><label class="fl">Vehicle</label>' +
+        '<select class="fi" id="vehicle" required onchange="onVehicleChange()">' +
+        '<option value="">— Select Vehicle —</option></select></div>' +
+        '<div><label class="fl">Inspection Date</label>' +
+        '<input type="date" class="fi" id="inspection_date" required value="' + pageState.today + '"></div>' +
+      '</div>' +
+      '<div class="vehicle-banner" id="vehicle-banner" style="display:none;">' +
+        '<div><div class="vb-label">Driver</div><div class="vb-value">' + pageState.employee_name + '</div></div>' +
+        '<div><div class="vb-label">Vehicle</div><div class="vb-value" id="vb-vehicle">—</div></div>' +
+        '<div><div class="vb-label">Type</div><div class="vb-value" id="vb-type">—</div></div>' +
+        '<div><div class="vb-label">Plate / State</div><div class="vb-value" id="vb-plate">—</div></div>' +
+      '</div>' +
+      '<div class="field-row" style="margin-top:.75rem;">' +
+        '<div><label class="fl">Odometer &mdash; Start</label>' +
+        '<input type="number" class="fi" id="odometer_start" min="0" required placeholder="Miles"></div>' +
+        '<div><label class="fl">Dispatch Branch</label>' +
+        '<select class="fi" id="dispatch_branch" required>' +
+        '<option value="">— Select —</option>' +
+        '<option>Perris</option><option>San Diego</option><option>El Centro</option><option>Apache Junction</option>' +
+        '</select></div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#C8A020;margin-bottom:.6rem;">Pre-Departure Checklist</div>' +
+    buildSection(1,'Exterior Walk-Around',['pd_body_panels:Body Panels — Damage / Dents:OK','pd_glass:Glass — Windshield & Windows:OK','pd_mirrors:Mirrors — Condition & Adjustment:OK','pd_hood_latch:Hood Latch & Seal:OK','pd_doors:Doors — All Latch & Close Properly:OK','pd_bumpers:Bumpers — Front & Rear:OK','pd_fuel_cap:Fuel Cap — Secure & No Leaks:OK','pd_license_plates:License Plates — Front & Rear:OK','pd_registration:Registration / IFTA Sticker Current:OK']) +
+    buildSection(2,'Engine Compartment',['pd_oil_level:Engine Oil Level:OK','pd_coolant:Coolant / Antifreeze Level:OK','pd_brake_fluid:Brake Fluid Level:OK','pd_power_steering:Power Steering Fluid (if applicable):OK','pd_washer_fluid:Windshield Washer Fluid:OK','pd_trans_fluid:Transmission Fluid (if accessible):OK','pd_battery:Battery — Secure, No Corrosion:OK','pd_belts:Belts — Condition & Tension:OK','pd_hoses:Hoses — No Cracks / Leaks:OK','pd_fluid_leaks:No Fluid Leaks Under Vehicle:OK','pd_air_filter:Air Filter Indicator / Condition:OK','pd_engine_warning:Engine Warning Light — Clear:OK']) +
+    buildSection(3,'Lights & Electrical',['pd_headlights:Headlights — High & Low Beam:OK','pd_tail_lights:Tail Lights:OK','pd_brake_lights:Brake / Stop Lights:OK','pd_reverse_lights:Reverse Lights:OK','pd_turn_signals:Turn Signals — Front & Rear:OK','pd_hazard_flashers:Hazard / 4-Way Flashers:OK','pd_parking_lights:Parking Lights:OK','pd_dome_lights:Interior Dome / Cab Lights:OK','pd_dash_warning:Dash Warning Lights — Clear:OK']) +
+    buildSection(4,'Tires & Wheels',['pd_front_left:Front Left — Inflation & Tread:OK','pd_front_right:Front Right — Inflation & Tread:OK','pd_rear_left:Rear Left — Inflation & Tread:OK','pd_rear_right:Rear Right — Inflation & Tread:OK','pd_spare_tire:Spare Tire — Secured & Inflated (if equipped):N/A','pd_lug_nuts:Lug Nuts — All Present & Tight:OK','pd_sidewalls:Sidewalls — No Cuts / Bulges:OK','pd_valve_stems:Valve Stems & Caps:OK','pd_wheel_covers:Wheel Covers / Hub Caps Secure:N/A']) +
+    buildSection(5,'Brakes',['pd_brake_pedal:Brake Pedal — Firm, No Fade:OK','pd_parking_brake:Parking / Emergency Brake:OK','pd_brake_lines:Brake Lines — No Leaks / Damage:OK','pd_abs_light:ABS Warning Light — Extinguishes:OK']) +
+    buildSection(6,'Safety & Operational Equipment',['pd_seat_belts:Seat Belts — All Rows Functional:OK','pd_horn:Horn — Audible:OK','pd_wipers_front:Wipers & Washers — Front:OK','pd_wipers_rear:Wipers & Washers — Rear (if equipped):N/A','pd_defroster:Defroster — Front & Rear:OK','pd_hvac:HVAC / Heater Operation:OK','pd_fire_extinguisher:Fire Extinguisher — Present & Charged:OK','pd_first_aid:First Aid Kit — Stocked:OK','pd_hi_vis:Hi-Vis Vest(s) — Present:OK','pd_warning_triangles:Warning Triangles / Flares:OK','pd_backup_camera:Backup Camera / Sensors (if equipped):N/A','pd_gps_tracker:GPS / Fleet Tracker — Powered On:OK']) +
+    buildSection(7,'Van Cargo Area (Vans)',['pd_cargo_area:Cargo Area — Clean & Organized:N/A','pd_sliding_doors:Sliding / Rear Doors — Latch & Seal:N/A','pd_cargo_shelving:Cargo Shelving / Racking — Secure:N/A','pd_tools_stowed:Tools & Equipment — Stowed & Tied:N/A','pd_no_loose_items:No Loose Items in Cab Area:N/A','pd_cargo_floor:Cargo Floor — No Damage / Grease:N/A']) +
+    buildSection(8,'Pickup Bed & Trailer Equipment (Pickups)',['pd_tailgate:Tailgate — Latches & Opens Freely:N/A','pd_bed_liner:Bed Liner — Intact, No Cracks:N/A','pd_bed_tiedown:Bed Tie-Down Rings / E-Track:N/A','pd_tonneau_cover:Tonneau Cover / Camper Shell (if equipped):N/A','pd_truck_toolbox:Truck Tool Box — Locked & Secure (if equipped):N/A','pd_trailer_hitch:Trailer Hitch / Ball Mount (if equipped):N/A','pd_trailer_wiring:Trailer Wiring / 7-Pin Connector (if equipped):N/A']) +
+    buildSection(9,'LCS Calibration Equipment & Field Gear',['pd_cal_tools:Calibration Tools — Cased & Stowed:OK','pd_test_weights:Test Weights — Secured / Padded:N/A','pd_portable_standard:Portable Reference Standard — Secure:N/A','pd_equipment_crates:Equipment Crates / Cases — Latched:OK','pd_ipad_tablet:LCS iPad / Tablet — Charged:OK','pd_ppe:PPE — Hard Hat, Safety Glasses, Vest:OK','pd_work_orders:Work Order / Job Docs On-Hand:OK','pd_cell_phone:Company Cell Phone — Charged:OK']) +
+    '<div style="margin:.75rem 0;"><label class="fl">Defects / Items Needing Attention</label>' +
+    '<textarea class="fi" id="pd_defect_remarks" rows="3" placeholder="Describe any items needing attention..."></textarea></div>' +
+    '<div class="cert-box">' +
+      '<div class="cert-text">I have inspected this vehicle and all items above have been checked. Any defects or items needing attention are noted above. I confirm this vehicle is safe to operate for today\'s service.</div>' +
+      '<div class="cert-check-row"><input type="checkbox" id="pd_certified"><label for="pd_certified">I certify the pre-departure inspection is complete and accurate.</label></div>' +
+    '</div>';
+
+  vehicleData = {};
+  var sel = document.getElementById('vehicle');
+  (pageState.vehicles || []).forEach(function(v) {
+    vehicleData[v.name] = v;
+    var o = document.createElement('option');
+    o.value = v.name;
+    o.textContent = v.display_label + (v.branch ? ' [' + v.branch + ']' : '');
+    sel.appendChild(o);
+  });
+  if (pageState.last_vehicle && vehicleData[pageState.last_vehicle]) {
+    sel.value = pageState.last_vehicle;
+    onVehicleChange(pageState.last_odometer);
+  }
+  if (pageState.branch) {
+    var br = document.getElementById('dispatch_branch');
+    for (var i = 0; i < br.options.length; i++) {
+      if (br.options[i].value === pageState.branch) { br.options[i].selected = true; break; }
+    }
+  }
+
+  document.getElementById('submit-hint').textContent = 'Complete all items and certify to submit pre-departure.';
+  var btn = document.getElementById('btn-submit');
+  btn.textContent = 'Submit Pre-Departure';
+  btn.className = 'btn-submit';
+  btn.disabled = false;
+}
+
+function renderPostTripForm() {
+  var rec = pageState.record;
+  var body = document.getElementById('insp-body');
+  var startOdo = rec.odometer_start ? rec.odometer_start.toLocaleString() + ' mi' : '—';
+  body.innerHTML =
+    '<div class="phase-banner post">&#127750; End-of-Day Inspection &mdash; Complete After Final Stop</div>' +
+    '<div class="vehicle-banner" style="margin-bottom:1.25rem;">' +
+      '<div><div class="vb-label">Driver</div><div class="vb-value">' + pageState.employee_name + '</div></div>' +
+      '<div><div class="vb-label">Vehicle</div><div class="vb-value">' + (rec.vehicle_year_make || rec.vehicle) + '</div></div>' +
+      '<div><div class="vb-label">Record</div><div class="vb-value">' + rec.name + '</div></div>' +
+      '<div><div class="vb-label">Odometer Start</div><div class="vb-value">' + startOdo + '</div></div>' +
+    '</div>' +
+    '<div class="pretrip-summary">' +
+      '<div class="pretrip-summary-head" onclick="togglePreTripSummary()">' +
+        '<span>&#10003; Pre-Departure Inspection Completed This Morning</span>' +
+        '<span id="summary-chevron" style="color:#5a7a9a;">&#9660;</span>' +
+      '</div>' +
+      '<div class="pretrip-summary-body" id="summary-body">' +
+        'Pre-departure results are saved in record <strong>' + rec.name + '</strong>. Open in the ERPNext desk to review.' +
+      '</div>' +
+    '</div>' +
+    '<div style="margin-bottom:1rem;">' +
+      '<label class="fl">Odometer &mdash; End</label>' +
+      '<input type="number" class="fi" id="odometer_end" min="0" placeholder="Miles" style="max-width:220px;" autofocus>' +
+    '</div>' +
+    '<div style="margin-bottom:1.25rem;">' +
+      '<label class="fl">Fuel Level at Return</label>' +
+      '<div class="fuel-toggle">' +
+        '<input type="radio" name="fuel_level" id="fuel-empty" value="Empty"><label for="fuel-empty">Empty</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-quarter" value="1/4"><label for="fuel-quarter">&frac14;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-half" value="1/2"><label for="fuel-half">&frac12;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-three" value="3/4"><label for="fuel-three">&frac34;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-full" value="Full"><label for="fuel-full">Full</label>' +
+      '</div>' +
+    '</div>' +
+    '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#5090d0;margin-bottom:.6rem;">End-of-Day Check</div>' +
+    '<div class="eod-grid">' +
+      buildEodItem('eod_exterior','Exterior — No New Damage') +
+      buildEodItem('eod_lights','Lights — All Functional') +
+      buildEodItem('eod_tires','Tires — OK / Pressure Held') +
+      buildEodItem('eod_brakes','Brakes — No Change') +
+      buildEodItem('eod_fluid_leaks','Fluid Leaks Observed?') +
+      buildEodItem('eod_equipment_returned','Equipment Returned & Stowed') +
+      buildEodItem('eod_fuel_adequate','Fuel Level Adequate for AM') +
+      buildEodItem('eod_vehicle_secured','Vehicle Secured / Locked') +
+      buildEodItem('eod_keys_returned','Keys Returned to Cabinet') +
+    '</div>' +
+    '<div style="margin-top:.75rem;"><label class="fl">New Defects / Damage Observed During Day</label>' +
+    '<textarea class="fi" id="eod_new_defects" rows="3" placeholder="If no new issues, leave blank..."></textarea></div>' +
+    '<div class="field-row" style="margin-top:.75rem;">' +
+      '<div><label class="fl">Fuel Added (gal)</label><input type="number" step="0.1" class="fi" id="eod_fuel_added" placeholder="0.0"></div>' +
+      '<div><label class="fl">Fuel Location</label><input type="text" class="fi" id="eod_fuel_location" placeholder="Station name / address"></div>' +
+    '</div>' +
+    '<div style="margin-bottom:.75rem;"><label class="fl">Receipt #</label><input type="text" class="fi" id="eod_receipt_number" placeholder="—" style="max-width:220px;"></div>' +
+    '<div class="cert-box">' +
+      '<div class="cert-text">I have returned this vehicle in the same or better condition than received. Any new defects discovered during today\'s operation are noted above.</div>' +
+      '<div class="cert-check-row"><input type="checkbox" id="eod_certified"><label for="eod_certified">I certify the end-of-day inspection is complete and accurate.</label></div>' +
+    '</div>';
+
+  document.getElementById('submit-hint').textContent = 'Enter end odometer, fuel level, and certify to close out.';
+  var btn = document.getElementById('btn-submit');
+  btn.textContent = 'Submit End-of-Day';
+  btn.className = 'btn-submit post';
+  btn.disabled = false;
+}
+
+function buildSection(num, title, items) {
+  var itemsHtml = items.map(function(item) {
+    var parts = item.split(':');
+    return buildCheckItem(parts[0], parts[1], parts[2]);
+  }).join('');
+  return '<div class="insp-section">' +
+    '<div class="insp-section-head" onclick="toggleSection(this)">' +
+      '<div class="sec-num">' + num + '</div>' +
+      '<div class="sec-title">' + title + '</div>' +
+      '<div class="sec-status">' + items.length + ' items</div>' +
+    '</div>' +
+    '<div class="insp-section-body">' + itemsHtml + '</div>' +
+  '</div>';
+}
+
+function buildCheckItem(id, label, def) {
+  var okChk = '';
+  var naChk = '';
+  return '<div class="check-item">' +
+    '<span class="check-label">' + label + '</span>' +
+    '<div class="tri-toggle">' +
+      '<input type="radio" name="' + id + '" id="' + id + '-ok" value="OK"' + okChk + '><label for="' + id + '-ok">OK</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na2" value="Defect"><label for="' + id + '-na2">Defect</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na" value="N/A"' + naChk + '><label for="' + id + '-na">N/A</label>' +
+    '</div>' +
+  '</div>';
+}
+
+function buildEodItem(id, label) {
+  return '<div class="check-item">' +
+    '<span class="check-label">' + label + '</span>' +
+    '<div class="tri-toggle">' +
+      '<input type="radio" name="' + id + '" id="' + id + '-ok" value="OK"><label for="' + id + '-ok">OK</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na2" value="Defect"><label for="' + id + '-na2">Defect</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na" value="N/A"><label for="' + id + '-na">N/A</label>' +
+    '</div>' +
+  '</div>';
+}
+
+function onVehicleChange(prefillOdometer) {
+  var sel = document.getElementById('vehicle');
+  var v = vehicleData[sel.value];
+  if (!v) { document.getElementById('vehicle-banner').style.display = 'none'; return; }
+  document.getElementById('vb-vehicle').textContent = v.display_label;
+  document.getElementById('vb-type').textContent = v.vehicle_type;
+  document.getElementById('vb-plate').textContent = (v.license_plate || '—') + (v.plate_state ? ' ' + v.plate_state : '');
+  document.getElementById('vehicle-banner').style.display = 'grid';
+  if (v.branch) {
+    var br = document.getElementById('dispatch_branch');
+    if (!br.value) {
+      for (var i = 0; i < br.options.length; i++) {
+        if (br.options[i].value === v.branch) { br.options[i].selected = true; break; }
+      }
+    }
+  }
+  var odo = prefillOdometer !== undefined ? prefillOdometer : v.last_odometer;
+  if (odo) document.getElementById('odometer_start').value = odo;
+
+  // Auto-set van/pickup section defaults
+  var isVan = v.vehicle_type === 'Van';
+  var isPickup = v.vehicle_type === 'Pickup';
+  ['pd_cargo_area','pd_sliding_doors','pd_cargo_shelving','pd_tools_stowed','pd_no_loose_items','pd_cargo_floor'].forEach(function(f) {
+    var el = document.querySelector('input[name="' + f + '"][value="' + (isVan ? 'OK' : 'N/A') + '"]');
+    if (el) el.checked = true;
+  });
+  ['pd_tailgate','pd_bed_liner','pd_bed_tiedown'].forEach(function(f) {
+    var el = document.querySelector('input[name="' + f + '"][value="' + (isPickup ? 'OK' : 'N/A') + '"]');
+    if (el) el.checked = true;
+  });
+}
+
+function toggleSection(head) {
+  var body = head.nextElementSibling;
+  body.style.display = body.style.display === 'none' ? '' : 'none';
+}
+
+function togglePreTripSummary() {
+  var body = document.getElementById('summary-body');
+  var chev = document.getElementById('summary-chevron');
+  var open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : '';
+  chev.textContent = open ? '▼' : '▲';
+}
+
+function getRadioValue(name) {
+  var el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? el.value : null;
+}
+
+function submitForm() {
+  var btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  if (pageState.mode === 'post_trip') {
+    submitPostTrip(btn);
+  } else {
+    submitPreDeparture(btn);
+  }
+}
+
+function submitPreDeparture(btn) {
+  var pdFields = [
+    'pd_body_panels','pd_glass','pd_mirrors','pd_hood_latch','pd_doors','pd_bumpers','pd_fuel_cap','pd_license_plates','pd_registration',
+    'pd_oil_level','pd_coolant','pd_brake_fluid','pd_power_steering','pd_washer_fluid','pd_trans_fluid','pd_battery','pd_belts','pd_hoses','pd_fluid_leaks','pd_air_filter','pd_engine_warning',
+    'pd_headlights','pd_tail_lights','pd_brake_lights','pd_reverse_lights','pd_turn_signals','pd_hazard_flashers','pd_parking_lights','pd_dome_lights','pd_dash_warning',
+    'pd_front_left','pd_front_right','pd_rear_left','pd_rear_right','pd_spare_tire','pd_lug_nuts','pd_sidewalls','pd_valve_stems','pd_wheel_covers',
+    'pd_brake_pedal','pd_parking_brake','pd_brake_lines','pd_abs_light',
+    'pd_seat_belts','pd_horn','pd_wipers_front','pd_wipers_rear','pd_defroster','pd_hvac','pd_fire_extinguisher','pd_first_aid','pd_hi_vis','pd_warning_triangles','pd_backup_camera','pd_gps_tracker',
+    'pd_cargo_area','pd_sliding_doors','pd_cargo_shelving','pd_tools_stowed','pd_no_loose_items','pd_cargo_floor',
+    'pd_tailgate','pd_bed_liner','pd_bed_tiedown','pd_tonneau_cover','pd_truck_toolbox','pd_trailer_hitch','pd_trailer_wiring',
+    'pd_cal_tools','pd_test_weights','pd_portable_standard','pd_equipment_crates','pd_ipad_tablet','pd_ppe','pd_work_orders','pd_cell_phone'
+  ];
+  var data = {
+    naming_series: 'LCS-VEH-.YYYY.-.####',
+    vehicle: document.getElementById('vehicle').value,
+    inspection_date: document.getElementById('inspection_date').value,
+    odometer_start: parseInt(document.getElementById('odometer_start').value) || 0,
+    dispatch_branch: document.getElementById('dispatch_branch').value,
+    pd_defect_remarks: document.getElementById('pd_defect_remarks').value,
+    pd_certified: document.getElementById('pd_certified').checked ? 1 : 0
+  };
+  pdFields.forEach(function(f) { data[f] = getRadioValue(f) || 'N/A'; });
+
+  if (!data.vehicle) { showToast('Please select a vehicle.', true); btn.disabled = false; return; }
+  if (!data.inspection_date) { showToast('Please enter the inspection date.', true); btn.disabled = false; return; }
+  if (!data.odometer_start) { showToast('Please enter the starting odometer reading.', true); btn.disabled = false; return; }
+  if (!data.dispatch_branch) { showToast('Please select a dispatch branch.', true); btn.disabled = false; return; }
+  if (!data.pd_certified) { showToast('Please certify the pre-departure inspection before submitting.', true); btn.disabled = false; return; }
+
+  document.getElementById('loading-overlay').style.display = 'flex';
+  frappe.call({
+    method: API + '.submit_light_pretrip',
+    args: {data: JSON.stringify(data)},
+    callback: function(r) {
+      document.getElementById('loading-overlay').style.display = 'none';
+      if (r.message && r.message.status === 'success') {
+        showToast('Pre-departure saved — ' + r.message.name + '. Return tonight to complete end-of-day.');
+        setTimeout(function() { window.location.href = '/shortcuts'; }, 3500);
+      } else {
+        showToast('Error saving inspection. Please try again.', true);
+        btn.disabled = false;
+      }
+    },
+    error: function() {
+      document.getElementById('loading-overlay').style.display = 'none';
+      showToast('Network error. Please try again.', true);
+      btn.disabled = false;
+    }
+  });
+}
+
+function submitPostTrip(btn) {
+  var data = {
+    record_name: pageState.record.name,
+    odometer_end: parseInt(document.getElementById('odometer_end').value) || 0,
+    fuel_level: getRadioValue('fuel_level') || '',
+    eod_exterior: getRadioValue('eod_exterior') || 'OK',
+    eod_lights: getRadioValue('eod_lights') || 'OK',
+    eod_tires: getRadioValue('eod_tires') || 'OK',
+    eod_brakes: getRadioValue('eod_brakes') || 'OK',
+    eod_fluid_leaks: getRadioValue('eod_fluid_leaks') || 'OK',
+    eod_equipment_returned: getRadioValue('eod_equipment_returned') || 'OK',
+    eod_fuel_adequate: getRadioValue('eod_fuel_adequate') || 'OK',
+    eod_vehicle_secured: getRadioValue('eod_vehicle_secured') || 'OK',
+    eod_keys_returned: getRadioValue('eod_keys_returned') || 'OK',
+    eod_new_defects: document.getElementById('eod_new_defects').value,
+    eod_fuel_added: parseFloat(document.getElementById('eod_fuel_added').value) || 0,
+    eod_fuel_location: document.getElementById('eod_fuel_location').value,
+    eod_receipt_number: document.getElementById('eod_receipt_number').value,
+    eod_certified: document.getElementById('eod_certified').checked ? 1 : 0
+  };
+
+  if (!data.odometer_end) { showToast('Please enter the ending odometer reading.', true); btn.disabled = false; return; }
+  if (!data.fuel_level) { showToast('Please select the fuel level.', true); btn.disabled = false; return; }
+  if (!data.eod_certified) { showToast('Please certify the end-of-day inspection before submitting.', true); btn.disabled = false; return; }
+
+  document.getElementById('loading-overlay').style.display = 'flex';
+  frappe.call({
+    method: API + '.submit_light_posttrip',
+    args: {data: JSON.stringify(data)},
+    callback: function(r) {
+      document.getElementById('loading-overlay').style.display = 'none';
+      if (r.message && r.message.status === 'success') {
+        showToast('End-of-day complete — inspection record closed.');
+        setTimeout(function() { window.location.href = '/shortcuts'; }, 2500);
+      } else {
+        showToast('Error saving end-of-day. Please try again.', true);
+        btn.disabled = false;
+      }
+    },
+    error: function() {
+      document.getElementById('loading-overlay').style.display = 'none';
+      showToast('Network error. Please try again.', true);
+      btn.disabled = false;
+    }
+  });
+}
+
+function showToast(msg, isError) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.style.display = 'block';
+  setTimeout(function() { t.style.display = 'none'; }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', loadPageState);
+</script>
+{% endblock %}

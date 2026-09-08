@@ -1,0 +1,20 @@
+[
+  {
+    "doctype": "Shift Type",
+    "shift_type_name": "LCS Standard",
+    "start_time": "06:30:00",
+    "end_time": "17:30:00",
+    "monday": 1,
+    "tuesday": 1,
+    "wednesday": 1,
+    "thursday": 1,
+    "friday": 1,
+    "saturday": 0,
+    "sunday": 0,
+    "enable_auto_attendance": 1,
+    "begin_check_in_before_shift_start_time": 30,
+    "allow_check_out_after_shift_end_time": 30,
+    "mark_auto_attendance_on_holidays": 0,
+    "name": "LCS Standard"
+  }
+]

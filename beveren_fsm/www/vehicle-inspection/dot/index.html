@@ -1,0 +1,441 @@
+{% extends "templates/web.html" %}
+{% block title %}DOT Daily Vehicle Inspection — LCS{% endblock %}
+
+{% block head_include %}
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body.lcs-insp { background: #0d1824; color: #e8edf4; font-family: 'Inter', sans-serif; min-height: 100vh; }
+.insp-header { background: #002050; border-bottom: 3px solid #C8A020; padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.insp-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: .08em; color: #fff; text-transform: uppercase; }
+.insp-logo span { color: #C8A020; }
+.insp-form-badge { background: #900010; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 4px; }
+.back-link { color: #9bb3cc; font-size: .8rem; text-decoration: none; }
+.back-link:hover { color: #C8A020; }
+.insp-body { max-width: 860px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+.phase-banner { border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.phase-banner.pre { background: rgba(200,160,32,.15); border: 1px solid rgba(200,160,32,.4); color: #C8A020; }
+.phase-banner.post { background: rgba(0,64,128,.2); border: 1px solid rgba(0,64,128,.5); color: #7ab0e0; }
+.vehicle-banner { background: #0a1e38; border: 1px solid #1a3050; border-left: 4px solid #C8A020; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1.5rem; }
+.vb-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: #5a7a9a; }
+.vb-value { font-size: .92rem; font-weight: 600; color: #d0daea; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
+label.fl { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: #7a9ab8; display: block; margin-bottom: .3rem; }
+select.fi, input.fi, textarea.fi { width: 100%; background: #0a1e38; border: 1px solid #1a3050; border-radius: 6px; padding: .5rem .75rem; color: #e8edf4; font-family: 'Inter', sans-serif; font-size: .88rem; outline: none; transition: border-color .15s; }
+select.fi:focus, input.fi:focus, textarea.fi:focus { border-color: #C8A020; }
+textarea.fi { resize: vertical; min-height: 70px; }
+.insp-section { background: #0a1e38; border: 1px solid #1a3050; border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
+.insp-section-head { background: #002050; padding: .65rem 1rem; display: flex; align-items: center; gap: .6rem; cursor: pointer; user-select: none; }
+.insp-section-head .sec-num { background: #C8A020; color: #002050; font-size: .7rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.insp-section-head .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: .95rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #D6E4F7; flex: 1; }
+.insp-section-head .sec-status { font-size: .7rem; color: #4a6a8a; }
+.insp-section-body { padding: .85rem 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .75rem; }
+.check-item { display: flex; align-items: center; gap: .5rem; background: #0d2540; border: 1px solid #1a3050; border-radius: 6px; padding: .45rem .65rem; }
+.check-label { font-size: .78rem; color: #c0d0e0; flex: 1; line-height: 1.3; }
+.tri-toggle { display: flex; gap: 2px; flex-shrink: 0; }
+.tri-toggle input[type=radio] { display: none; }
+.tri-toggle label { padding: .2rem .4rem; border-radius: 4px; font-size: .65rem; font-weight: 700; letter-spacing: .05em; cursor: pointer; border: 1px solid #1a3050; color: #4a6a8a; background: #0a1e38; transition: all .12s; }
+.tri-toggle input[value="OK"]:checked + label { background: #1a6b3a; border-color: #2a9b5a; color: #fff; }
+.tri-toggle input[value="Defect"]:checked + label { background: #7a1020; border-color: #b01830; color: #fff; }
+.tri-toggle input[value="N/A"]:checked + label { background: #2a3a4a; border-color: #3a5a7a; color: #9ab; }
+.fuel-toggle { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .4rem; }
+.fuel-toggle input[type=radio] { display: none; }
+.fuel-toggle label { padding: .35rem .75rem; border-radius: 6px; font-size: .78rem; font-weight: 600; cursor: pointer; border: 1px solid #1a3050; color: #4a6a8a; background: #0a1e38; transition: all .12s; }
+.fuel-toggle input:checked + label { background: #004080; border-color: #0060c0; color: #fff; }
+.cert-box { background: #0a2040; border: 1px solid #1a4a8a; border-radius: 8px; padding: 1rem; margin: 1rem 0 0; }
+.cert-text { font-size: .78rem; color: #9bb3cc; line-height: 1.5; margin-bottom: .75rem; }
+.cert-check-row { display: flex; align-items: center; gap: .75rem; }
+.cert-check-row input[type=checkbox] { width: 18px; height: 18px; accent-color: #C8A020; flex-shrink: 0; cursor: pointer; }
+.cert-check-row label { font-size: .82rem; font-weight: 600; color: #d0daea; cursor: pointer; }
+.post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.pretrip-summary { background: #0a1e38; border: 1px solid #1a3050; border-radius: 10px; margin-bottom: 1.25rem; overflow: hidden; }
+.pretrip-summary-head { background: #001830; padding: .65rem 1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.pretrip-summary-head span { font-family: 'Barlow Condensed', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #5a7a9a; }
+.pretrip-summary-body { padding: .75rem 1rem; font-size: .78rem; color: #5a7a9a; display: none; }
+.submit-bar { position: sticky; bottom: 0; background: #002050; border-top: 2px solid #C8A020; padding: .85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.btn-submit { background: #C8A020; color: #002050; border: none; border-radius: 8px; padding: .65rem 1.75rem; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .15s; }
+.btn-submit:hover { background: #d8b030; }
+.btn-submit:disabled { background: #3a5070; color: #6a8aaa; cursor: not-allowed; }
+.btn-submit.post { background: #004080; color: #fff; }
+.btn-submit.post:hover { background: #0060c0; }
+.toast { position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%); background: #1a6b3a; color: #fff; padding: .75rem 1.5rem; border-radius: 8px; font-size: .88rem; font-weight: 600; display: none; z-index: 200; box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+.toast.error { background: #900010; }
+#loading-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 300; }
+.loading-spinner { width: 40px; height: 40px; border: 4px solid #1a3050; border-top-color: #C8A020; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 600px) {
+  .field-row, .insp-section-body, .post-grid, .vehicle-banner { grid-template-columns: 1fr; }
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<body class="lcs-insp">
+<div id="loading-overlay" style="display:none;"><div class="loading-spinner"></div></div>
+<div class="toast" id="toast"></div>
+<header class="insp-header">
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="/shortcuts" class="back-link">← Hub</a>
+    <span class="insp-logo">Left Coast <span>Scales</span></span>
+  </div>
+  <span class="insp-form-badge">DOT Form LCS-DOT-001</span>
+</header>
+<div class="insp-body" id="insp-body">
+  <div style="text-align:center;padding:3rem 1rem;color:#4a6a8a;">Loading inspection…</div>
+</div>
+<div class="submit-bar">
+  <span style="font-size:.72rem;color:#5a7a9a;" id="submit-hint">Loading…</span>
+  <button class="btn-submit" id="btn-submit" onclick="submitForm()" disabled>Loading…</button>
+</div>
+</body>
+{% endblock %}
+
+{% block script %}
+<script>
+const API = 'beveren_fsm.field_service_management.api.vehicle_inspection';
+let pageState = null;
+let vehicleData = {};
+
+async function loadPageState() {
+  try {
+    const result = await new Promise((resolve, reject) => {
+      frappe.call({
+        method: API + '.get_dot_page_state',
+        callback: (r) => resolve(r),
+        error: (r) => reject(r)
+      });
+    });
+    pageState = result.message;
+    if (pageState.mode === 'post_trip') {
+      renderPostTripForm();
+    } else {
+      renderPreTripForm();
+    }
+  } catch(e) {
+    showToast('Error loading inspection. Please refresh.', true);
+  }
+}
+
+function renderPreTripForm() {
+  const body = document.getElementById('insp-body');
+  body.innerHTML =
+    '<div class="phase-banner pre">&#127749; Pre-Trip Inspection &mdash; Complete Before Departure</div>' +
+    '<div style="margin-bottom:1.25rem;">' +
+      '<div class="field-row">' +
+        '<div><label class="fl">Vehicle</label>' +
+        '<select class="fi" id="vehicle" required onchange="onVehicleChange()">' +
+        '<option value="">— Select Vehicle —</option></select></div>' +
+        '<div><label class="fl">Inspection Date</label>' +
+        '<input type="date" class="fi" id="inspection_date" required value="' + pageState.today + '"></div>' +
+      '</div>' +
+      '<div class="vehicle-banner" id="vehicle-banner" style="display:none;">' +
+        '<div><div class="vb-label">Driver</div><div class="vb-value">' + pageState.employee_name + '</div></div>' +
+        '<div><div class="vb-label">Vehicle</div><div class="vb-value" id="vb-vehicle">—</div></div>' +
+        '<div><div class="vb-label">License Plate</div><div class="vb-value" id="vb-plate">—</div></div>' +
+        '<div><div class="vb-label">VIN Last 4</div><div class="vb-value" id="vb-vin">—</div></div>' +
+      '</div>' +
+      '<div class="field-row" style="margin-top:.75rem;">' +
+        '<div><label class="fl">Odometer &mdash; Start</label>' +
+        '<input type="number" class="fi" id="odometer_start" min="0" required placeholder="Miles"></div>' +
+        '<div><label class="fl">Dispatch Branch</label>' +
+        '<select class="fi" id="dispatch_branch" required>' +
+        '<option value="">— Select —</option>' +
+        '<option>Perris</option><option>San Diego</option><option>El Centro</option><option>Apache Junction</option>' +
+        '</select></div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#C8A020;margin-bottom:.6rem;">Checklist &mdash; Mark Each Item</div>' +
+    buildSection(1,'Brakes',['pt_service_brakes:Service Brakes:OK','pt_parking_brake:Parking / Emergency Brake:OK','pt_brake_drums:Brake Drums / Rotors:OK','pt_brake_lines:Brake Lines & Hoses:OK','pt_brake_linings:Brake Linings / Pads (wear indicators):OK','pt_abs_light:ABS Warning Light (verify extinguishes):OK']) +
+    buildSection(2,'Steering & Front Axle',['pt_steering_freeplay:Steering Wheel Free Play:OK','pt_steering_column:Steering Column / Shaft:OK','pt_power_steering_fluid:Power Steering Fluid Level:OK','pt_tie_rods:Tie Rods & Drag Links:OK','pt_wheel_bearings:Wheel Bearings / Seals:OK','pt_front_axle:Front Axle Condition:OK']) +
+    buildSection(3,'Lights & Electrical',['pt_headlights:Headlights — High & Low Beam:OK','pt_tail_lights:Tail Lights:OK','pt_stop_lights:Stop / Brake Lights:OK','pt_turn_signals:Turn Signals — Front & Rear:OK','pt_marker_lights:Marker / Clearance Lights:OK','pt_reverse_lights:Reverse / Back-Up Lights:OK','pt_hazard_flashers:Hazard / 4-Way Flashers:OK','pt_instrument_warning:Instrument Panel Warning Lights:OK']) +
+    buildSection(4,'Tires & Wheels',['pt_front_tread:Front Tire Tread Depth:OK','pt_rear_tread:Rear Tire Tread Depth:OK','pt_tire_inflation:Tire Inflation — All Positions:OK','pt_tire_sidewalls:Tire Sidewalls / Cuts / Bulges:OK','pt_dual_spacing:Dual Tire Spacing (no contact):OK','pt_lug_nuts:Wheel Nuts / Lug Nuts Torque:OK','pt_valve_stems:Valve Stems & Caps:OK','pt_spare_tire:Spare Tire & Mount (if equipped):N/A']) +
+    buildSection(5,'Engine Compartment',['pt_oil_level:Engine Oil Level:OK','pt_coolant_level:Coolant Level:OK','pt_trans_fluid:Transmission Fluid Level:OK','pt_belts_hoses:Belts & Hoses — Condition:OK','pt_battery:Battery — Secure & Corrosion Free:OK','pt_air_filter:Air Filter Indicator:OK','pt_fuel_level:Fuel Level & Fuel Cap Tight:OK','pt_fluid_leaks:Oil / Fluid Leaks — Under Hood:OK']) +
+    buildSection(6,'Body, Cab & Accessories',['pt_body_panels:Body Panels & Cab Integrity:OK','pt_frame_chassis:Frame / Chassis — Cracks / Damage:OK','pt_exhaust:Exhaust System — Leaks / Damage:OK','pt_windshield:Windshield — Cracks / Chips:OK','pt_wipers:Windshield Wipers & Washers:OK','pt_mirrors:Mirrors — Adjusted & Secure:OK','pt_horn:Horn — Audible Signal:OK','pt_defroster:Defroster / Heater Operation:OK']) +
+    buildSection(7,'Doors & Entry',['pt_cab_doors:Cab Doors — Latch & Seal:OK','pt_cargo_doors:Cargo / Body Doors — Latch & Lock:OK','pt_door_hinges:Door Hinges & Hardware:OK','pt_steps_handrails:Steps, Handrails & Grab Handles:OK']) +
+    buildSection(8,'Safety Equipment',['pt_fire_extinguisher:Fire Extinguisher Present & Charged:OK','pt_warning_triangles:Warning Triangles / Flares (3 required):OK','pt_first_aid:First Aid Kit:OK','pt_seat_belt:Seat Belt — Functional & Secure:OK']) +
+    buildSection(9,'Test Weight / Cargo Equipment',['pt_weights_secured:Test Weights Secured / Strapped:OK','pt_weight_cart:Weight Cart / Pallet Jack Secured:OK','pt_tiedown_straps:Tie-Down Straps — Condition & Count:OK','pt_load_deck:Load Deck / Bed Condition:OK','pt_liftgate:Liftgate Function & Safety Latch (if equipped):N/A','pt_load_locks:Load Lock Bars / E-Track Secure:OK','pt_weight_inventory:Test Weight Inventory Matches Manifest:OK','pt_weight_cert_tags:Weight Certification Tags Legible:OK']) +
+    '<div style="margin:.75rem 0;"><label class="fl">Pre-Trip Defect Details / Remarks</label>' +
+    '<textarea class="fi" id="pt_defect_remarks" rows="3" placeholder="Describe any defects found..."></textarea></div>' +
+    '<div class="cert-box">' +
+      '<div class="cert-text">Per 49 CFR §396.11: I certify that I have inspected the above vehicle and, to the best of my knowledge, the above defects have been reported. I am satisfied that this vehicle is in safe operating condition.</div>' +
+      '<div class="cert-check-row"><input type="checkbox" id="pt_certified"><label for="pt_certified">I certify the pre-trip inspection is complete and accurate.</label></div>' +
+    '</div>';
+
+  vehicleData = {};
+  const sel = document.getElementById('vehicle');
+  (pageState.vehicles || []).forEach(function(v) {
+    vehicleData[v.name] = v;
+    var o = document.createElement('option');
+    o.value = v.name;
+    o.textContent = v.display_label + (v.branch ? ' [' + v.branch + ']' : '');
+    sel.appendChild(o);
+  });
+  if (pageState.last_vehicle && vehicleData[pageState.last_vehicle]) {
+    sel.value = pageState.last_vehicle;
+    onVehicleChange(pageState.last_odometer);
+  }
+  if (pageState.branch) {
+    var br = document.getElementById('dispatch_branch');
+    for (var i = 0; i < br.options.length; i++) {
+      if (br.options[i].value === pageState.branch) { br.options[i].selected = true; break; }
+    }
+  }
+  document.getElementById('submit-hint').textContent = 'Complete all items and certify to submit pre-trip.';
+  var btn = document.getElementById('btn-submit');
+  btn.textContent = 'Submit Pre-Trip';
+  btn.className = 'btn-submit';
+  btn.disabled = false;
+}
+
+function renderPostTripForm() {
+  var rec = pageState.record;
+  var body = document.getElementById('insp-body');
+  var startOdo = rec.odometer_start ? rec.odometer_start.toLocaleString() + ' mi' : '—';
+  body.innerHTML =
+    '<div class="phase-banner post">&#127750; Post-Trip Inspection &mdash; Complete After Final Stop</div>' +
+    '<div class="vehicle-banner" style="margin-bottom:1.25rem;">' +
+      '<div><div class="vb-label">Driver</div><div class="vb-value">' + pageState.employee_name + '</div></div>' +
+      '<div><div class="vb-label">Vehicle</div><div class="vb-value">' + (rec.vehicle_year_make_model || rec.vehicle) + '</div></div>' +
+      '<div><div class="vb-label">Record</div><div class="vb-value">' + rec.name + '</div></div>' +
+      '<div><div class="vb-label">Odometer Start</div><div class="vb-value">' + startOdo + '</div></div>' +
+    '</div>' +
+    '<div class="pretrip-summary">' +
+      '<div class="pretrip-summary-head" onclick="togglePreTripSummary()">' +
+        '<span>&#10003; Pre-Trip Inspection Completed This Morning</span>' +
+        '<span id="summary-chevron" style="color:#5a7a9a;">&#9660;</span>' +
+      '</div>' +
+      '<div class="pretrip-summary-body" id="summary-body">' +
+        'Pre-trip results are saved in record <strong>' + rec.name + '</strong>. Open in the ERPNext desk to review individual item results.' +
+      '</div>' +
+    '</div>' +
+    '<div style="margin-bottom:1rem;">' +
+      '<label class="fl">Odometer &mdash; End</label>' +
+      '<input type="number" class="fi" id="odometer_end" min="0" placeholder="Miles" style="max-width:220px;" autofocus>' +
+    '</div>' +
+    '<div style="margin-bottom:1.25rem;">' +
+      '<label class="fl">Fuel Level at Return</label>' +
+      '<div class="fuel-toggle">' +
+        '<input type="radio" name="fuel_level" id="fuel-empty" value="Empty"><label for="fuel-empty">Empty</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-quarter" value="1/4"><label for="fuel-quarter">&frac14;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-half" value="1/2"><label for="fuel-half">&frac12;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-three" value="3/4"><label for="fuel-three">&frac34;</label>' +
+        '<input type="radio" name="fuel_level" id="fuel-full" value="Full"><label for="fuel-full">Full</label>' +
+      '</div>' +
+    '</div>' +
+    '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#5090d0;margin-bottom:.6rem;">Post-Trip Summary Check</div>' +
+    '<div class="post-grid">' +
+      buildPostItem('post_brakes','Brakes') +
+      buildPostItem('post_steering','Steering') +
+      buildPostItem('post_lights','Lights & Electrical') +
+      buildPostItem('post_tires','Tires & Wheels') +
+      buildPostItem('post_engine','Engine / Fluids') +
+      buildPostItem('post_body','Body / Cab') +
+      buildPostItem('post_safety','Safety Equipment') +
+      buildPostItem('post_cargo','Test Weight / Cargo Equipment') +
+    '</div>' +
+    '<div style="margin-top:.75rem;"><label class="fl">Post-Trip Defect Details / Remarks</label>' +
+    '<textarea class="fi" id="post_defect_remarks" rows="3" placeholder="Describe any defects or issues found during today\'s operation..."></textarea></div>' +
+    '<div class="cert-box">' +
+      '<div class="cert-text">I certify that this report was prepared by me at the completion of the above trip, and that all defects or deficiencies found are accurately reported herein. Per 49 CFR §396.11.</div>' +
+      '<div class="cert-check-row"><input type="checkbox" id="post_certified"><label for="post_certified">I certify the post-trip inspection is complete and accurate.</label></div>' +
+    '</div>';
+
+  document.getElementById('submit-hint').textContent = 'Enter end odometer, fuel level, and certify to close out.';
+  var btn = document.getElementById('btn-submit');
+  btn.textContent = 'Submit Post-Trip';
+  btn.className = 'btn-submit post';
+  btn.disabled = false;
+}
+
+function buildSection(num, title, items) {
+  var itemsHtml = items.map(function(item) {
+    var parts = item.split(':');
+    return buildCheckItem(parts[0], parts[1], parts[2]);
+  }).join('');
+  return '<div class="insp-section">' +
+    '<div class="insp-section-head" onclick="toggleSection(this)">' +
+      '<div class="sec-num">' + num + '</div>' +
+      '<div class="sec-title">' + title + '</div>' +
+      '<div class="sec-status">' + items.length + ' items</div>' +
+    '</div>' +
+    '<div class="insp-section-body">' + itemsHtml + '</div>' +
+  '</div>';
+}
+
+function buildCheckItem(id, label, def) {
+  var okChk = '';
+  var naChk = '';
+  return '<div class="check-item">' +
+    '<span class="check-label">' + label + '</span>' +
+    '<div class="tri-toggle">' +
+      '<input type="radio" name="' + id + '" id="' + id + '-ok" value="OK"' + okChk + '><label for="' + id + '-ok">OK</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-defect" value="Defect"><label for="' + id + '-defect">Defect</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na" value="N/A"' + naChk + '><label for="' + id + '-na">N/A</label>' +
+    '</div>' +
+  '</div>';
+}
+
+function buildPostItem(id, label) {
+  return '<div class="check-item">' +
+    '<span class="check-label">' + label + '</span>' +
+    '<div class="tri-toggle">' +
+      '<input type="radio" name="' + id + '" id="' + id + '-ok" value="OK"><label for="' + id + '-ok">OK</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-defect" value="Defect"><label for="' + id + '-defect">Defect</label>' +
+      '<input type="radio" name="' + id + '" id="' + id + '-na" value="N/A"><label for="' + id + '-na">N/A</label>' +
+    '</div>' +
+  '</div>';
+}
+
+function onVehicleChange(prefillOdometer) {
+  var sel = document.getElementById('vehicle');
+  var v = vehicleData[sel.value];
+  if (!v) { document.getElementById('vehicle-banner').style.display = 'none'; return; }
+  document.getElementById('vb-vehicle').textContent = v.display_label;
+  document.getElementById('vb-plate').textContent = (v.license_plate || '—') + (v.plate_state ? ' ' + v.plate_state : '');
+  document.getElementById('vb-vin').textContent = v.vin_last_4 || '—';
+  document.getElementById('vehicle-banner').style.display = 'grid';
+  if (v.branch) {
+    var br = document.getElementById('dispatch_branch');
+    if (!br.value) {
+      for (var i = 0; i < br.options.length; i++) {
+        if (br.options[i].value === v.branch) { br.options[i].selected = true; break; }
+      }
+    }
+  }
+  var odo = prefillOdometer !== undefined ? prefillOdometer : v.last_odometer;
+  if (odo) document.getElementById('odometer_start').value = odo;
+}
+
+function toggleSection(head) {
+  var body = head.nextElementSibling;
+  body.style.display = body.style.display === 'none' ? '' : 'none';
+}
+
+function togglePreTripSummary() {
+  var body = document.getElementById('summary-body');
+  var chev = document.getElementById('summary-chevron');
+  var open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : '';
+  chev.textContent = open ? '▼' : '▲';
+}
+
+function getRadioValue(name) {
+  var el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? el.value : null;
+}
+
+function submitForm() {
+  var btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  if (pageState.mode === 'post_trip') {
+    submitPostTrip(btn);
+  } else {
+    submitPreTrip(btn);
+  }
+}
+
+function submitPreTrip(btn) {
+  var ptFields = [
+    'pt_service_brakes','pt_parking_brake','pt_brake_drums','pt_brake_lines','pt_brake_linings','pt_abs_light',
+    'pt_steering_freeplay','pt_steering_column','pt_power_steering_fluid','pt_tie_rods','pt_wheel_bearings','pt_front_axle',
+    'pt_headlights','pt_tail_lights','pt_stop_lights','pt_turn_signals','pt_marker_lights','pt_reverse_lights','pt_hazard_flashers','pt_instrument_warning',
+    'pt_front_tread','pt_rear_tread','pt_tire_inflation','pt_tire_sidewalls','pt_dual_spacing','pt_lug_nuts','pt_valve_stems','pt_spare_tire',
+    'pt_oil_level','pt_coolant_level','pt_trans_fluid','pt_belts_hoses','pt_battery','pt_air_filter','pt_fuel_level','pt_fluid_leaks',
+    'pt_body_panels','pt_frame_chassis','pt_exhaust','pt_windshield','pt_wipers','pt_mirrors','pt_horn','pt_defroster',
+    'pt_cab_doors','pt_cargo_doors','pt_door_hinges','pt_steps_handrails',
+    'pt_fire_extinguisher','pt_warning_triangles','pt_first_aid','pt_seat_belt',
+    'pt_weights_secured','pt_weight_cart','pt_tiedown_straps','pt_load_deck','pt_liftgate','pt_load_locks','pt_weight_inventory','pt_weight_cert_tags'
+  ];
+  var data = {
+    naming_series: 'LCS-DOT-.YYYY.-.####',
+    vehicle: document.getElementById('vehicle').value,
+    inspection_date: document.getElementById('inspection_date').value,
+    odometer_start: parseInt(document.getElementById('odometer_start').value) || 0,
+    dispatch_branch: document.getElementById('dispatch_branch').value,
+    pt_defect_remarks: document.getElementById('pt_defect_remarks').value,
+    pt_certified: document.getElementById('pt_certified').checked ? 1 : 0
+  };
+  ptFields.forEach(function(f) { data[f] = getRadioValue(f) || 'OK'; });
+
+  if (!data.vehicle) { showToast('Please select a vehicle.', true); btn.disabled = false; return; }
+  if (!data.inspection_date) { showToast('Please enter the inspection date.', true); btn.disabled = false; return; }
+  if (!data.odometer_start) { showToast('Please enter the starting odometer reading.', true); btn.disabled = false; return; }
+  if (!data.dispatch_branch) { showToast('Please select a dispatch branch.', true); btn.disabled = false; return; }
+  if (!data.pt_certified) { showToast('Please certify the pre-trip inspection before submitting.', true); btn.disabled = false; return; }
+
+  document.getElementById('loading-overlay').style.display = 'flex';
+  frappe.call({
+    method: API + '.submit_dot_pretrip',
+    args: {data: JSON.stringify(data)},
+    callback: function(r) {
+      document.getElementById('loading-overlay').style.display = 'none';
+      if (r.message && r.message.status === 'success') {
+        showToast('Pre-trip saved — ' + r.message.name + '. Return tonight to complete post-trip.');
+        setTimeout(function() { window.location.href = '/shortcuts'; }, 3500);
+      } else {
+        showToast('Error saving inspection. Please try again.', true);
+        btn.disabled = false;
+      }
+    },
+    error: function() {
+      document.getElementById('loading-overlay').style.display = 'none';
+      showToast('Network error. Please try again.', true);
+      btn.disabled = false;
+    }
+  });
+}
+
+function submitPostTrip(btn) {
+  var data = {
+    record_name: pageState.record.name,
+    odometer_end: parseInt(document.getElementById('odometer_end').value) || 0,
+    fuel_level: getRadioValue('fuel_level') || '',
+    post_brakes: getRadioValue('post_brakes') || 'OK',
+    post_steering: getRadioValue('post_steering') || 'OK',
+    post_lights: getRadioValue('post_lights') || 'OK',
+    post_tires: getRadioValue('post_tires') || 'OK',
+    post_engine: getRadioValue('post_engine') || 'OK',
+    post_body: getRadioValue('post_body') || 'OK',
+    post_safety: getRadioValue('post_safety') || 'OK',
+    post_cargo: getRadioValue('post_cargo') || 'OK',
+    post_defect_remarks: document.getElementById('post_defect_remarks').value,
+    post_certified: document.getElementById('post_certified').checked ? 1 : 0
+  };
+
+  if (!data.odometer_end) { showToast('Please enter the ending odometer reading.', true); btn.disabled = false; return; }
+  if (!data.fuel_level) { showToast('Please select the fuel level.', true); btn.disabled = false; return; }
+  if (!data.post_certified) { showToast('Please certify the post-trip inspection before submitting.', true); btn.disabled = false; return; }
+
+  document.getElementById('loading-overlay').style.display = 'flex';
+  frappe.call({
+    method: API + '.submit_dot_posttrip',
+    args: {data: JSON.stringify(data)},
+    callback: function(r) {
+      document.getElementById('loading-overlay').style.display = 'none';
+      if (r.message && r.message.status === 'success') {
+        showToast('Post-trip complete — inspection record closed.');
+        setTimeout(function() { window.location.href = '/shortcuts'; }, 2500);
+      } else {
+        showToast('Error saving post-trip. Please try again.', true);
+        btn.disabled = false;
+      }
+    },
+    error: function() {
+      document.getElementById('loading-overlay').style.display = 'none';
+      showToast('Network error. Please try again.', true);
+      btn.disabled = false;
+    }
+  });
+}
+
+function showToast(msg, isError) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.style.display = 'block';
+  setTimeout(function() { t.style.display = 'none'; }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', loadPageState);
+</script>
+{% endblock %}

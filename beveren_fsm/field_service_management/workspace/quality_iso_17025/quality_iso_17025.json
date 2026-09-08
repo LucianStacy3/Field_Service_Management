@@ -1,0 +1,86 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"SYLb0CvZYu\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"uoBnlw9gQe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS NCR\",\"col\":3}},{\"id\":\"Mo0lGHcMSH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS RGA\",\"col\":3}},{\"id\":\"TlHIGTIoI1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS CAPA\",\"col\":3}},{\"id\":\"BobFyZ5kLX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS Audit\",\"col\":3}},{\"id\":\"CBbNuUBhfa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS Controlled Document\",\"col\":3}},{\"id\":\"fHo0SnSSRq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS Reference Standard\",\"col\":3}},{\"id\":\"iQy79yTlJr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"LCS Uncertainty Budget\",\"col\":3}}]",
+ "creation": "2026-09-02 00:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "shield",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Quality (ISO 17025)",
+ "links": [],
+ "modified": "2026-09-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field Service Management",
+ "name": "Quality (ISO 17025)",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 15.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS NCR",
+   "link_to": "LCS NCR",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS RGA",
+   "link_to": "LCS RGA",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS CAPA",
+   "link_to": "LCS CAPA",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS Audit",
+   "link_to": "LCS Audit",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS Controlled Document",
+   "link_to": "LCS Controlled Document",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS Reference Standard",
+   "link_to": "LCS Reference Standard",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "LCS Uncertainty Budget",
+   "link_to": "LCS Uncertainty Budget",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Quality (ISO 17025)"
+}

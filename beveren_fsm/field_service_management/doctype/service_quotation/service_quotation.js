@@ -212,6 +212,34 @@ beveren_fsm.field_service_management.ServiceQuotationController = class ServiceQ
     super.onload(doc, dt, dn);
   }
 
+  // ------------------------------------------------------------------
+  // Override added to fix: SellingController's inherited due_date()
+  // handler unconditionally reads doc.payment_schedule.length, but
+  // Service Quotation has no payment_schedule field (same issue found
+  // and fixed on Service Order -- see that file's due_date() override
+  // for the full explanation). Silent console TypeError, no visible
+  // break, stubbed out rather than left throwing on every change.
+  // ------------------------------------------------------------------
+  due_date() {
+    // no-op: Service Quotation doesn't use payment-terms-driven due dates
+  }
+
+  // ------------------------------------------------------------------
+  // Override added to fix: base_grand_total silently ignoring tax --
+  // same root cause as Service Order's calculate_totals() override
+  // (see that file for the full explanation): Service Quotation isn't
+  // in ERPNext core's hardcoded doctype whitelist for the sales-side
+  // base_grand_total calculation, so it silently falls back to the
+  // pre-tax base_net_total whenever a Sales Taxes and Charges template
+  // is applied.
+  // ------------------------------------------------------------------
+  calculate_totals() {
+    super.calculate_totals();
+    this.frm.doc.base_grand_total = this.frm.doc.total_taxes_and_charges
+      ? flt(this.frm.doc.grand_total * this.frm.doc.conversion_rate)
+      : this.frm.doc.base_net_total;
+  }
+
   party_name() {
     var me = this;
     erpnext.utils.get_party_details(this.frm, null, null, function () {

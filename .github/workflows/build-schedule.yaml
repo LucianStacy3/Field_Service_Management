@@ -1,0 +1,75 @@
+name: Build Schedule App
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "schedule/src/**"
+      - "schedule/package.json"
+      - "schedule/yarn.lock"
+      - "schedule/vite.config.*"
+      - "schedule/tailwind.config.*"
+      - "schedule/tsconfig.*"
+
+concurrency:
+  group: build-schedule-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack (yarn)
+        run: corepack enable
+
+      - name: Get yarn cache directory
+        id: yarn-cache-dir
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-yarn-schedule-${{ hashFiles('schedule/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-schedule-
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        working-directory: schedule
+        run: yarn install --frozen-lockfile
+
+      - name: Create dummy common_site_config.json
+        run: |
+          mkdir -p /home/runner/work/sites
+          echo '{"webserver_port": 8000}' > /home/runner/work/sites/common_site_config.json
+
+      - name: Build
+        working-directory: schedule
+        run: yarn build
+
+      - name: Commit built assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f beveren_fsm/public/schedule/ beveren_fsm/www/schedule.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit — build output unchanged."
+          else
+            git commit -m "chore: rebuild schedule app [skip ci]"
+            git push
+          fi
